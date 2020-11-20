@@ -1,1 +1,9 @@
+<% flash.each do |message_type, message| %>
+  <%= message %>
+<% end %>
 <h1>TOP</h1>
+<% if user_signed_in? %>
+ <%= link_to "ログイン中", recruitments_path %>
+<% else %>
+  <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%>
+<% end %>
