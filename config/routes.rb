@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   }
   root 'recruitments#top'
   resources :recruitments, only: [:index]
+  get 'my_profile', to: 'users#my_profile'
 end

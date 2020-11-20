@@ -2,8 +2,6 @@
   <%= message %>
 <% end %>
 <h1>index</h1>
-<% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "ログアウト中", root_path %>
-<% end %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<%= link_to "プロフィール", my_profile_path %>
+
