@@ -1,2 +1,5 @@
 <h1>my_profile</h1>
+<%= link_to "募集一覧へ", recruitments_path %>
 <div><%= current_user.name %></div>
+<div><%= current_user.email %></div>
+<%= image_tag current_user.image_name %>

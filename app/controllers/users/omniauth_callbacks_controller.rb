@@ -5,13 +5,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     authorization
   end
-
+  
   private
-
+  
   def authorization
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    flash[:notice] = "ログインに成功しました"
-    sign_in_and_redirect @user, event: :authentication
+    if @user.persisted?
+      flash[:notice] = "ログインに成功しました"
+      sign_in_and_redirect @user, event: :authentication
+    else
+      flash[:notice] = "ログインに失敗しました"
+      redirect_to root_path
+    end
   end
 
   # You should configure your model like this:

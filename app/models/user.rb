@@ -6,16 +6,16 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
+  # has_one_attached :image
 
-  validates :name, :email, :password, :provider, :uid, presence: true
+  validates :name, :email, :password, :provider, :uid, :image_name, presence: true
 
   def self.from_omniauth(auth)
     #パスワードを自動生成
     pass = Devise.friendly_token
-
     #該当のユーザーが存在すればそのままログイン、しなければ作成してログイン
-    user = User.where(name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid).first_or_create(
-      name: auth.info.name, email: auth.info.email, password: pass, password_confirmation: pass, provider: auth.provider, uid: auth.uid
+    user = User.where(provider: auth.provider, uid: auth.uid).first_or_create(
+      name: auth.info.name, email: auth.info.email, password: pass, password_confirmation: pass, provider: auth.provider, uid: auth.uid, image_name: auth.info.image
     )
   end
 
