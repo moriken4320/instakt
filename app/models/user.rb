@@ -2,8 +2,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :name, :email, :password, :provider, :uid, presence: true
+  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
+  has_many :followings, through: :following_relationships
+  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :follower_relationships
 
+  validates :name, :email, :password, :provider, :uid, presence: true
 
   def self.from_omniauth(auth)
     #パスワードを自動生成
@@ -13,5 +17,22 @@ class User < ApplicationRecord
     user = User.where(name: auth.info.name, email: auth.info.email, provider: auth.provider, uid: auth.uid).first_or_create(
       name: auth.info.name, email: auth.info.email, password: pass, password_confirmation: pass, provider: auth.provider, uid: auth.uid
     )
+  end
+
+  #フレンド関連のメソッド
+  def following?(other_user)
+    following_relationships.find_by(following_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    following_relationships.create!(following_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  def matchers #友達判定
+    followings & followers
   end
 end
