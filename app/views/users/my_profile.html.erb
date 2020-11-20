@@ -2,4 +2,4 @@
 <%= link_to "募集一覧へ", recruitments_path %>
 <div><%= current_user.name %></div>
 <div><%= current_user.email %></div>
-<%= image_tag current_user.image_name %>
+<%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed %>
