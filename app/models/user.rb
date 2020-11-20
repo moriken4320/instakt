@@ -19,7 +19,7 @@ class User < ApplicationRecord
     )
     unless user.persisted?
       image = open(auth.info.image)
-      user.image.attach(io: image, filename: "image.png")
+      user.image.attach(io: image, filename: "#{auth.info.name}.png")
       user.save
     end
     user
