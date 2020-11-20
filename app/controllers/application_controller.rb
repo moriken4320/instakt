@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
  
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :provider, :uid, :image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image])
   end
 
   #ログイン状態であれば、recruitments_path(index)へリダイレクト
