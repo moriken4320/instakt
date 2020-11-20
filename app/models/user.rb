@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_one_attached :image
 
-  validates :name, :email, :password, :provider, :uid, :image, presence: true
+  validates :name, :email, :provider, :uid, :image, presence: true
 
   def self.from_omniauth(auth)
     #パスワードを自動生成

@@ -1,12 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
  
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image])
-  end
-
   #ログイン状態であれば、recruitments_path(index)へリダイレクト
   def signed_in_user_to_recruitments
     if user_signed_in?

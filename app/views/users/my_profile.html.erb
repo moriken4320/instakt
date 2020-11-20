@@ -1,5 +1,27 @@
 <h1>my_profile</h1>
 <%= link_to "募集一覧へ", recruitments_path %>
-<div><%= current_user.name %></div>
-<div><%= current_user.email %></div>
-<%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed %>
+
+<%= form_with model: @user, url: user_path(current_user), method: :put, local: true do |f| %>
+  <div>
+    <div>
+      <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"100x100^", crop:"100x100+0+0"}).processed %><br>
+      <%= f.file_field :image, id:"user-image" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <%= f.label :name, "ユーザー名" %><br>
+      <%= f.text_field :name, class:"input-default", placeholder:"ユーザー名", maxlength:"20" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <%= f.label :email, "メールアドレス" %><br>
+      <%= f.email_field :email, class:"input-default", placeholder:"メールアドレス" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新", class: :form_btn  %>
+  </div>
+<% end %>
