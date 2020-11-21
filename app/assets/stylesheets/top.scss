@@ -45,27 +45,27 @@
   //ログインラッパー
   .top-login-wrap{
     z-index: 5;
-    margin-top: 350px;
+    margin-top: 400px;
     color: white;
-    padding: 50px 50px;
 
     .top-login-btn{
       display: inline-block;
-      border: 1px solid white;
+      border: 2px solid white;
       border-radius: 5px 5px;
-      padding: 20px 40px;
+      padding: 15px 25px;
       text-decoration: none;
       color: white;
       user-select: none;
-      font-size: 25px;
+      font-size: 30px;
       font-weight: bold;
       transition: .1s ease-out;
 
     
       &:hover{
-        background-color: white;
+        background-color: rgb(255, 255, 255);
         color: black;
         text-shadow: none;
+        border: 2px solid rgb(83, 203, 250);
       }
     
       img{

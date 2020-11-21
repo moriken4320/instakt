@@ -4,12 +4,11 @@ $error_message_height: 50px;
 
 .error_message{
   height: $error_message_height;
-  background-color: rgb(245, 121, 6);
+  background-color: orange;
   color: white;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   line-height: $error_message_height;
   user-select: none;
-  text-shadow: $text_shadow;
 }
