@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   root 'recruitments#top'
   resources :recruitments, only: [:index]
+
+  resources :friends, only: [:index]
 end
