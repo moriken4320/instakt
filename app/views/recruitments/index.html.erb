@@ -1,5 +1,10 @@
-<%= render 'shared/error_messages' %>
-<h1>index</h1>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<%= link_to "プロフィール", my_profile_path %>
+<%= render partial: 'shared/header', locals: { page_name: "募集一覧" } %>
 
+<div class="main">
+  <%= render 'shared/error_messages' %>
+  <h1>index</h1>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <%= link_to "プロフィール", my_profile_path %>
+</div>
+
+<%= render 'shared/footer' %>
