@@ -1,0 +1,27 @@
+@import "../variables.scss";
+
+header{
+  padding: 0 50px;
+  width: 100%;
+  height: $header_height;
+  background-color: white;
+  box-shadow: 5px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 50;
+
+  a{
+    color: orange;
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    display: inline-block;
+
+    &:hover{
+      opacity: .8;
+      text-decoration: underline;
+    }
+  }
+}

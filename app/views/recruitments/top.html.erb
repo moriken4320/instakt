@@ -1,9 +1,25 @@
-<% flash.each do |message_type, message| %>
-  <%= message %>
-<% end %>
-<h1>TOP</h1>
-<% if user_signed_in? %>
- <%= link_to "ログイン中", recruitments_path %>
-<% else %>
-  <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post%>
-<% end %>
+<%= render 'shared/header' %>
+
+<div class="main">
+
+  <%= render 'shared/error_messages' %>
+
+  <div class="top-image">
+    <div class="top-title-wrap">
+      <h1 class="top-title">今日飲みたい。</h1>
+      <p class="top-message">
+        突然込みあげるこの気持ち。<br>
+        同じ気持ちの友人を見つけて、<br>
+        <span>即席</span>で飲み会を開いちゃいましょう！
+      </p>
+    </div>
+
+    <div class="top-login-wrap">
+      <%= link_to image_tag('google_icon.png') + "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, class: "top-login-btn"%>
+      <p class="top-login-text">※新規登録、ログインのどちらも上記のリンクから行うことができます。</p>
+    </div>
+  </div>
+
+</div>
+
+<%= render 'shared/footer' %>

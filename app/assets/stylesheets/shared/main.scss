@@ -1,0 +1,7 @@
+@import "../variables.scss";
+
+.main{
+  padding-top: $header_height;
+  min-height: calc(100vh - #{$header_height + $footer_height});
+  background-color: lightyellow;
+}

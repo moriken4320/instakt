@@ -1,6 +1,4 @@
-<% flash.each do |message_type, message| %>
-  <%= message %>
-<% end %>
+<%= render 'shared/error_messages' %>
 <h1>index</h1>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <%= link_to "プロフィール", my_profile_path %>

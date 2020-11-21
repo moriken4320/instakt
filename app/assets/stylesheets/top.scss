@@ -1,0 +1,84 @@
+@import "./variables.scss";
+
+.top-image{
+  background-image: image-url("top.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+  padding: 10vh 0;
+  position: relative;
+  text-shadow: $text_shadow;
+
+  &::before{
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
+
+  .top-title-wrap{
+    color: #fff;
+    z-index: 5;
+    
+    .top-title{
+      font-size: 100px;
+      font-weight: bold;
+    }
+    
+    .top-message{
+      font-size: 25px;
+      margin-top: 30px;
+
+       span{
+         text-decoration: underline;
+         font-size: 40px;
+         font-weight: bold;
+       }
+    }
+  }
+  
+  //ログインラッパー
+  .top-login-wrap{
+    z-index: 5;
+    margin-top: 350px;
+    color: white;
+    padding: 50px 50px;
+
+    .top-login-btn{
+      display: inline-block;
+      border: 1px solid white;
+      border-radius: 5px 5px;
+      padding: 20px 40px;
+      text-decoration: none;
+      color: white;
+      user-select: none;
+      font-size: 25px;
+      font-weight: bold;
+      transition: .1s ease-out;
+
+    
+      &:hover{
+        background-color: white;
+        color: black;
+        text-shadow: none;
+      }
+    
+      img{
+        width: 50px;
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+    }
+
+    .top-login-text{
+      font-size: 15px;
+      margin-top: 20px;
+    }
+  }
+
+}
