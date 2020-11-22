@@ -9,6 +9,11 @@
   <div class="right">
     <% if user_signed_in? %>
       <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon" %>
+      <div class="user-menu" id="user-menu">
+        <%= link_to "プロフィール", my_profile_path %>
+        <%= link_to "フレンド", friends_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </div>
     <% end %>
   </div>
 </header>

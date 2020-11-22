@@ -1,8 +1,7 @@
 @import "../variables.scss";
 
 header{
-  padding: 0 100px;
-  // width: 100%;
+  padding: 0 200px;
   height: $header_height;
   background-color: white;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
@@ -16,42 +15,79 @@ header{
   bottom: 0;
   z-index: 50;
 
-  a{
-    color: orange;
-    font-size: 30px;
-    font-weight: bold;
-    display: inline-block;
-    cursor: pointer;
-    display: inline-block;
-
-    &:hover{
-      opacity: .8;
-      text-decoration: underline;
+  .left{
+    height: 100%;
+    
+    a{
+      color: orange;
+      font-size: 30px;
+      font-weight: bold;
+      display: inline-block;
+      cursor: pointer;
+      height: 100%;
+      padding: 0 15px;
+      transition: .3s;
+      line-height: $header_height;
+      
+      &:hover{
+        background-color: orange;
+        color: white;
+      }
+    }
+    
+    span{
+      margin-top: 13px;
+      font-size: 20px;
+      font-weight: bold;
+      color: orange;
+      
+      &::before{
+        content: '>';
+        margin-right: 15px;
+      }
     }
   }
 
-  span{
-    margin: 13px 0 0 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: orange;
-
-    &::before{
-      content: '> ';
+  .right{
+    position: relative;
+    
+    #user-icon{
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 3px solid orange;
+      box-shadow: 1px 1px 5px black;
+      cursor: pointer;
+      transition: .2s;
+      
+      &:hover{
+        transform: translate(-1px,-1px);
+        box-shadow: 3px 3px 5px black;
+      }
     }
-  }
+    
+    .user-menu{
+      display: none;
+      background-color: white;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 115%;
 
-  #user-icon{
-    vertical-align: middle;
-    border-radius: 50%;
-    border: 3px solid orange;
-    box-shadow: 1px 1px 5px black;
-    cursor: pointer;
-    transition: .2s;
+      a{
+        display: block;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 20px;
+        transition: .2s;
+        text-decoration: none;
+        color: rgb(165, 107, 0);
+        font-weight: bold;
 
-    &:hover{
-      transform: translate(-1px,-1px);
-      box-shadow: 3px 3px 5px black;
+        &:hover{
+          background-color: rgba(0, 0, 0, 0.1);
+          color: orange;
+        }
+      }
     }
   }
 }
