@@ -11,10 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def authorization
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
-      flash[:notice] = "ログインに成功しました"
+      flash[:success] = "ログインに成功しました"
       sign_in_and_redirect @user, event: :authentication
     else
-      flash[:notice] = "ログインに失敗しました"
+      flash[:danger] = "ログインに失敗しました"
       redirect_to root_path
     end
   end

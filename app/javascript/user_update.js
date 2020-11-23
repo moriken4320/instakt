@@ -9,6 +9,18 @@ $(function () {
     $("#form-btn").prop("disabled", false);
   };
 
+  //flashオブジェクト作成関数
+  const flash_create = (type, text) => {
+    const flash = $("<div>").addClass(`common ${type}`).text(text);
+    $("header").append(flash);
+    flash.slideDown(500);
+    setTimeout(()=>{
+      $(flash).slideUp(500, ()=>{
+        $(flash).remove();
+      });
+    }, 2000);
+  };
+
   //画像変更時、プロフィールの画像も即時に変更
   $("#image-field").on("change",(e)=>{
     const blob = window.URL.createObjectURL(e.target.files[0]);
@@ -40,8 +52,8 @@ $(function () {
   });
 
   //name,emailのフォームに差分があれば、更新ボタンをアクティブ化
-  $("#user-name, #user-email").on("keyup", ()=>{
-    if(current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage){
+  $("#user-name, #user-email").on("keyup", (key)=>{
+    if((current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage) && key.originalEvent.key != "Enter"){
       form_active();
     }
     else{
@@ -51,7 +63,6 @@ $(function () {
   
   //更新ボタン実行時
   $("#user-form").on("submit",(e)=>{
-    $("#actions").removeAttr("for");
     e.preventDefault();
 
     const form_data = new FormData(e.target);
@@ -69,9 +80,11 @@ $(function () {
       current_name = data.name;
       current_email = data.email;
       image_chage = false;
+      flash_create("success", "更新しました");
+      $("#actions").removeAttr("for");
     })
-    .fail((error)=>{
-      alert("エラーが発生しました");
+    .fail(()=>{
+      flash_create("danger", "更新に失敗しました");
     })
     .always(()=>{
       

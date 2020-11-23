@@ -1,92 +1,96 @@
 @import "../variables.scss";
 
 header{
-  padding: 0 200px;
   height: $header_height;
   background-color: white;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 50;
-
-  .left{
+  
+  .header-wrap{
+    padding: 0 200px;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
-    a{
-      color: $main_color;
-      font-size: 30px;
-      font-weight: bold;
-      display: inline-block;
-      cursor: pointer;
+    .left{
       height: 100%;
-      padding: 0 15px;
-      transition: .3s;
-      line-height: $header_height;
       
-      &:hover{
-        background-color: $main_color;
-        color: white;
-      }
-    }
-    
-    span{
-      margin-top: 13px;
-      font-size: 20px;
-      font-weight: bold;
-      color: $main_color;
-      
-      &::before{
-        content: '>';
-        margin-right: 15px;
-      }
-    }
-  }
-
-  .right{
-    position: relative;
-    
-    #user-icon{
-      vertical-align: middle;
-      border-radius: 50%;
-      border: 3px solid $main_color;
-      box-shadow: 1px 1px 5px black;
-      cursor: pointer;
-      transition: .2s;
-      
-      &:hover{
-        transform: translate(-1px,-1px);
-        box-shadow: 3px 3px 5px black;
-      }
-    }
-    
-    .user-menu{
-      display: none;
-      background-color: white;
-      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
-      position: absolute;
-      top: 115%;
-
       a{
-        display: block;
-        width: 150px;
-        height: 50px;
-        line-height: 50px;
-        padding-left: 20px;
-        transition: .2s;
-        text-decoration: none;
-        color: $btn_color;
+        color: $main_color;
+        font-size: 30px;
         font-weight: bold;
-        user-select: none;
-
+        display: inline-block;
+        cursor: pointer;
+        height: 100%;
+        padding: 0 15px;
+        transition: .3s;
+        line-height: $header_height;
+        
         &:hover{
-          background-color: $btn_hover_backColor;
-          color: $main_color;
+          background-color: $main_color;
+          color: white;
+        }
+      }
+      
+      span{
+        margin-top: 13px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $main_color;
+        
+        &::before{
+          content: '>';
+          margin-right: 15px;
+        }
+      }
+    }
+    
+    .right{
+      position: relative;
+      
+      #user-icon{
+        vertical-align: middle;
+        border-radius: 50%;
+        border: 3px solid $main_color;
+        box-shadow: 1px 1px 5px black;
+        cursor: pointer;
+        transition: .2s;
+        
+        &:hover{
+          transform: translate(-1px,-1px);
+          box-shadow: 3px 3px 5px black;
+        }
+      }
+      
+      .user-menu{
+        display: none;
+        background-color: white;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 115%;
+        
+        a{
+          display: block;
+          width: 150px;
+          height: 50px;
+          line-height: 50px;
+          padding-left: 20px;
+          transition: .2s;
+          text-decoration: none;
+          color: $btn_color;
+          font-weight: bold;
+          user-select: none;
+          
+          &:hover{
+            background-color: $btn_hover_backColor;
+            color: $main_color;
+          }
         }
       }
     }

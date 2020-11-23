@@ -1,0 +1,27 @@
+@import "../variables.scss";
+
+$flash_message_height: 50px;
+
+.common{
+  height: $flash_message_height;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: $flash_message_height;
+  user-select: none;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.notice{
+  background-color: lightskyblue;
+}
+
+.success{
+  background-color: rgb(0, 230, 31);
+}
+
+.danger{
+  background-color: red;
+}

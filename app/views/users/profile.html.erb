@@ -14,11 +14,11 @@
     </div>
     <div class="form-group">
       <%= f.label :name, "ユーザー名", for: "user-name", id: "name-label", class: "label-default" %><br>
-      <%= f.text_field :name, id: "user-name", class:"input-default", placeholder:"ユーザー名", maxlength:"10" %>
+      <%= f.text_field :name, id: "user-name", class:"input-default", placeholder:"ユーザー名", maxlength:"10", autocomplete: "off" %>
     </div>
     <div class="form-group">
       <%= f.label :email, "メールアドレス", for: "user-email", id: "email-label", class: "label-default" %><br>
-      <%= f.email_field :email, id:"user-email", class:"input-default", placeholder:"メールアドレス" %>
+      <%= f.email_field :email, id:"user-email", class:"input-default", placeholder:"メールアドレス", autocomplete: "off" %>
     </div>
 
     <label id="actions" class="actions">更新</label>

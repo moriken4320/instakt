@@ -10,6 +10,7 @@ require('jquery')
 
 
 require("../user_menu")
+require("../flash")
 
 if(location.pathname.includes('profile')){
   require("../user_update")
