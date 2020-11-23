@@ -1,7 +1,34 @@
 <%= render partial: 'shared/header', locals: { page_name: "フレンド" } %>
 
 <div class="main">
-  <%= link_to "募集一覧へ", recruitments_path %>
+  <div class="friend-container">
+    <ul class="friend-tab-wrap">
+      <li id="list-tab" class="friend-tab select-tab">フレンド一覧</li>
+      <li id="applying-tab" class="friend-tab">申請中</li>
+      <li id="approval-pending-tab" class="friend-tab">回答待ち</li>
+      <li id="user-search-tab" class="friend-tab">ユーザー検索</li>
+    </ul>
+
+    <div id="list-wrap" class="list-wrap">
+
+      <% @friends.each do |friend| %>
+        <div class="list-user-content">
+          <%= image_tag friend.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, id: "list-user-image", class: "list-user-image" %>
+          <div class="list-user-name">
+            <%= friend.name %><span>ID:<%= friend.id %></span>
+          </div>
+          <div class="list-user-heart">
+            <% if current_user.follower?(friend) %>
+              <i class="fas fa-heart fa-3x good"></i>
+            <% else %>
+              <i class="fas fa-heart fa-3x"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>
 
 <%= render 'shared/footer' %>

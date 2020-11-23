@@ -1,3 +1,83 @@
-// Place all the styles related to the friends controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./variables.scss";
+
+.friend-container{
+  width: 1200px;
+  margin: 0 auto;
+
+  //タブ全体
+  .friend-tab-wrap{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    margin-top: 50px;
+
+    //各タブ
+    .friend-tab{
+      border-bottom: 4px solid rgb(194, 194, 194);
+      color: rgb(194, 194, 194);
+      cursor: pointer;
+      flex-grow: 1;
+      text-align: center;
+      padding: 20px 0;
+      user-select: none;
+      transition: .2s;
+      
+      &:hover{
+        background-color: $btn_hover_backColor;
+      }
+    }
+    
+    //セレクト中のタブ
+    .select-tab{
+      border-bottom: 4px solid #{$main_color};
+      color: $main_color;
+    }
+  }
+
+
+  //フレンド一覧関連
+  .list-wrap{
+    width: 700px;
+    margin: 50px auto 0;
+
+
+    //各フレンド
+    .list-user-content{
+      padding: 20px 40px;
+      border-bottom: 1px solid #{$btn_color};
+      display: flex;
+      align-items: center;
+
+      .list-user-image{
+        border-radius: 50%;
+      }
+      .list-user-name{
+        color: black;
+        font-size: 30px;
+        flex-grow: 1;
+        padding: 0 30px;
+
+        span{
+          font-size: 20px;
+          color: rgb(150, 150, 150);
+          padding-left: 30px;
+        }
+      }
+      .list-user-heart{
+
+        //ハート
+        .fa-heart{
+          color: white;
+          text-shadow: 0 0 10px black;
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .good{
+          color: rgb(247, 46, 79);
+          text-shadow: 0 0 20px rgb(255, 92, 119);
+        }
+      }
+    }
+  }
+}
