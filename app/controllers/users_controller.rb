@@ -1,18 +1,14 @@
 class UsersController < ApplicationController
-  # before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root
 
-  def my_profile
+  def profile
     @user = current_user
   end
 
   def update
-    @user = current_user
-    if @user.update(user_param(@user))
-      redirect_to my_profile_path
-    else
-      render action: :my_profile
-    end
+    user = User.find(current_user.id)
+    user.update(user_param(user))
+    render json: {data: user}
   end
   
   private

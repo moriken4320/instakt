@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  get 'my_profile', to: 'users#my_profile'
-  resources :users, only: [:update]
+  get 'profile', to: 'users#profile'
+  post 'profile/update', to: 'users#update'
+  # put 'profile', to: 'users#profile'
 
   root 'recruitments#top'
   resources :recruitments, only: [:index]

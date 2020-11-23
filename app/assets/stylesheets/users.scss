@@ -1,3 +1,123 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "./variables.scss";
+
+//ユーザー情報全体
+.user-form{
+  margin: 150px auto 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  //ユーザーアイコン関連
+  .form-image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    //アイコン
+    .user-image{
+      border-radius: 50%;
+      box-shadow: $box_shadow;
+    }
+    
+    //アイコン変更ボタン(ラベル)
+    .user-image-btn{
+      cursor: pointer;
+      color: $btn_color;
+      display: block;
+      background-color: white;
+      text-align: center;
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      user-select: none;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+      transition: .2s;
+      margin-top: 30px;
+      
+      &:hover{
+        background-color: $btn_hover_backColor;
+        color: $main_color;
+      }
+    }
+
+    //ファイル添付input
+    .user-image-field{
+      display: none;
+    }
+  }
+
+  //テキスト系フォーム関連
+  .form-group{
+    margin-top: 30px;
+    width: 100%;
+
+    //ラベル
+    .label-default{
+      color: gray;
+      font-size: 15px;
+      user-select: none;
+      transition: .2s;
+    }
+    //アクティブ時
+    .label-active{
+      color: $main_color;
+      font-weight: bold;
+    }
+
+    
+    //ユーザー情報
+    .input-default{
+      width: 100%;
+      font-size: 20px;
+      color: $btn_color;
+      border: none;
+      border-bottom: 1px solid gray;
+      background-color: rgba(255, 255, 255, 0);
+      transition: .2s;
+      
+      &:focus{
+        outline: 0;
+      }
+    }
+
+    //アクティブ時
+    .input-active{
+      border-bottom: 3px solid #{$main_color};
+    }
+  }
+
+  //更新ボタン
+  .actions{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 60px;
+    user-select: none;
+    transition: .2s;
+    
+    //更新ボタン(非アクティブ時)
+    box-shadow: none;
+    background-color: lightgray;
+    color: darkgray;
+    
+  }
+  
+  //更新ボタン(アクティブ時)
+  label[for="form-btn"]{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    background-color: $main_color;
+    color: white;
+    cursor: pointer;
+    
+    &:hover{
+      opacity: .8;
+    }
+  }
+  
+  //formボタン本体
+  .form-btn{
+    display: none;
+  }
+}

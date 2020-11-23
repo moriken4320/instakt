@@ -1,0 +1,29 @@
+<%= render partial: 'shared/header', locals: { page_name: "プロフィール" } %>
+
+<div class="main">
+
+  <%= form_with model: @user, url: profile_update_path, method: :post, local: true, id: "user-form", class: "user-form" do |f| %>
+    <div id="form-image" class="form-image">
+      <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"150x150^", crop:"150x150+0+0"}).processed, id: "user-image", class: "user-image" %>
+      <%= f.label :image, "画像を変更", for: "image-field", class: "user-image-btn" %>
+      <%= f.file_field :image, id: "image-field", class: "user-image-field" %>
+    </div>
+    <div class="form-group">
+      <p class="label-default">ユーザーID(変更不可)</p>
+      <p class="input-default"><%= current_user.id %></p>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, "ユーザー名", for: "user-name", id: "name-label", class: "label-default" %><br>
+      <%= f.text_field :name, id: "user-name", class:"input-default", placeholder:"ユーザー名", maxlength:"10" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス", for: "user-email", id: "email-label", class: "label-default" %><br>
+      <%= f.email_field :email, id:"user-email", class:"input-default", placeholder:"メールアドレス" %>
+    </div>
+
+    <label id="actions" class="actions">更新</label>
+    <%= f.submit id: "form-btn", class: "form-btn"  %>
+  </div>
+<% end %>
+
+<%= render 'shared/footer' %>

@@ -19,7 +19,7 @@ header{
     height: 100%;
     
     a{
-      color: orange;
+      color: $main_color;
       font-size: 30px;
       font-weight: bold;
       display: inline-block;
@@ -30,7 +30,7 @@ header{
       line-height: $header_height;
       
       &:hover{
-        background-color: orange;
+        background-color: $main_color;
         color: white;
       }
     }
@@ -39,7 +39,7 @@ header{
       margin-top: 13px;
       font-size: 20px;
       font-weight: bold;
-      color: orange;
+      color: $main_color;
       
       &::before{
         content: '>';
@@ -54,7 +54,7 @@ header{
     #user-icon{
       vertical-align: middle;
       border-radius: 50%;
-      border: 3px solid orange;
+      border: 3px solid $main_color;
       box-shadow: 1px 1px 5px black;
       cursor: pointer;
       transition: .2s;
@@ -80,12 +80,13 @@ header{
         padding-left: 20px;
         transition: .2s;
         text-decoration: none;
-        color: rgb(165, 107, 0);
+        color: $btn_color;
         font-weight: bold;
+        user-select: none;
 
         &:hover{
-          background-color: rgba(0, 0, 0, 0.1);
-          color: orange;
+          background-color: $btn_hover_backColor;
+          color: $main_color;
         }
       }
     }
