@@ -17,6 +17,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Name can't be blank") 
     end
+    it "nameが10文字以上だと保存されない" do
+      @user.name = "aaaaaaaaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name is too long (maximum is 10 characters)") 
+    end
     it "emailが空だと保存されない" do
       @user.email = nil
       @user.valid?
@@ -27,22 +32,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('Email is invalid')
     end
-    it "passwordが空だと保存されない" do
-      @user.password = nil
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password can't be blank") 
-    end
-    it 'passwordが5文字以下だと保存できない' do
-      @user.password = 'aaaaa'
-      @user.password_confirmation = @user.password
-      @user.valid?
-      expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
-    end
-    it "passwordとpassword_confirmationが一致していなければ保存できない" do
-      @user.password_confirmation = 'bbbbbb'
-      @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-    end
     it "providerが空だと保存されない" do
       @user.provider = nil
       @user.valid?
@@ -52,6 +41,11 @@ RSpec.describe User, type: :model do
       @user.uid = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Uid can't be blank") 
+    end
+    it "imageが空だと保存されない" do
+      @user.image = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Image can't be blank") 
     end
   end
   
