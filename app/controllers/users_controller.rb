@@ -7,8 +7,12 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(current_user.id)
-    user.update(user_param(user))
-    render json: {data: user}
+    if user.update(user_param(user))
+      render json: {user: user, flash: {type: "success", message: "更新しました"}}
+    else
+      user = User.find(current_user.id)
+      render json: {user: user, flash: {type: "danger", message: "更新に失敗しました"}}
+    end
   end
   
   private

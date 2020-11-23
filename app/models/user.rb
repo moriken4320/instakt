@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   validates :name, :email, :provider, :uid, :image, presence: true
+  validates :name, length: {maximum:10}
 
   def self.from_omniauth(auth)
     #パスワードを自動生成

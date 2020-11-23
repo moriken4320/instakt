@@ -8,6 +8,12 @@ $(function () {
     $("#actions").attr("for", "form-btn");
     $("#form-btn").prop("disabled", false);
   };
+  
+  //更新ボタンを非アクティブにする関数
+  const form_disable = () => {
+    $("#actions").removeAttr("for");
+    $("#form-btn").prop("disabled", true);
+  };
 
   //flashオブジェクト作成関数
   const flash_create = (type, text) => {
@@ -53,13 +59,16 @@ $(function () {
 
   //name,emailのフォームに差分があれば、更新ボタンをアクティブ化
   $("#user-name, #user-email").on("keyup", (key)=>{
-    if(current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage){
+    const difference_check = (current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage);
+    const blank_check = ($("#user-name").val() == "" || $("#user-email").val() == "")
+
+    if(difference_check && !blank_check){
       if(key.originalEvent.key != "Enter"){
         form_active();
       }
     }
     else{
-      $("#actions").removeAttr("for");
+      form_disable();
     }
   });
   
@@ -79,18 +88,16 @@ $(function () {
     })
     .done((data)=>{
       $("#user-icon").attr("src", $("#user-image").attr("src")).css({"width": "50px", "height": "50px", "object-fit": "cover"});
-      current_name = data.name;
-      current_email = data.email;
+      current_name = data.user.name;
+      current_email = data.user.email;
       image_chage = false;
-      flash_create("success", "更新しました");
-      $("#actions").removeAttr("for");
-      $("#user-name, #user-email").trigger("blur");
+      flash_create(data.flash.type, data.flash.message);
+      form_disable();
     })
     .fail(()=>{
-      flash_create("danger", "更新に失敗しました");
+      alert("エラーが発生しました。");
     })
     .always(()=>{
-      
     });
   });
 });
