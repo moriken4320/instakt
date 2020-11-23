@@ -53,8 +53,10 @@ $(function () {
 
   //name,emailのフォームに差分があれば、更新ボタンをアクティブ化
   $("#user-name, #user-email").on("keyup", (key)=>{
-    if((current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage) && key.originalEvent.key != "Enter"){
-      form_active();
+    if(current_name != $("#user-name").val() || current_email != $("#user-email").val() || image_chage){
+      if(key.originalEvent.key != "Enter"){
+        form_active();
+      }
     }
     else{
       $("#actions").removeAttr("for");
@@ -82,6 +84,7 @@ $(function () {
       image_chage = false;
       flash_create("success", "更新しました");
       $("#actions").removeAttr("for");
+      $("#user-name, #user-email").trigger("blur");
     })
     .fail(()=>{
       flash_create("danger", "更新に失敗しました");
