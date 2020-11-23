@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :name, :email, :provider, :uid, :image, presence: true
   validates :name, length: {maximum:10}
 
+
+  #google認証関連-----------------------------------------------
   def self.from_omniauth(auth)
     #パスワードを自動生成
     pass = Devise.friendly_token
@@ -27,21 +29,40 @@ class User < ApplicationRecord
   end
 
   
+  #フレンド関連のメソッド---------------------------------------
+  #ハートを押す
+  def follow(other_user)
+    following_relationships.create(following_id: other_user.id)
+  end
 
-  #フレンド関連のメソッド
+  #ハートを解除する
+  def unfollow(other_user)
+    following_relationships.find_by(following_id: other_user.id).destroy
+  end
+
+  #ログイン中のユーザーにハートを押されているか
+  def follower?(other_user)
+    follower_relationships.find_by(follower_id: other_user.id)
+  end
+
+  #ログイン中のユーザーに対してハートを押しているか
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
 
-  def follow!(other_user)
-    following_relationships.create!(following_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    following_relationships.find_by(following_id: other_user.id).destroy
-  end
-
-  def matchers #友達判定
+  #友達判定
+  def matchers
     followings & followers
   end
+
+  #ログイン中のユーザーから一方的にハートを押されているユーザーを取得(フレンド申請中)
+  def oneway_followers
+    followers - (followings & followers)
+  end
+
+  #ログイン中のユーザーに対して一方的にハートを押しているユーザー(フレンド回答待ち)
+  def oneway_followings
+    followings - (followings & followers)
+  end
+  
 end
