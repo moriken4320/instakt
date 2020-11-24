@@ -1,17 +1,18 @@
 import {heart} from "./friend_good";
+import {escapeStr} from "./escape";
 
 $(function () {
-  //特殊文字をエスケープする関数
-  const escapeStr = (s)=>{
-    s = s.replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\n/g, "<br>");
+  //// 特殊文字をエスケープする関数
+  // const escapeStr = (s)=>{
+  //   s = s.replace(/&/g, "&amp;")
+  //     .replace(/"/g, "&quot;")
+  //     .replace(/'/g, "&#039;")
+  //     .replace(/</g, "&lt;")
+  //     .replace(/>/g, "&gt;")
+  //     .replace(/\n/g, "<br>");
   
-    return s
-  }
+  //   return s
+  // }
 
   //リストをリセットする関数
   const reset_list = ()=>{
