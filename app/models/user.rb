@@ -70,7 +70,7 @@ class User < ApplicationRecord
   #ユーザー検索の結果を返す
   def self.search(search)
     if search != ""
-      User.where('id #{search}')
+      User.where('name LIKE(?)', "#{search}%")
     end
   end
   

@@ -9,14 +9,14 @@
       <li id="user-search-tab" class="friend-tab">ユーザー検索</li>
     </ul>
 
-    <%# form_with(url: users_search_path, local: true, method: :get, class: "search-form") do |form| %>
-      <%# form.text_field :keyword, placeholder: "ユーザーID", id: "search-input", class: "search-input" %>
-      <%# form.submit "検索", id: "search-btn", class: "search-btn" %>
-    <%# end %>
-    <div id="form-container"></div>
+    <div id="form-container">
+      <%= form_with(url: users_search_path, local: true, method: :get, id: "search-form", class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "ユーザーIDを入力", id: "search-input", class: "search-input" %>
+        <%= form.submit "検索", id: "search-btn", class: "search-btn", disabled: :true %>
+      <% end %>
+    </div>
 
     <div id="list-wrap" class="list-wrap">
-    
       <% if @friends.present? %>
         <% @friends.each do |friend| %>
           <div class="list-user-content">
@@ -37,7 +37,6 @@
         <p class="empty-message">フレンドが存在しません</p>
         <p class='guide'>※お互いにハートを付けることで、フレンドとして登録されます。</p>
       <% end %>
-
     </div>
   </div>
 </div>

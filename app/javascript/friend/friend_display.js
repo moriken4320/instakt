@@ -2,22 +2,10 @@ import {heart} from "./friend_good";
 import {escapeStr} from "../escape";
 
 $(function () {
-  //// 特殊文字をエスケープする関数
-  // const escapeStr = (s)=>{
-  //   s = s.replace(/&/g, "&amp;")
-  //     .replace(/"/g, "&quot;")
-  //     .replace(/'/g, "&#039;")
-  //     .replace(/</g, "&lt;")
-  //     .replace(/>/g, "&gt;")
-  //     .replace(/\n/g, "<br>");
-  
-  //   return s
-  // }
-
   //リストをリセットする関数
   const reset_list = ()=>{
     $("#list-wrap").html("");
-    $("#form-container").html("");
+    $("#form-container").hide();
   };
 
   //Ajaxの処理をまとめた関数
@@ -77,16 +65,13 @@ $(function () {
   };
   
   //ユーザー検索を選択した際の関数
-  const user_search = ()=>{
-    const html = `<form class="search-form" action="/users/search" accept-charset="UTF-8" method="get">
-    <input placeholder="ユーザーID" id="search-input" class="search-input" type="text" name="keyword">
-    <input type="submit" name="commit" value="検索" id="search-btn" class="search-btn" data-disable-with="検索"></form>`;
-    $("#form-container").html(html);
+  const search = ()=>{
+    $("#form-container").show();
   };
 
   //各タブの関数を格納
   const display_list = [
-    list, applying, approval_pending, user_search
+    list, applying, approval_pending, search
   ];
 
   //各タブをクリックした際の処理

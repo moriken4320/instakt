@@ -18,10 +18,15 @@ class UsersController < ApplicationController
   #ユーザー検索の結果を取得
   def search
     image_in_users = [];
-    users = User.search(params[:keyword])
-    users.each do |user|
-      image_in_users << {info: user, image: url_for(user.image)}
+    # users = User.search(params[:keyword])
+    users = User.where(id: params[:keyword])
+    if users.present?
+      image_in_users << {info: users[0], image: url_for(users[0].image)}
+    else
+      image_in_users << {info: nil, image: nil}
     end
+
+    
     render json: image_in_users
   end
 

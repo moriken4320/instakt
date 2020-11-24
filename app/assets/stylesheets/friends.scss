@@ -111,35 +111,53 @@
   }
 
   //検索フォーム
-  .search-form{
-    width: 700px;
-    margin: 0 auto;
-    margin-top: 30px;
-    display: flex;
+  #form-container{
+    display: none;
 
-    .search-input{
-      flex-grow: 9;
-      padding: 5px 10px;
-      border-color: $btn_color;
-
-      &:focus{
-        outline: 0;
-      }
-    }
-    
-    .search-btn{
-      flex-grow: 1;
-      margin-left: 15px;
-      user-select: none;
-      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
-      background-color: $main_color;
-      color: white;
-      cursor: pointer;
-      border: none;
-      font-weight: bold;
+    .search-form{
+      width: 700px;
+      margin: 0 auto;
+      margin-top: 30px;
+      display: flex;
       
-      &:hover{
-        opacity: .8;
+      //検索テキスト
+      .search-input{
+        flex-grow: 9;
+        padding: 5px 10px;
+        border-color: $btn_color;
+        
+        &:focus{
+          outline: 0;
+        }
+      }
+      
+      //検索ボタン
+      .search-btn{
+        flex-grow: 1;
+        margin-left: 15px;
+        user-select: none;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+        
+        //更新ボタン(非アクティブ時)
+        box-shadow: none;
+        background-color: lightgray;
+        color: darkgray;
+        
+        &:focus{
+          outline: 0;
+        }
+      }
+      
+      .active{
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+        background-color: $main_color;
+        color: white;
+
+        &:hover{
+          opacity: .8;
+        }
       }
     }
   }
