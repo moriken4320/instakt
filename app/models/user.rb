@@ -30,14 +30,14 @@ class User < ApplicationRecord
 
   
   #フレンド関連のメソッド---------------------------------------
-  #ハートを押す
+  #ハートをつける
   def follow(other_user)
-    following_relationships.create(following_id: other_user.id)
+    follower_relationships.create(follower_id: other_user.id)
   end
 
   #ハートを解除する
   def unfollow(other_user)
-    following_relationships.find_by(following_id: other_user.id).destroy
+    follower_relationships.find_by(follower_id: other_user.id).destroy
   end
 
   #ログイン中のユーザーにハートを押されているか

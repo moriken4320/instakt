@@ -35,5 +35,38 @@ class FriendsController < ApplicationController
     render json: image_in_friends
   end
   
+  #ハートをクリックした際のアクション
+  def heart
+    target_user = User.find(params[:id])
+    flash_type = "notice"
+    flash_message = ""
+
+    if current_user.follower?(target_user) #target_userのハートが付与された状態？
+      if current_user.unfollow(target_user) #ハートを解除する
+        flash_type = "success"
+        flash_message = "#{target_user.name}   への申請を取り消しました"
+        if current_user.following?(target_user)
+          flash_message = "#{target_user.name}   がフレンドから解除されました"
+        end
+      else
+        flash_type = "danger"
+        flash_message = "ハートの解除に失敗しました"
+      end
+    else #target_userのハートが解除された状態？
+      if current_user.follow(target_user) #ハートを付与する
+        flash_type = "success"
+        flash_message = "#{target_user.name}   に申請しました"
+        if current_user.following?(target_user)
+          flash_message = "#{target_user.name}   がフレンドに追加されました"
+        end
+      else
+        flash_type = "danger"
+        flash_message = "ハートの付与に失敗しました"
+      end
+    end
+
+    render json: {heart: current_user.follower?(target_user), flash: {type: flash_type, message: flash_message}}
+  end
+  
   
 end

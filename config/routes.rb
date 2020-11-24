@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get "friends/mutual", to: "friends#mutual"
   get "friends/oneway_followers", to: "friends#oneway_followers"
   get "friends/oneway_followings", to: "friends#oneway_followings"
+  # post "friends/:id/follow", to: "friends#follow"
+  # post "friends/:id/unfollow", to: "friends#unfollow"
+  post "friends/:id/heart", to: "friends#heart"
 end

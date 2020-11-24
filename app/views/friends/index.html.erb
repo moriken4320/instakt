@@ -19,7 +19,7 @@
       <% if @friends.present? %>
         <% @friends.each do |friend| %>
           <div class="list-user-content">
-            <%= image_tag friend.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, id: "list-user-image", class: "list-user-image" %>
+            <%= image_tag friend.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, id: "list-#{friend.id}-image", class: "list-user-image" %>
             <div class="list-user-name">
               <%= friend.name %><span>ID:<%= friend.id %></span>
             </div>

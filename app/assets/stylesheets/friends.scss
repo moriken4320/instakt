@@ -44,12 +44,12 @@
     //各フレンド
     .list-user-content{
       padding: 20px 40px;
-      border-bottom: 1px solid #{$btn_color};
+      border-top: 1px solid #{$btn_color};
       display: flex;
       align-items: center;
-
+      
       &:last-child{
-        border: none;
+        border-bottom: 1px solid #{$btn_color};
       }
 
       .list-user-image{
@@ -67,19 +67,31 @@
           padding-left: 30px;
         }
       }
+
+      $heart_hover_size: 54px;
       .list-user-heart{
+        width: $heart_hover_size;
+        height: $heart_hover_size;
+        text-align: center;
 
         //ハート
         .fa-heart{
+          line-height: $heart_hover_size;
           color: white;
           text-shadow: 0 0 10px black;
           cursor: pointer;
           user-select: none;
+          transition: .2s;
+
+          &:hover{
+            font-size: $heart_hover_size;
+            text-shadow: 0 0 20px rgb(255, 29, 67);
+          }
         }
 
         .good{
-          color: rgb(247, 46, 79);
-          text-shadow: 0 0 20px rgb(255, 92, 119);
+          color: rgb(230, 53, 83);
+          text-shadow: 0 0 10px rgb(255, 29, 67);
         }
       }
     }

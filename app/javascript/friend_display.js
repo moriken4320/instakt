@@ -1,3 +1,5 @@
+import {heart} from "./friend_good";
+
 $(function () {
   //特殊文字をエスケープする関数
   const escapeStr = (s)=>{
@@ -38,7 +40,7 @@ $(function () {
           heart_class += " good"
         }
         html += `<div class="list-user-content">
-        <img id ="list-user-image" class="list-user-image" src="${d.image}" style="width: 75px; height: 75px; object-fit: cover;">
+        <img id ="list-${d.info.id}-image" class="list-user-image" src="${d.image}" style="width: 75px; height: 75px; object-fit: cover;">
         <div class="list-user-name">
           ${escapeStr(d.info.name)}<span>ID:${d.info.id}</span>
         </div>
@@ -48,6 +50,7 @@ $(function () {
         </div>`;
       });
       $("#list-wrap").html(html);
+      heart();
     })
     .fail(()=>{
       alert("エラーが発生しました。");

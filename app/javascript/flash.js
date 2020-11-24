@@ -7,6 +7,9 @@ function flash_anim(){
 
 //flashオブジェクト作成関数
 function flash_create(type, text){
+  if(text == ""){
+    return;
+  }
   const flash = $("<div>").addClass(`common ${type}`).text(text);
   $("header").append(flash);
   flash.slideDown(500);
