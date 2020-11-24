@@ -61,17 +61,17 @@ $(function () {
 
   //フレンド一覧選択した際の関数
   const list = ()=>{
-    ajax_action("mutual", "フレンドが存在しません。");
+    ajax_action("mutual", "フレンドが存在しません<p class='guide'>※お互いにハートを付けることで、フレンドとして登録されます。</p>");
   };
   
   //申請中を選択した際の関数
   const applying = ()=>{
-    ajax_action("oneway_followers", "現在、申請中のユーザーはいません。");
+    ajax_action("oneway_followers", "現在、申請中のユーザーは存在しません");
   };
   
   //承認待ちを選択した際の関数
   const approval_pending = ()=>{
-    ajax_action("oneway_followings", "現在、回答待ちのユーザーはいません。");
+    ajax_action("oneway_followings", "現在、回答待ちのユーザーは存在しません");
   };
   
   //ユーザー検索を選択した際の関数

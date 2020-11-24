@@ -55,7 +55,7 @@ class FriendsController < ApplicationController
     else #target_userのハートが解除された状態？
       if current_user.follow(target_user) #ハートを付与する
         flash_type = "success"
-        flash_message = "#{target_user.name}   に申請しました"
+        flash_message = "#{target_user.name}   にフレンド申請しました"
         if current_user.following?(target_user)
           flash_message = "#{target_user.name}   がフレンドに追加されました"
         end
