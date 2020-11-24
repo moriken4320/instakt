@@ -43,7 +43,7 @@ $(function () {
           ${escapeStr(d.info.name)}<span>ID:${d.info.id}</span>
         </div>
         <div class="list-user-heart">
-            <i class="${heart_class}"></i>
+            <i class="${heart_class}" data-id="${d.info.id}"></i>
         </div>
         </div>`;
       });
