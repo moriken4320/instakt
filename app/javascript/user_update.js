@@ -35,26 +35,20 @@ $(function () {
     form_active();
   });
 
-  //nameがフォーカスされた際、input要素の色を変更
-  $("#user-name").on("focus",(e)=>{
-    $("#name-label").addClass("label-active");
-    $(e.target).addClass("input-active");
-  });
-  //nameからフォーカスが外れた際、input要素の色を戻す
-  $("#user-name").on("blur",(e)=>{
-    $("#name-label").removeClass("label-active");
-    $(e.target).removeClass("input-active");
-  });
+  //input要素に対して、フォーカスしたかの有無でcss適用
+  const input_elements = ["name", "email"];
+  input_elements.forEach((element)=>{
+    //フォーカスした際
+    $(`#user-${element}`).on("focus",(e)=>{
+      $(`#${element}-label`).addClass("label-active");
+      $(e.target).addClass("input-active");
+    });
 
-  //emailがフォーカスされた際、input要素の色を変更
-  $("#user-email").on("focus",(e)=>{
-    $("#email-label").addClass("label-active");
-    $(e.target).addClass("input-active");
-  });
-  //emailからフォーカスが外れた際、input要素の色を戻す
-  $("#user-email").on("blur",(e)=>{
-    $("#email-label").removeClass("label-active");
-    $(e.target).removeClass("input-active");
+    //フォーカスを外した際
+    $(`#user-${element}`).on("blur",(e)=>{
+      $(`#${element}-label`).removeClass("label-active");
+      $(e.target).removeClass("input-active");
+    });
   });
 
   //name,emailのフォームに差分があれば、更新ボタンをアクティブ化
