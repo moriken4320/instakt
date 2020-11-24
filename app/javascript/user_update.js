@@ -1,3 +1,5 @@
+import {flash_create} from "./flash";
+
 $(function () {
   let current_name = $("#user-name").val();
   let current_email = $("#user-email").val();
@@ -15,17 +17,17 @@ $(function () {
     $("#form-btn").prop("disabled", true);
   };
 
-  //flashオブジェクト作成関数
-  const flash_create = (type, text) => {
-    const flash = $("<div>").addClass(`common ${type}`).text(text);
-    $("header").append(flash);
-    flash.slideDown(500);
-    setTimeout(()=>{
-      $(flash).slideUp(500, ()=>{
-        $(flash).remove();
-      });
-    }, 2000);
-  };
+  // //flashオブジェクト作成関数
+  // const flash_create = (type, text) => {
+  //   const flash = $("<div>").addClass(`common ${type}`).text(text);
+  //   $("header").append(flash);
+  //   flash.slideDown(500);
+  //   setTimeout(()=>{
+  //     $(flash).slideUp(500, ()=>{
+  //       $(flash).remove();
+  //     });
+  //   }, 2000);
+  // };
 
   //画像変更時、プロフィールの画像も即時に変更
   $("#image-field").on("change",(e)=>{
