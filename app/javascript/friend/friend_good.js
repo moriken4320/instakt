@@ -1,4 +1,4 @@
-import {flash_create} from "./flash";
+import {flash_create} from "../flash";
 
 function heart(){
   //ハートをクリックした際の処理

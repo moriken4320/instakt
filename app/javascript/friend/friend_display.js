@@ -1,5 +1,5 @@
 import {heart} from "./friend_good";
-import {escapeStr} from "./escape";
+import {escapeStr} from "../escape";
 
 $(function () {
   //// 特殊文字をエスケープする関数

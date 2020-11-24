@@ -9,15 +9,15 @@ require("channels")
 require('jquery')
 
 
-require("../user_menu")
+require("../header/user_menu")
 require("../flash")
 
 if(location.pathname.includes('profile')){
-  require("../user_update")
+  require("../profile/user_update")
 }
 if(location.pathname.includes('friends')){
-  require("../friend_display")
-  require("../friend_good")
+  require("../friend/friend_display")
+  require("../friend/friend_good")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference

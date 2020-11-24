@@ -1,4 +1,4 @@
-import {flash_create} from "./flash";
+import {flash_create} from "../flash";
 
 $(function () {
   let current_name = $("#user-name").val();
