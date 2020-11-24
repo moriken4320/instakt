@@ -25,7 +25,7 @@
             </div>
             <div class="list-user-heart">
               <% if current_user.follower?(friend) %>
-                <i class="fas fa-heart fa-3x good"></i>
+                <i class="fas fa-heart fa-3x good" data-id=<%= friend.id %>></i>
               <% else %>
                 <i class="fas fa-heart fa-3x"></i>
               <% end %>

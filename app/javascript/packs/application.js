@@ -16,7 +16,8 @@ if(location.pathname.includes('profile')){
   require("../user_update")
 }
 if(location.pathname.includes('friends')){
-  require("../friend")
+  require("../friend_display")
+  require("../friend_good")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference
