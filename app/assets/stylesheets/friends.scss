@@ -109,4 +109,38 @@
       text-align: center;
     }
   }
+
+  //検索フォーム
+  .search-form{
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+
+    .search-input{
+      flex-grow: 9;
+      padding: 5px 10px;
+      border-color: $btn_color;
+
+      &:focus{
+        outline: 0;
+      }
+    }
+    
+    .search-btn{
+      flex-grow: 1;
+      margin-left: 15px;
+      user-select: none;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+      background-color: $main_color;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
 }

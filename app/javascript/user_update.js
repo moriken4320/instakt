@@ -17,18 +17,6 @@ $(function () {
     $("#form-btn").prop("disabled", true);
   };
 
-  // //flashオブジェクト作成関数
-  // const flash_create = (type, text) => {
-  //   const flash = $("<div>").addClass(`common ${type}`).text(text);
-  //   $("header").append(flash);
-  //   flash.slideDown(500);
-  //   setTimeout(()=>{
-  //     $(flash).slideUp(500, ()=>{
-  //       $(flash).remove();
-  //     });
-  //   }, 2000);
-  // };
-
   //画像変更時、プロフィールの画像も即時に変更
   $("#image-field").on("change",(e)=>{
     const blob = window.URL.createObjectURL(e.target.files[0]);

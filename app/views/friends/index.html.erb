@@ -4,17 +4,18 @@
   <div class="friend-container">
     <ul class="friend-tab-wrap">
       <li id="list-tab" class="friend-tab select-tab">フレンド一覧</li>
-      <li id="applying-tab" class="friend-tab">申請中</li>
-      <li id="approval-pending-tab" class="friend-tab">回答待ち</li>
+      <li id="applying-tab" class="friend-tab">フレンド申請中</li>
+      <li id="approval-pending-tab" class="friend-tab">フレンド依頼</li>
       <li id="user-search-tab" class="friend-tab">ユーザー検索</li>
     </ul>
 
-    <div id="list-wrap" class="list-wrap">
+    <%# form_with(url: users_search_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%# form.text_field :keyword, placeholder: "ユーザーID", id: "search-input", class: "search-input" %>
+      <%# form.submit "検索", id: "search-btn", class: "search-btn" %>
+    <%# end %>
+    <div id="form-container"></div>
 
-      <%= form_with(url: users_search_path, local: true, method: :get, class: "search-form") do |form| %>
-        <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
-        <%= form.submit "検索", class: "search-btn" %>
-      <% end %>
+    <div id="list-wrap" class="list-wrap">
     
       <% if @friends.present? %>
         <% @friends.each do |friend| %>

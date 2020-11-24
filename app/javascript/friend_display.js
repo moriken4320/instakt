@@ -16,6 +16,7 @@ $(function () {
   //リストをリセットする関数
   const reset_list = ()=>{
     $("#list-wrap").html("");
+    $("#form-container").html("");
   };
 
   //Ajaxの処理をまとめた関数
@@ -76,7 +77,10 @@ $(function () {
   
   //ユーザー検索を選択した際の関数
   const user_search = ()=>{
-    console.log("ユーザー検索");
+    const html = `<form class="search-form" action="/users/search" accept-charset="UTF-8" method="get">
+    <input placeholder="ユーザーID" id="search-input" class="search-input" type="text" name="keyword">
+    <input type="submit" name="commit" value="検索" id="search-btn" class="search-btn" data-disable-with="検索"></form>`;
+    $("#form-container").html(html);
   };
 
   //各タブの関数を格納
