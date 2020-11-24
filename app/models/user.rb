@@ -64,5 +64,14 @@ class User < ApplicationRecord
   def oneway_followings
     followings - (followings & followers)
   end
+
+
+  private
+  #ユーザー検索の結果を返す
+  def self.search(search)
+    if search != ""
+      User.where('id #{search}')
+    end
+  end
   
 end

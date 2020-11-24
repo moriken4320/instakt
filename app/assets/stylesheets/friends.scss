@@ -38,8 +38,8 @@
   //フレンド一覧関連
   .list-wrap{
     width: 700px;
-    margin: 50px auto 0;
-
+    margin: 0 auto;
+    padding: 50px 0;
 
     //各フレンド
     .list-user-content{
@@ -47,6 +47,10 @@
       border-bottom: 1px solid #{$btn_color};
       display: flex;
       align-items: center;
+
+      &:last-child{
+        border: none;
+      }
 
       .list-user-image{
         border-radius: 50%;
@@ -78,6 +82,13 @@
           text-shadow: 0 0 20px rgb(255, 92, 119);
         }
       }
+    }
+
+    .empty-message{
+      color: $btn_color;
+      font-size: 30px;
+      text-align: center;
+      padding-top: 100px;
     }
   }
 }

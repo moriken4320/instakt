@@ -11,20 +11,29 @@
 
     <div id="list-wrap" class="list-wrap">
 
-      <% @friends.each do |friend| %>
-        <div class="list-user-content">
-          <%= image_tag friend.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, id: "list-user-image", class: "list-user-image" %>
-          <div class="list-user-name">
-            <%= friend.name %><span>ID:<%= friend.id %></span>
+      <%= form_with(url: users_search_path, local: true, method: :get, class: "search-form") do |form| %>
+        <%= form.text_field :keyword, placeholder: "ユーザーを検索する", class: "search-input" %>
+        <%= form.submit "検索", class: "search-btn" %>
+      <% end %>
+    
+      <% if @friends.present? %>
+        <% @friends.each do |friend| %>
+          <div class="list-user-content">
+            <%= image_tag friend.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, id: "list-user-image", class: "list-user-image" %>
+            <div class="list-user-name">
+              <%= friend.name %><span>ID:<%= friend.id %></span>
+            </div>
+            <div class="list-user-heart">
+              <% if current_user.follower?(friend) %>
+                <i class="fas fa-heart fa-3x good"></i>
+              <% else %>
+                <i class="fas fa-heart fa-3x"></i>
+              <% end %>
+            </div>
           </div>
-          <div class="list-user-heart">
-            <% if current_user.follower?(friend) %>
-              <i class="fas fa-heart fa-3x good"></i>
-            <% else %>
-              <i class="fas fa-heart fa-3x"></i>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p class="empty-message">フレンドが存在しません。</p>
       <% end %>
 
     </div>

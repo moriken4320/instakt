@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
   get "profile", to: "users#profile"
   post "profile/update", to: "users#update"
+  get "users/search", to: "users#search"
 
   resources :friends, only: [:index]
   get "friends/mutual", to: "friends#mutual"

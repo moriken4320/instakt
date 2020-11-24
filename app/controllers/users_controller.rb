@@ -15,6 +15,17 @@ class UsersController < ApplicationController
     end
   end
   
+  #ユーザー検索の結果を取得
+  def search
+    image_in_users = [];
+    users = User.search(params[:keyword])
+    users.each do |user|
+      image_in_users << {info: user, image: url_for(user.image)}
+    end
+    render json: image_in_users
+  end
+
+  
   private
   def user_param(user)
     params.require(:user).permit(:name, :email, :image).merge(provider: user.provider, uid: user.uid)

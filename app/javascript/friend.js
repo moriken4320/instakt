@@ -1,23 +1,53 @@
 $(function () {
+  //特殊文字をエスケープする関数
+  const escapeStr = (s)=>{
+    s = s.replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
+  
+    return s
+  }
+
   //リストをリセットする関数
   const reset_list = ()=>{
     $("#list-wrap").html("");
   };
 
-  //フレンド一覧選択した際の関数
-  const list = ()=>{
+  //Ajaxの処理をまとめた関数
+  const ajax_action = (path, empty_message)=>{
     $.ajax({
-      url: "/friends/mutual",
+      url: `/friends/${path}`,
       type: "get",
       dataType: "json",
       processData: false,
       contentType: false
     })
     .done((data)=>{
+      if(data.length <= 0){
+        $("#list-wrap").html(`<p class="empty-message">${empty_message}</p>`);
+        return;
+      }
+      
+      let html = ``;
       data.forEach((d)=>{
-        $("#list-wrap").html("a");
-        console.log(d);
+        let heart_class = "fas fa-heart fa-3x";
+        if(d.follower_flag){
+          heart_class += " good"
+        }
+        html += `<div class="list-user-content">
+        <img id ="list-user-image" class="list-user-image" src="${d.image}" style="width: 75px; height: 75px; object-fit: cover;">
+        <div class="list-user-name">
+          ${escapeStr(d.info.name)}<span>ID:${d.info.id}</span>
+        </div>
+        <div class="list-user-heart">
+            <i class="${heart_class}"></i>
+        </div>
+        </div>`;
       });
+      $("#list-wrap").html(html);
     })
     .fail(()=>{
       alert("エラーが発生しました。");
@@ -25,15 +55,20 @@ $(function () {
     .always(()=>{
     });
   };
+
+  //フレンド一覧選択した際の関数
+  const list = ()=>{
+    ajax_action("mutual", "フレンドが存在しません。");
+  };
   
   //申請中を選択した際の関数
   const applying = ()=>{
-    console.log("申請中");
+    ajax_action("oneway_followers", "現在、申請中のユーザーはいません。");
   };
   
   //承認待ちを選択した際の関数
   const approval_pending = ()=>{
-    console.log("回答待ち");
+    ajax_action("oneway_followings", "現在、回答待ちのユーザーはいません。");
   };
   
   //ユーザー検索を選択した際の関数
@@ -41,7 +76,7 @@ $(function () {
     console.log("ユーザー検索");
   };
 
-  //上記の関数を格納
+  //各タブの関数を格納
   const display_list = [
     list, applying, approval_pending, user_search
   ];
