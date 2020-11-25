@@ -1,10 +1,57 @@
-<%= render partial: 'shared/header', locals: { page_name: "募集一覧" } %>
+<%= render partial: 'shared/header', locals: { page_name: "飲募一覧" } %>
 
 <div class="main">
-  <h1>index</h1>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  <%= link_to "プロフィール", profile_path %>
-  <%= link_to "フレンド", friends_path %>
+  <div class="recruits-container">
+
+    <%# フレンドが存在しない時 %>
+    <div class="no-friends">
+      <p>
+        フレンドになったユーザーの飲募が表示されます。<br>まずはフレンドを追加しましょう。<br>
+        <span>※飲募(ノミボ)・・・飲み仲間の募集</span>
+      </p>
+      <%= link_to "フレンドを追加する", friends_path %>
+    </div>
+    <%# //フレンドが存在しない時 %>
+
+    <%# 募集が存在しない時 %>
+    <div class="no-recruits">
+      <p>現在、飲募はありません。</p>
+      <%= link_to "飲募する", root_path %>
+    </div>
+    <%# //募集が存在しない時 %>
+
+    <div class="recruit-wrap">
+      <div class="recruit-detail">
+        <img class="recruit-user-image" src="images/test_image.png" style="width: 75px; height: 75px; object-fit: cover;">
+        <div class="recruit-info">
+          <div class="info-top">
+            <div class="recruit-user-name">もりもり</div>
+            <div class="recruit-type">これから</div>
+          </div>
+          <ul class="info-bottom">
+            <li>希望開始時間　<span>18:00</span></li>
+            <li>希望終了時間　<span>21:00</span></li>
+            <li>希望場所　<span>渋谷or原宿</span></li>
+            <li>ひとこと　<span>日本酒飲みたい！</span></li>
+          </ul>
+        </div>
+        <%# 自身の募集であれば表示 %>
+        <i class="fas fa-heart fa-3x"></i>
+        <%# //自身の募集であれば表示 %>
+        <div class="recruit-menu-content">
+          <a href="#">編集</a>
+          <a href="#">飲募終了</a>
+        </div>
+      </div>
+      <div class="entry-wrap">
+        <i class="fas fa-heart fa-3x entry-count"><span>3</span></i>
+        <%# 他ユーザーの応募であれば表示 %>
+        <div class="entry-btn">参加</div>
+        <%# //他ユーザーの応募であれば表示 %>
+      </div>
+    </div>
+    
+  </div>
 </div>
 
 <%= render 'shared/footer' %>
