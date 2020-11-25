@@ -20,8 +20,8 @@ class UsersController < ApplicationController
     image_in_users = [];
     # users = User.search(params[:keyword])
     users = User.where(id: params[:keyword])
-    if users.present?
-      image_in_users << {info: users[0], image: url_for(users[0].image)}
+    if users.present? && users[0].id != current_user.id
+      image_in_users << {info: users[0], image: url_for(users[0].image), follower_flag: current_user.follower?(users[0])}
     else
       image_in_users << {info: nil, image: nil}
     end

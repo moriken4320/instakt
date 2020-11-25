@@ -125,10 +125,15 @@
         flex-grow: 9;
         padding: 5px 10px;
         border-color: $btn_color;
+        transition: .2s;
         
         &:focus{
           outline: 0;
         }
+      }
+      //検索テキストをフォーカス時
+      .focus{
+        border-color: $main_color;
       }
       
       //検索ボタン
