@@ -21,6 +21,7 @@ $(function () {
     .done((data)=>{
       if(data.length <= 0){
         $("#list-wrap").html(`<p class="empty-message">${empty_message}</p>`);
+        $("#list-wrap").hide().fadeIn(200);
         return;
       }
       
@@ -42,6 +43,7 @@ $(function () {
       });
       $("#list-wrap").html(html);
       heart();
+      $("#list-wrap").hide().fadeIn(200);
     })
     .fail(()=>{
       alert("エラーが発生しました。");
@@ -57,17 +59,17 @@ $(function () {
   
   //申請中を選択した際の関数
   const applying = ()=>{
-    ajax_action("oneway_followers", "現在、申請中のユーザーは存在しません");
+    ajax_action("oneway_followers", "現在、申請中のユーザーはいません");
   };
   
   //承認待ちを選択した際の関数
   const approval_pending = ()=>{
-    ajax_action("oneway_followings", "現在、回答待ちのユーザーは存在しません");
+    ajax_action("oneway_followings", "現在、フレンド依頼はありません");
   };
   
   //ユーザー検索を選択した際の関数
   const search = ()=>{
-    $("#form-container").show();
+    $("#form-container").fadeIn(200);
     $("#search-input").trigger("focus");
   };
 

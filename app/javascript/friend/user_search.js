@@ -76,6 +76,7 @@ $(function(){
         </div>`;
       }
       $("#list-wrap").html(html);
+      $("#list-wrap").hide().fadeIn(200);
       heart();
     })
     .fail(()=>{
