@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_072613) do
+ActiveRecord::Schema.define(version: 2020_11_26_074320) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 2020_11_26_072613) do
     t.index ["recruit_id"], name: "index_laters_on_recruit_id"
   end
 
+  create_table "nows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "member_count"
+    t.integer "end_at_hour_top"
+    t.integer "end_at_minute_top"
+    t.integer "end_at_hour_bottom"
+    t.integer "end_at_minute_bottom"
+    t.string "place"
+    t.string "message"
+    t.integer "close_condition_count"
+    t.bigint "recruit_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recruit_id"], name: "index_nows_on_recruit_id"
+  end
+
   create_table "recruits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -86,5 +101,6 @@ ActiveRecord::Schema.define(version: 2020_11_26_072613) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "laters", "recruits"
+  add_foreign_key "nows", "recruits"
   add_foreign_key "recruits", "users"
 end
