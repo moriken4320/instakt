@@ -136,6 +136,7 @@
       
       //募集メニューボタン
       .menu-btn-wrap{
+        position: relative;
         width: 40px;
 
         .menu-btn{
@@ -159,10 +160,27 @@
       }
       //募集メニューコンテンツ
       .recruit-menu-content{
+        background-color: white;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
         display: none;
 
         a{
+          width: 80px;
+          height: 20px;
+          line-height: 20px;
+          text-decoration: none;
+          color: $btn_color;
+          user-select: none;
+          padding: 10px 15px;
+          transition: .2s;
 
+          &:hover{
+            background-color: $btn_hover_backColor;
+            color: $main_color;
+          }
         }
       }
     }
