@@ -104,6 +104,15 @@
           .now{
             background-color: rgb(209, 49, 49);
           }
+
+          //募集の投稿時間
+          .post-time{
+            flex-grow: 1;
+            text-align: end;
+            color: rgb(150, 150, 150);
+            font-size: 15px;
+            align-self: flex-end;
+          }
         }
 
         //募集下部
