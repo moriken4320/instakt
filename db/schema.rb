@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 2020_11_26_074320) do
   end
 
   create_table "laters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "start_at_hour_top"
-    t.integer "start_at_minute_top"
-    t.integer "start_at_hour_bottom"
-    t.integer "start_at_minute_bottom"
-    t.integer "end_at_hour_top"
-    t.integer "end_at_minute_top"
-    t.integer "end_at_hour_bottom"
-    t.integer "end_at_minute_bottom"
+    t.string "start_at_hour_top"
+    t.string "start_at_minute_top"
+    t.string "start_at_hour_bottom"
+    t.string "start_at_minute_bottom"
+    t.string "end_at_hour_top"
+    t.string "end_at_minute_top"
+    t.string "end_at_hour_bottom"
+    t.string "end_at_minute_bottom"
     t.string "place"
     t.string "message"
     t.integer "close_condition_count"
@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 2020_11_26_074320) do
 
   create_table "nows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "member_count"
-    t.integer "end_at_hour_top"
-    t.integer "end_at_minute_top"
-    t.integer "end_at_hour_bottom"
-    t.integer "end_at_minute_bottom"
+    t.string "end_at_hour_top"
+    t.string "end_at_minute_top"
+    t.string "end_at_hour_bottom"
+    t.string "end_at_minute_bottom"
     t.string "place"
     t.string "message"
     t.integer "close_condition_count"
