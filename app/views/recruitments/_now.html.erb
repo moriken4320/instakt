@@ -1,0 +1,25 @@
+<div class="recruit-info">
+  <div class="info-top">
+    <div class="recruit-user-name"><%= recruit.user.name %><span>ID: <%= recruit.user.id %></span></div>
+    <div class="recruit-type now">いま</div>
+    <div class="post-time">投稿時間 <%= l recruit.created_at, format: :hour_minute %></div>
+  </div>
+  <ul class="info-bottom">
+    <li>
+      <div class="recruit-item">現在の人数</div>
+      <div class="recruit-value"><%= "#{recruit.now.member_count}人" %></div>
+    </li>
+    <li>
+      <div class="recruit-item">終了予定時間</div>
+      <div class="recruit-value"><%= "#{recruit.now.end_at_hour_top}:#{recruit.now.end_at_minute_top} ~ #{recruit.now.end_at_hour_bottom}:#{recruit.now.end_at_minute_bottom}" %></div>
+    </li>
+    <li>
+      <div class="recruit-item">現在の場所</div>
+      <div class="recruit-value"><%= recruit.now.place %></div>
+    </li>
+    <li>
+      <div class="recruit-item">ひとこと</div>
+      <div class="recruit-value"><%= recruit.now.message %></div>
+    </li>
+  </ul>
+</div>

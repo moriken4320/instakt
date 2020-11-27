@@ -3,59 +3,24 @@
 <div class="main">
   <div class="recruits-container">
 
-    <%# フレンドが存在しない時 %>
-    <div class="no-friends">
-      <p>
-        フレンドになったユーザーの飲募が表示されます。<br>まずはフレンドを追加しましょう。<br>
-        <span>※飲募(ノミボ)・・・飲み仲間の募集</span>
-      </p>
-      <%= link_to "フレンドを追加する", friends_path %>
-    </div>
-    <%# //フレンドが存在しない時 %>
-
-    <%# 募集が存在しない時 %>
-    <div class="no-recruits">
-      <p>本日はまだ誰も飲募していません。</p>
-      <%= link_to "飲募する", root_path %>
-    </div>
-    <%# //募集が存在しない時 %>
-
-    <div class="recruit-wrap">
-      <div class="recruit-detail">
-        <img class="recruit-user-image" src="images/test_image.png" style="width: 75px; height: 75px; object-fit: cover;">
-        <div class="recruit-info">
-          <div class="info-top">
-            <div class="recruit-user-name">もりもり<span>ID: 101</span></div>
-            <div class="recruit-type later">これから</div>
-            <%# <div class="recruit-type now">いま</div> %>
-            <div class="post-time">投稿時間 15:00</div>
-          </div>
-          <ul class="info-bottom">
-            <li><div class="recruit-item">希望開始時間</div><div class="recruit-value">18:00</div></li>
-            <li><div class="recruit-item">希望終了時間</div><div class="recruit-value">21:00</div></li>
-            <li><div class="recruit-item">希望場所</div><div class="recruit-value">渋谷or原宿</div></li>
-            <li><div class="recruit-item">ひとこと</div><div class="recruit-value">日本酒飲みたい！</div></li>
-          </ul>
-        </div>
-        <%# 自身の募集であれば表示 %>
-        <div class="menu-btn-wrap">
-          <i class="fas fa-ellipsis-v menu-btn"></i>
-          <div class="recruit-menu-content">
-            <a href="#">編集</a>
-            <a href="#">飲募終了</a>
-          </div>
-        </div>
-        <%# //自身の募集であれば表示 %>
+    <% if current_user.matchers.length <= 0 %> <%# フレンドが存在しない時 %>
+      <div class="no-friends">
+        <p>
+          フレンドになったユーザーの飲募が表示されます。<br>まずはフレンドを追加しましょう。<br>
+          <span>※飲募(ノミボ)・・・飲み仲間の募集</span>
+        </p>
+        <%= link_to "フレンドを追加する", friends_path, class: "btn" %>
       </div>
-      <div class="entry-wrap">
-        <i class="fas fa-user-circle entry-count"><span>3</span></i>
-        <%# 他ユーザーの応募であれば表示 %>
-        <div class="entry-btn active">参加</div>
-        <%# <div class="entry-btn">参加中</div> %>
-        <%# //他ユーザーの応募であれば表示 %>
-      </div>
-    </div>
-    
+    <% else %> <%# フレンドが存在する時 %>
+      <% if @recruits_of_friend.length <= 0 %> <%# 募集が存在しない時 %>
+        <div class="no-recruits">
+          <p>本日はまだ誰も飲募していません。</p>
+          <%= link_to "飲募する", root_path, class: "btn" %>
+        </div>
+      <% else %> <%# 募集が存在する時 %>
+        <%= render partial: "recruit", collection: @recruits_of_friend %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

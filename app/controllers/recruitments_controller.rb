@@ -7,7 +7,17 @@ class RecruitmentsController < ApplicationController
   end
 
   def index
-    
+    recruits_all = Recruit.includes([:user, :later, :now]).order("created_at DESC")
+    @recruits_of_friend = []
+
+    #フレンドと自分の募集のみ抽出
+    recruits_all.each do |recruit|
+      if current_user.friend?(recruit.user) || current_user == recruit.user
+        @recruits_of_friend << recruit
+      end
+    end
+
+    @recruits_of_friend
   end
   
   private

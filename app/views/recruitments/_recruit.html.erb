@@ -1,0 +1,33 @@
+<div class="recruit-wrap">
+  <div class="recruit-detail">
+    <%= image_tag recruit.user.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, class: "recruit-user-image" %>
+    <% if recruit.later != nil %> <%# 募集タイプが「これから」の場合 %>
+      <%= render partial: "later", locals: {recruit: recruit} %>
+    <% else %>  <%# 募集タイプが「いま」の場合 %>
+      <%= render partial: "now", locals: {recruit: recruit} %>
+    <% end %>
+    <div class="menu-btn-wrap">
+      <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
+        <i class="fas fa-ellipsis-v menu-btn"></i>
+        <div class="recruit-menu-content">
+          <a href="#">編集</a>
+          <a href="#">飲募終了</a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="entry-wrap">
+    <i class="fas fa-user-circle entry-count"><span>3</span></i>
+    <% unless recruit.recruit?(current_user) %> <%# ログインユーザーが募集をしていなければ表示 %>
+      <div class="btn entry-btn">参加</div>
+      <%# <div class="disable entry-btn">他に参加中</div> %>
+      <%# <div class="btn recruit-room-btn">ここに参加中</div> %>
+    <% else %>
+      <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
+        <div class="btn recruit-room-btn">自分の飲募</div>
+      <% else %> <%# 自身の募集でなければ表示 %>
+        <div class="disable recruit-room-btn">飲募中により参加不可</div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

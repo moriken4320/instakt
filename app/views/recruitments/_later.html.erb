@@ -1,0 +1,25 @@
+<div class="recruit-info">
+  <div class="info-top">
+    <div class="recruit-user-name"><%= recruit.user.name %><span>ID: <%= recruit.user.id %></span></div>
+    <div class="recruit-type later">これから</div>
+    <div class="post-time">投稿時間 <%= l recruit.created_at, format: :hour_minute %></div> 
+  </div>
+  <ul class="info-bottom">
+    <li>
+      <div class="recruit-item">希望開始時間</div>
+      <div class="recruit-value"><%= "#{recruit.later.start_at_hour_top}:#{recruit.later.start_at_minute_top} ~ #{recruit.later.start_at_hour_bottom}:#{recruit.later.start_at_minute_bottom}" %></div>
+    </li>
+    <li>
+      <div class="recruit-item">希望終了時間</div>
+      <div class="recruit-value"><%= "#{recruit.later.end_at_hour_top}:#{recruit.later.end_at_minute_top} ~ #{recruit.later.end_at_hour_bottom}:#{recruit.later.end_at_minute_bottom}" %></div>
+    </li>
+    <li>
+      <div class="recruit-item">希望場所</div>
+      <div class="recruit-value"><%= recruit.later.place %></div>
+    </li>
+    <li>
+      <div class="recruit-item">ひとこと</div>
+      <div class="recruit-value"><%= recruit.later.message %></div>
+    </li>
+  </ul>
+</div>

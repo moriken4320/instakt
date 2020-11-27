@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :follower_relationships
   has_one_attached :image
-  has_one :recruit
+  has_one :recruit, dependent: :destroy
 
   validates :name, :email, :provider, :uid, :image, presence: true
   validates :name, length: {maximum:10}
@@ -52,6 +52,18 @@ class User < ApplicationRecord
   end
 
   #友達判定
+  def friend?(other_user)
+    friend_info = nil
+    friends = (followings & followers)
+    friends.each do |friend|
+      if friend.id == other_user.id
+        friend_info = friend
+      end
+    end
+    friend_info
+  end
+
+  #全ての友達を取得
   def matchers
     followings & followers
   end
