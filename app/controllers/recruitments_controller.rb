@@ -26,7 +26,7 @@ class RecruitmentsController < ApplicationController
   end
   
   def new_now
-
+    @recruit_now = RecruitNow.new
   end
 
   def create_later
@@ -41,7 +41,14 @@ class RecruitmentsController < ApplicationController
   end
   
   def create_now
-    
+    @recruit_now = RecruitNow.new(recruit_now_param)
+    if @recruit_now.valid?
+      @recruit_now.save
+      redirect_to recruitments_path
+    else
+      flash[:danger] = "値が正常に入力されていません"
+      render action: :new_now
+    end
   end
   
   
@@ -63,7 +70,16 @@ class RecruitmentsController < ApplicationController
   end
   
   def recruit_now_param
-    
+    params.require(:recruit_now).permit(
+      :member_count,
+      :end_at_hour_top,
+      :end_at_minute_top,
+      :end_at_hour_bottom,
+      :end_at_minute_bottom,
+      :place,
+      :message,
+      :close_condition_count
+    ).merge(user: current_user)
   end
 
   def move_to_recruits_path
