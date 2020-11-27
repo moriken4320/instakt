@@ -5,7 +5,7 @@ class Recruit < ApplicationRecord
 
 
   #募集中かどうか
-  def recruit?(user)
+  def self.recruit?(user)
     Recruit.find_by(user_id: user.id)
   end
   

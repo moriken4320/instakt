@@ -1,6 +1,7 @@
 class RecruitmentsController < ApplicationController
   before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root, except: [:top]
+  before_action :move_to_recruits_path, only: [:new_later, :create_later]
 
   def top
     
@@ -25,14 +26,14 @@ class RecruitmentsController < ApplicationController
   end
   
   def new_now
-    
+
   end
 
   def create_later
     @recruit_later = RecruitLater.new(recruit_later_param)
-    if RecruitLater.valid?
-      RecruitLater.save
-      redirect_to root_path
+    if @recruit_later.valid?
+      @recruit_later.save
+      redirect_to recruitments_path
     else
       render action: :new_later
     end
@@ -64,7 +65,9 @@ class RecruitmentsController < ApplicationController
     
   end
 
-  
-  
-  
+  def move_to_recruits_path
+    if Recruit.recruit?(current_user)
+      redirect_to recruitments_path
+    end
+  end
 end

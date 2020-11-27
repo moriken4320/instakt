@@ -18,7 +18,7 @@
   </div>
   <div class="entry-wrap">
     <i class="fas fa-user-circle entry-count"><span>3</span></i>
-    <% unless recruit.recruit?(current_user) %> <%# ログインユーザーが募集をしていなければ表示 %>
+    <% unless Recruit.recruit?(current_user) %> <%# ログインユーザーが募集をしていなければ表示 %>
       <div class="btn entry-btn">参加</div>
       <%# <div class="disable entry-btn">他に参加中</div> %>
       <%# <div class="btn recruit-room-btn">ここに参加中</div> %>
