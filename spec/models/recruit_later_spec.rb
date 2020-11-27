@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Now, type: :model do
+RSpec.describe RecruitLater, type: :model do
   before do
     @recruit_later = FactoryBot.build(:recruit_later)
   end
