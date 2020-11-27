@@ -35,6 +35,7 @@ class RecruitmentsController < ApplicationController
       @recruit_later.save
       redirect_to recruitments_path
     else
+      flash[:danger] = "値が正常に入力されていません"
       render action: :new_later
     end
   end
