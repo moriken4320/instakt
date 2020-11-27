@@ -9,7 +9,7 @@ require("channels")
 require('jquery')
 
 
-require("../headers/user_menu")
+require("../headers/menu_display")
 require("../flash")
 
 if(location.pathname.includes('profile')){

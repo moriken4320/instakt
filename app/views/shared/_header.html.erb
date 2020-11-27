@@ -8,13 +8,22 @@
     </div>
 
     <div class="right">
+      <div class="new-recruit-wrap">
+        <div class="btn new-recruit_btn" id="new-recruit_btn">飲募する</div>
+        <ul class="menu-list" id="recruit-menu">
+          <li class="menu">これから</li>
+          <li class="menu">いま</li>
+        </ul>
+      </div>      
       <% if user_signed_in? %>
+      <div class="user-icon-wrap">
         <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon" %>
-        <div class="user-menu" id="user-menu">
-          <%= link_to "プロフィール", profile_path %>
-          <%= link_to "フレンド", friends_path %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <div class="menu-list" id="user-menu">
+          <%= link_to "プロフィール", profile_path, class: "menu" %>
+          <%= link_to "フレンド", friends_path, class: "menu" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu" %>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
