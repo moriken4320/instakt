@@ -8,8 +8,8 @@
     <% end %>
     <div class="menu-btn-wrap">
       <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
-        <i class="fas fa-ellipsis-v menu-btn"></i>
-        <div class="recruit-menu-content">
+        <i id="menu-btn" class="fas fa-ellipsis-v menu-btn"></i>
+        <div id="recruit-menu-content" class="recruit-menu-content">
           <a href="#">編集</a>
           <a href="#">飲募終了</a>
         </div>

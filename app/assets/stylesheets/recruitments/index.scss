@@ -9,7 +9,6 @@
   //フレンドが存在しない際のメッセージ
   .no-friends, .no-recruits{
     display: flex;
-    flex-direction: column;
     align-items: center;
     
     p{
@@ -166,14 +165,13 @@
       }
       //募集メニューコンテンツ
       .recruit-menu-content{
+        position: absolute;
         background-color: white;
         box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
-        position: absolute;
-        display: flex;
-        flex-direction: column;
         display: none;
 
         a{
+          display: block;
           width: 80px;
           height: 20px;
           line-height: 20px;

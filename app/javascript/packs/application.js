@@ -20,6 +20,9 @@ if(location.pathname.includes('friends')){
   require("../friends/friend_good")
   require("../friends/user_search")
 }
+if(location.pathname.includes('recruitments')){
+  require("../recruitments/menu_display")
+}
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
