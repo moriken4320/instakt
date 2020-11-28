@@ -30,13 +30,14 @@ class RecruitmentsController < ApplicationController
   end
 
   def create_later
-    @recruit_later = RecruitLater.new(recruit_later_param)
-    if @recruit_later.valid?
-      @recruit_later.save
+    recruit_later = RecruitLater.new(recruit_later_param)
+    if recruit_later.valid?
+      recruit_later.save
+      flash[:success] = "「これから」で飲募を作成しました"
       redirect_to recruitments_path
     else
       flash[:danger] = "値が正常に入力されていません"
-      render action: :new_later
+      render action: :new_now
     end
   end
   

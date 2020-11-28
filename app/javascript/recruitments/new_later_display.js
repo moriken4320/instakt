@@ -1,12 +1,11 @@
+const close = () => {
+  $("#return").on("click",()=>{
+    $("#back").html("");
+    $("#back").hide();
+  });
+};
+
 $(function () {
-
-  const close = () => {
-    $("#return").on("click",()=>{
-      $("#back").html("");
-      $("#back").hide();
-    });
-  };
-
   //募集の「これから」をクリックした際の処理
   $("#recruit-later").on("click",(e)=>{
     e.preventDefault();
@@ -14,11 +13,11 @@ $(function () {
     $.ajax({
       url: "/recruitments/later/new",
       type: "post",
-      dataType: "json"
+      dataType: "json",
     })
     .done((data)=>{
       let html = `
-      <form action="/recruitments/later/create" accept-charset="UTF-8" method="post">
+      <form action="/recruitments/later/create" accept-charset="UTF-8" method="post" id="later_create">
         <div class="recruits-container center">
           <div class="recruit-wrap">
             <div class="recruit-detail">
@@ -211,6 +210,7 @@ $(function () {
             </div>
           </div>
         </div>
+        <input type="hidden" name="authenticity_token" id="authenticity_token" value="${$("#authenticity_token").val()}">
       </form>
     `;
       $("#back").html(html);
