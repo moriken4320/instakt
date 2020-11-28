@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root "recruitments#top"
   resources :recruitments, only: [:index]
-  get "recruitments/later/new", to: "recruitments#new_later"
-  get "recruitments/now/new", to: "recruitments#new_now"
+  post "recruitments/later/new", to: "recruitments#new_later"
+  post "recruitments/now/new", to: "recruitments#new_now"
   post "recruitments/later/create", to: "recruitments#create_later"
   post "recruitments/now/create", to: "recruitments#create_now"
 

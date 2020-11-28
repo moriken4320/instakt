@@ -55,7 +55,6 @@ $(function(){
       dataType: "json"
     })
     .done((data)=>{
-      console.log(data[0].info);
       let html = "";
       if(data[0].info == null){
         html = `<p class="empty-message" style="font-size: 20px;">ユーザーID：${keyword}　に該当するユーザーが見つかりませんでした</p>`;

@@ -22,7 +22,7 @@ class RecruitmentsController < ApplicationController
   end
 
   def new_later
-    @recruit_later = RecruitLater.new
+    render json: {info: current_user, image: url_for(current_user.image)}
   end
   
   def new_now
