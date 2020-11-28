@@ -17,16 +17,20 @@
     </div>
   </div>
   <div class="entry-wrap">
-    <i class="fas fa-user-circle entry-count"><span>3</span></i>
+    <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
+      <i class="fas fa-user-circle entry-count"><span>0/<%= recruit.close_condition_count %></span></i>
+    <% else %>
+      <i class="fas fa-user-circle entry-count"><span>0</span></i>
+    <% end %>
     <% unless Recruit.recruit?(current_user) %> <%# ログインユーザーが募集をしていなければ表示 %>
       <div class="btn entry-btn">参加</div>
-      <%# <div class="disable entry-btn">他に参加中</div> %>
-      <%# <div class="btn recruit-room-btn">ここに参加中</div> %>
+      <%# <div class="disable entry-btn">他の飲募に参加中</div> %>
+      <%# <div class="btn recruit-room-btn">参加中のルームへ</div> %>
     <% else %>
       <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
-        <div class="btn recruit-room-btn">自分の飲募</div>
+        <div class="btn recruit-room-btn">マイルームへ</div>
       <% else %> <%# 自身の募集でなければ表示 %>
-        <div class="disable recruit-room-btn">飲募中により参加不可</div>
+        <div class="disable recruit-room-btn">自分の飲募が掲示中は参加不可</div>
       <% end %>
     <% end %>
   </div>

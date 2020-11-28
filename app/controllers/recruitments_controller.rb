@@ -1,7 +1,7 @@
 class RecruitmentsController < ApplicationController
   before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root, except: [:top]
-  before_action :move_to_recruits_path, only: [:new_later, :create_later]
+  before_action :move_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
 
   def top
     

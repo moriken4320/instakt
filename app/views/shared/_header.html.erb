@@ -8,14 +8,16 @@
     </div>
 
     <div class="right">
-      <div class="new-recruit-wrap">
-        <div class="btn new-recruit_btn" id="new-recruit_btn">飲募する</div>
-        <ul class="menu-list" id="recruit-menu">
-          <li class="menu">これから</li>
-          <li class="menu">いま</li>
-        </ul>
-      </div>      
       <% if user_signed_in? %>
+        <% unless Recruit.recruit?(current_user) %>
+          <div class="new-recruit-wrap">
+            <div class="btn new-recruit_btn" id="new-recruit_btn">飲募する</div>
+            <ul class="menu-list" id="recruit-menu">
+              <li class="menu">これから</li>
+              <li class="menu">いま</li>
+            </ul>
+          </div>      
+        <% end %>
       <div class="user-icon-wrap">
         <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon" %>
         <div class="menu-list" id="user-menu">
