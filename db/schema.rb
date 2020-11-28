@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_135424) do
+ActiveRecord::Schema.define(version: 2020_11_28_143932) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_135424) do
     t.string "end_at_minute_bottom"
     t.string "place"
     t.string "message"
-    t.integer "close_condition_count"
     t.bigint "recruit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_135424) do
     t.string "end_at_minute_bottom"
     t.string "place"
     t.string "message"
-    t.integer "close_condition_count"
     t.bigint "recruit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_135424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "close_flag", default: false, null: false
+    t.integer "close_condition_count", null: false
     t.index ["user_id"], name: "index_recruits_on_user_id"
   end
 

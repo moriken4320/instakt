@@ -22,7 +22,7 @@ class RecruitLater
   
   
   def save
-    recruit = Recruit.create(user_id: user.id, close_flag: 0)
+    recruit = Recruit.create(user_id: user.id, close_flag: 0, close_condition_count:close_condition_count)
     Later.create(
       start_at_hour_top: start_at_hour_top,
       start_at_minute_top: start_at_minute_top,
@@ -34,7 +34,6 @@ class RecruitLater
       end_at_minute_bottom: end_at_minute_bottom,
       place: place,
       message: message,
-      close_condition_count:close_condition_count,
       recruit_id: recruit.id
     )
   end
