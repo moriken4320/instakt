@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
 .recruits-container{
-  width: 700px;
+  width: 750px;
   margin: 0 auto;
   padding: 50px 0;
 
@@ -130,10 +130,17 @@
             
             .recruit-item{
               color: $btn_color;
+
+              span{
+                font-size: 13px;
+                color: gray;
+              }
             }
             
             .recruit-value{
               color: black;
+              flex-grow: 1;
+              text-align: end;
             }
           }
         }
@@ -256,6 +263,8 @@
   cursor: pointer !important;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6) !important;
   transition: .2s !important;
+  border: none !important;
+  box-sizing: unset !important;
 
   &:hover{
     opacity: .8 !important;
@@ -264,6 +273,10 @@
   &:active{
     position: relative !important;
     top: 2px !important;
+  }
+
+  &:focus{
+    outline: 0;
   }
 }
 
@@ -279,4 +292,58 @@
   background-color: rgba(255, 255, 255, 0) !important;
   padding: 10px !important;
   font-weight: normal !important;
+}
+
+//newのdisplay用
+.back{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .item-text{
+    outline: none;
+    width: 90%;
+    border: none;
+    text-align: end;
+    background-color: rgb(252, 220, 162);
+    padding: 7px 10px 7px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  .item-select{
+    outline: none;
+    border: none;
+    color: black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 7px 10px 7px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(252, 220, 162);
+    text-align: center;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}
+
+.center{
+  margin-top: 200px !important;
+}
+
+.return-btn{
+  width: 100px;
+  height: 20px;
+  line-height: 20px;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(255, 103, 103);
 }
