@@ -387,14 +387,12 @@ const now_html = (data)=>{
 
 $(function () {
   //募集の「これから」をクリックした際の処理
-  $("#recruit-later").on("click",(e)=>{
-    e.preventDefault();
+  $("#recruit-later").on("click",()=>{
     new_display("/recruitments/later/new", later_html);
   });
 
   //募集の「いま」をクリックした際の処理
-  $("#recruit-now").on("click",(e)=>{
-    e.preventDefault();
+  $("#recruit-now").on("click",()=>{
     new_display("/recruitments/now/new", now_html);
   });
 });
