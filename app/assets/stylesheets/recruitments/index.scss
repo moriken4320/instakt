@@ -329,6 +329,15 @@
       display: none;
     }
   }
+
+  .fa-user-circle{
+    user-select: none;
+    font-size: 30px;
+    color: skyblue;
+    vertical-align: bottom;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
 }
 
 .center{

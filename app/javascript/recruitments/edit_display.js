@@ -58,6 +58,7 @@ const later_html = (data)=>{
                   <li>
                     <div class="recruit-item">募集人数<span>※満たされると自動で募集を終了します。<span></div>
                     <div class="recruit-value">
+                      <i class="fas fa-user-circle"></i>
                       <select class="item-select" name="recruit_later[close_condition_count]" id="recruit_later_close_condition_count">
 
                       </select>人
@@ -151,6 +152,7 @@ const now_html = (data)=>{
                   <li>
                     <div class="recruit-item">募集人数<span>※満たされると自動で募集を終了します。<span></div>
                     <div class="recruit-value">
+                      <i class="fas fa-user-circle"></i>
                       <select class="item-select" name="recruit_now[close_condition_count]" id="recruit_now_close_condition_count">
                       </select>人
                     </div>
