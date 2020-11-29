@@ -33,7 +33,7 @@ class RecruitmentsController < ApplicationController
     recruit_later = RecruitLater.new(recruit_later_param)
     if recruit_later.valid?
       recruit_later.save
-      flash[:success] = "「これから」で飲募を作成しました"
+      flash[:success] = "「これから」で募集を作成しました"
       redirect_to recruitments_path
     else
       flash[:danger] = "値が正常に入力されていません"
@@ -45,7 +45,7 @@ class RecruitmentsController < ApplicationController
     @recruit_now = RecruitNow.new(recruit_now_param)
     if @recruit_now.valid?
       @recruit_now.save
-      flash[:success] = "「いま」で飲募を作成しました"
+      flash[:success] = "「いま」で募集を作成しました"
       redirect_to recruitments_path
     else
       flash[:danger] = "値が正常に入力されていません"

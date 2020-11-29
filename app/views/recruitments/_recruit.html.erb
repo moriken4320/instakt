@@ -11,7 +11,8 @@
         <i id="menu-btn" class="fas fa-ellipsis-v menu-btn"></i>
         <div id="recruit-menu-content" class="recruit-menu-content">
           <a href="#">編集</a>
-          <a href="#">飲募終了</a>
+          <a href="#">募集終了</a>
+          <a href="#">募集削除</a>
         </div>
       <% end %>
     </div>
@@ -24,13 +25,13 @@
     <% end %>
     <% unless Recruit.recruit?(current_user) %> <%# ログインユーザーが募集をしていなければ表示 %>
       <div class="btn entry-btn">参加</div>
-      <%# <div class="disable entry-btn">他の飲募に参加中</div> %>
+      <%# <div class="disable entry-btn">他の募集に参加中</div> %>
       <%# <div class="btn recruit-room-btn">参加中のルームへ</div> %>
     <% else %>
       <% if current_user.id == recruit.user_id %> <%# 自身の募集であれば表示 %>
-        <div class="btn recruit-room-btn">マイルームへ</div>
+        <div class="btn recruit-room-btn">マイ募集ルームへ</div>
       <% else %> <%# 自身の募集でなければ表示 %>
-        <div class="disable recruit-room-btn">自分の飲募が掲示中は参加不可</div>
+        <div class="disable recruit-room-btn">マイ募集が存在する間は参加できません</div>
       <% end %>
     <% end %>
   </div>

@@ -1,4 +1,4 @@
-<%= render partial: 'shared/header', locals: { page_name: "飲募一覧" } %>
+<%= render partial: 'shared/header', locals: { page_name: "募集一覧" } %>
 
 <div class="main">
   <div class="recruits-container">
@@ -6,24 +6,20 @@
     <% if current_user.matchers.length <= 0 %> <%# フレンドが存在しない時 %>
       <div class="no-friends">
         <p>
-          フレンドになったユーザーの飲募が表示されます。<br>まずはフレンドを追加しましょう。<br>
-          <span>※飲募(ノミボ)・・・飲み仲間の募集</span>
+          フレンドになったユーザーの募集が表示されます。<br>まずはフレンドを追加しましょう。
         </p>
         <%= link_to "フレンドを追加する", friends_path, class: "btn" %>
       </div>
     <% else %> <%# フレンドが存在する時 %>
       <% if @recruits_of_friend.length <= 0 %> <%# 募集が存在しない時 %>
         <div class="no-recruits">
-          <p>本日はまだ誰も飲募していません。</p>
-          <%= link_to "飲募する", root_path, class: "btn" %>
+          <p>本日はまだ誰も募集していません。</p>
         </div>
       <% else %> <%# 募集が存在する時 %>
         <%= render partial: "recruit", collection: @recruits_of_friend %>
-
-        <div class="back" id="back"></div>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
       <% end %>
+      <div class="back" id="back"></div>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <% end %>
   </div>
 </div>

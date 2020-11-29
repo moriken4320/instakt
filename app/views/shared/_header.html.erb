@@ -9,9 +9,9 @@
 
     <div class="right">
       <% if user_signed_in? %>
-        <% unless Recruit.recruit?(current_user) %>
+        <% if !Recruit.recruit?(current_user) && current_user.matchers.length > 0 %>
           <div class="new-recruit-wrap">
-            <div class="btn new-recruit_btn" id="new-recruit_btn">飲募する</div>
+            <div class="btn new-recruit_btn" id="new-recruit_btn">募集する</div>
             <ul class="menu-list" id="recruit-menu">
               <li class="menu" id="recruit-later">これから</li>
               <li class="menu" id="recruit-now">いま</li>
