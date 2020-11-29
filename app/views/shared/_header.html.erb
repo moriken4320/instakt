@@ -9,7 +9,7 @@
 
     <div class="right">
       <% if user_signed_in? %>
-        <% if !Recruit.recruit?(current_user) && current_user.matchers.length > 0 %>
+        <% if !Recruit.recruit?(current_user) && current_user.matchers.length > 0 && current_page?(recruitments_path) %>
           <div class="new-recruit-wrap">
             <div class="btn new-recruit_btn" id="new-recruit_btn">募集する</div>
             <ul class="menu-list" id="recruit-menu">
