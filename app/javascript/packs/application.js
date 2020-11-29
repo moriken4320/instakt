@@ -23,6 +23,7 @@ if(location.pathname.includes('friends')){
 if(location.pathname.includes('recruitments')){
   require("../recruitments/menu_display")
   require("../recruitments/new_display")
+  require("../recruitments/edit_display")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference

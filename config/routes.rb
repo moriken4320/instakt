@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   post "recruitments/now/new", to: "recruitments#new_now"
   post "recruitments/later/create", to: "recruitments#create_later"
   post "recruitments/now/create", to: "recruitments#create_now"
+  post "recruitments/later/edit", to: "recruitments#edit_later"
+  post "recruitments/now/edit", to: "recruitments#edit_now"
+  post "recruitments/later/update", to: "recruitments#update_later"
+  post "recruitments/now/update", to: "recruitments#update_now"
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",

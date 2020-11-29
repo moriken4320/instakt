@@ -37,5 +37,22 @@ class RecruitLater
       recruit_id: recruit.id
     )
   end
+
+  def update(recruit)
+    recruit.update(close_condition_count:close_condition_count)
+    recruit.later.update(
+      start_at_hour_top: start_at_hour_top,
+      start_at_minute_top: start_at_minute_top,
+      start_at_hour_bottom: start_at_hour_bottom,
+      start_at_minute_bottom: start_at_minute_bottom,
+      end_at_hour_top: end_at_hour_top,
+      end_at_minute_top: end_at_minute_top,
+      end_at_hour_bottom: end_at_hour_bottom,
+      end_at_minute_bottom: end_at_minute_bottom,
+      place: place,
+      message: message,
+    )
+  end
+  
   
 end

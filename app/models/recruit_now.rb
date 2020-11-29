@@ -31,5 +31,18 @@ class RecruitNow
       recruit_id: recruit.id
     )
   end
+
+  def update(recruit)
+    recruit.update(close_condition_count:close_condition_count)
+    recruit.now.update(
+      member_count: member_count,
+      end_at_hour_top: end_at_hour_top,
+      end_at_minute_top: end_at_minute_top,
+      end_at_hour_bottom: end_at_hour_bottom,
+      end_at_minute_bottom: end_at_minute_bottom,
+      place: place,
+      message: message,
+    )
+  end
   
 end
