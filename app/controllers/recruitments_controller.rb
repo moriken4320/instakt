@@ -92,6 +92,18 @@ class RecruitmentsController < ApplicationController
     end
     render json: {recruit_now: {recruit: current_user_recruit, now: current_user_recruit.now}, flash: {type: flash_type, message: flash_message}}
   end
+
+  def destroy
+    recruit = Recruit.find(params[:id])
+    if current_user.id == recruit.user.id
+      recruit.destroy
+      flash[:success] = "募集を削除しました"
+    else
+      flash[:danger] = "失敗しました"
+    end
+    redirect_to recruitments_path
+  end
+  
   
   private
   def recruit_later_param

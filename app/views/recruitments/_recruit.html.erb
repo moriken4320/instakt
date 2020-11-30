@@ -20,7 +20,8 @@
             <div class="recruit-menu-item" id="edit-now">編集</div>
           <% end %>
           <a href="#" class="recruit-menu-item">募集終了</a>
-          <a href="#" class="recruit-menu-item">募集削除</a>
+          <%# <a href="#" class="recruit-menu-item">募集削除</a> %>
+          <%= link_to "募集削除", recruitment_path(recruit), method: :delete, class: "recruit-menu-item" %>
         </div>
       <% end %>
     </div>
