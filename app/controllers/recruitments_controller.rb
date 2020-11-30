@@ -71,13 +71,10 @@ class RecruitmentsController < ApplicationController
       recruit_later.update(current_user_recruit)
       flash_type = "success"
       flash_message = "募集内容を編集しました"
-      # flash[:success] = "募集内容を編集しました"
     else
-      # flash[:danger] = "更新に失敗しました"
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    # redirect_to recruitments_path
     render json: {recruit_later: {recruit: current_user_recruit, later: current_user_recruit.later}, flash: {type: flash_type, message: flash_message}}
   end
   
@@ -88,15 +85,12 @@ class RecruitmentsController < ApplicationController
     flash_message = ""
     if @recruit_now.valid?
       @recruit_now.update(current_user_recruit)
-      # flash[:success] = "募集内容を編集しました"
       flash_type = "success"
       flash_message = "募集内容を編集しました"
     else
-      # flash[:danger] = "更新に失敗しました"
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    # redirect_to recruitments_path
     render json: {recruit_now: {recruit: current_user_recruit, now: current_user_recruit.now}, flash: {type: flash_type, message: flash_message}}
   end
   

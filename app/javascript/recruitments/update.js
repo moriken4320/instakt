@@ -32,19 +32,33 @@ const later_override = (data)=>{
   $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_later.later.end_at_hour_top}:${data.recruit_later.later.end_at_minute_top} ~ ${data.recruit_later.later.end_at_hour_bottom}:${data.recruit_later.later.end_at_minute_bottom}`);
   $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_later.later.place);
   $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_later.later.message);
+  $("#current_user_recruit").find("#recruit-count").text(data.recruit_later.recruit.close_condition_count);
 };
 
 //「いま」の募集を上書きする関数
 const now_override = (data)=>{
-
+  $("#current_user_recruit").find(".recruit-value:first").text(`${data.recruit_now.now.member_count}`);
+  $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_now.now.end_at_hour_top}:${data.recruit_now.now.end_at_minute_top} ~ ${data.recruit_now.now.end_at_hour_bottom}:${data.recruit_now.now.end_at_minute_bottom}`);
+  $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_now.now.place);
+  $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_now.now.message);
+  $("#current_user_recruit").find("#recruit-count").text(data.recruit_now.recruit.close_condition_count);
 };
 
 export const update = ()=>{
 
   //「これから」募集を更新する処理
-  $("#later-update-btn").on("click",()=>{
-    const form_data = new FormData($("#later_update")[0]);
-    const url = $($("#later_update")).attr("action");
+  $("#later-update").on("submit",(e)=>{
+    e.preventDefault();
+    const form_data = new FormData(e.target);
+    const url = $(e.target).attr("action");
     update_ajax(url, form_data, later_override);
+  });
+
+  //「いま」募集を更新する処理
+  $("#now-update").on("submit",(e)=>{
+    e.preventDefault();
+    const form_data = new FormData(e.target);
+    const url = $(e.target).attr("action");
+    update_ajax(url, form_data, now_override);
   });
 };

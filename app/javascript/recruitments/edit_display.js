@@ -46,7 +46,7 @@ const option_create = (select_range, select_num, parent) =>{
 //「これから」のhtml
 const later_html = (data)=>{
   const html = `
-  <form action="/recruitments/later/update" accept-charset="UTF-8" method="post" id="later_update">
+  <form action="/recruitments/later/update" accept-charset="UTF-8" method="post" id="later-update">
         <div class="recruits-container center">
           <div class="recruit-wrap">
             <div class="recruit-detail">
@@ -118,10 +118,11 @@ const later_html = (data)=>{
             </div>
             <div class="entry-wrap">
               <div class="btn return-btn" id="return">戻る</div>
-              <div class="btn recruit-room-btn" id="later-update-btn">更新</div>
+              <input type="submit" name="commit" value="更新" class="btn recruit-room-btn" data-disable-with="更新">
             </div>
           </div>
         </div>
+        <input type="hidden" name="authenticity_token" id="authenticity_token" value="${$("#authenticity_token").val()}">
       </form>
   `;
   $("#back").html(html);
@@ -139,7 +140,7 @@ const later_html = (data)=>{
 //「いま」のhtml
 const now_html = (data)=>{
   const html = `
-  <form action="/recruitments/now/update" accept-charset="UTF-8" method="post" id="now_update">
+  <form action="/recruitments/now/update" accept-charset="UTF-8" method="post" id="now-update">
         <div class="recruits-container center">
           <div class="recruit-wrap">
             <div class="recruit-detail">
