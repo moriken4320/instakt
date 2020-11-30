@@ -1,4 +1,5 @@
 import {escapeStr} from "../escape";
+import {update} from "./update";
 
 //戻るボタンで新規募集画面を閉じる関数
 const close = () => {
@@ -19,6 +20,7 @@ const edit_display = (url, html_display)=>{
     html_display(data);
     $("#back").fadeIn(200);
     close();
+    update();
   })
   .fail(()=>{
     alert("エラーが発生しました。");
@@ -116,11 +118,10 @@ const later_html = (data)=>{
             </div>
             <div class="entry-wrap">
               <div class="btn return-btn" id="return">戻る</div>
-              <input type="submit" name="commit" value="更新" class="btn recruit-room-btn" data-disable-with="更新">
+              <div class="btn recruit-room-btn" id="later-update-btn">更新</div>
             </div>
           </div>
         </div>
-        <input type="hidden" name="authenticity_token" id="authenticity_token" value="${$("#authenticity_token").val()}">
       </form>
   `;
   $("#back").html(html);

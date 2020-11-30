@@ -64,26 +64,40 @@ class RecruitmentsController < ApplicationController
 
   def update_later
     recruit_later = RecruitLater.new(recruit_later_param)
-    later = Recruit.find_by(user_id: current_user.id)
+    current_user_recruit = Recruit.find_by(user_id: current_user.id)
+    flash_type = "notice"
+    flash_message = ""
     if recruit_later.valid?
-      recruit_later.update(later)
-      flash[:success] = "募集内容を編集しました"
+      recruit_later.update(current_user_recruit)
+      flash_type = "success"
+      flash_message = "募集内容を編集しました"
+      # flash[:success] = "募集内容を編集しました"
     else
-      flash[:danger] = "更新に失敗しました"
+      # flash[:danger] = "更新に失敗しました"
+      flash_type = "danger"
+      flash_message = "更新に失敗しました"
     end
-    redirect_to recruitments_path
+    # redirect_to recruitments_path
+    render json: {recruit_later: {recruit: current_user_recruit, later: current_user_recruit.later}, flash: {type: flash_type, message: flash_message}}
   end
   
   def update_now
     @recruit_now = RecruitNow.new(recruit_now_param)
-    now = Recruit.find_by(user_id: current_user.id)
+    current_user_recruit = Recruit.find_by(user_id: current_user.id)
+    flash_type = "notice"
+    flash_message = ""
     if @recruit_now.valid?
-      @recruit_now.update(now)
-      flash[:success] = "募集内容を編集しました"
+      @recruit_now.update(current_user_recruit)
+      # flash[:success] = "募集内容を編集しました"
+      flash_type = "success"
+      flash_message = "募集内容を編集しました"
     else
-      flash[:danger] = "更新に失敗しました"
+      # flash[:danger] = "更新に失敗しました"
+      flash_type = "danger"
+      flash_message = "更新に失敗しました"
     end
-    redirect_to recruitments_path
+    # redirect_to recruitments_path
+    render json: {recruit_now: {recruit: current_user_recruit, now: current_user_recruit.now}, flash: {type: flash_type, message: flash_message}}
   end
   
   private
