@@ -26,6 +26,9 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/edit_display")
   require("../recruitments/update")
 }
+if(location.pathname.includes('rooms')){
+  require("../rooms/flex_textarea")
+}
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

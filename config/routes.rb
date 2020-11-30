@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post "recruitments/later/update", to: "recruitments#update_later"
   post "recruitments/now/update", to: "recruitments#update_now"
 
+  get "rooms/:id", to: "rooms#display"
+
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations",

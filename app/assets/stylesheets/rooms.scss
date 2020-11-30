@@ -1,0 +1,196 @@
+@import "./variables.scss";
+
+$chat_bar_height: 90px;
+
+.main-room{
+  padding-top: $header_height;
+  padding-bottom: $chat_bar_height;
+  min-height: calc(100vh - #{$header_height + $chat_bar_height});
+  background-color: rgb(240, 240, 240);
+  overflow-y: scroll;
+
+  //チャット表示欄
+  .chat-main{
+    width: 750px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+
+    //他人のチャットUI
+    .other-chat-area{
+      display: flex;
+      margin-top: 30px;
+      max-width: 75%;
+
+      .other-left-wrap{
+
+        .other-user-image{
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+          border-radius: 50%;
+          box-shadow: $box_shadow;
+        }
+      }
+
+      .other-center-wrap{
+        margin-left: 15px;
+        
+        .other-user-name{
+          color: rgb(24, 20, 16);
+          font-size: 15px;
+          font-weight: bold;
+          
+          span{
+            margin-left: 10px;
+            font-size: 12px;
+            color: gray;
+          }
+        }
+        
+        .other-chat{
+          background-color: rgb(255, 223, 163);
+          color: black;
+        }
+      }
+
+      .other-raight-wrap{
+        margin-left: 10px;
+        align-self: flex-end;
+
+        .other-chat-time{
+
+        }
+      }
+    }
+
+    //自分のチャットUI
+    .my-chat-area{
+      display: flex;
+      margin-top: 30px;
+      max-width: 75%;
+      align-self: flex-end;
+
+      .my-left-wrap{
+        align-self: flex-end;
+        
+        .my-chat-time{
+          
+        }
+      }
+      
+      .my-right-wrap{
+        margin-left: 10px;
+
+        .my-chat{
+          background-color: rgb(165, 107, 0);
+          color: white;
+        }
+      }
+    }
+  }
+
+  //チャット入力バー
+  .chat-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(100, 100, 100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    box-sizing: border-box;
+    
+    .flex-area{
+      position: relative;
+
+      .flex-area-dummy{
+        padding: 5px 10px;
+        font-size: 17px;
+        border-radius: 5px;
+        width: 750px;
+        border: 2px solid;
+        overflow: hidden;
+        visibility: hidden;
+        box-sizing: border-box;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-height: 40px;
+      }
+      .chat-area{
+        resize: none;
+        padding: 5px 10px;
+        font-size: 17px;
+        border-radius: 5px;
+        width: 750px;
+        height: 100%;
+        border-width: 2px;
+        transition: .2s;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        overflow: hidden;
+        box-sizing: border-box;
+        
+        &:focus{
+          outline: none;
+          border-color: $main_color;
+        }
+      }
+    }
+
+    .file-attach-btn{
+      font-size: 25px;
+      margin-left: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: .2s;
+      color: white;
+      
+      &:hover{
+        color: $main_color;
+      }
+
+      &:active{
+        position: relative;
+        top: 1px;
+      }
+    }
+
+    .send-btn{
+      margin-left: 20px;
+      width: 50px;
+      height: 38px;
+      line-height: 38px;
+      border-radius: 5px;
+      border: 1px solid #{$main_color};
+      color: $main_color;
+      user-select: none;
+      cursor: pointer;
+      text-align: center;
+      font-weight: bold;
+      transition: .1s;
+
+      &:hover{
+        background-color: $main_color;
+        color: white;
+      }
+
+      &:active{
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+}
+
+.chat{
+  padding: 5px 10px !important;
+  border-radius: 15px !important;
+  font-size: 17px !important;
+}
