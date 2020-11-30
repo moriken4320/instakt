@@ -57,17 +57,17 @@ header{
       align-items: center;
 
       .new-recruit-wrap{
+      }
+      
+      .new-recruit_btn{
         margin-right: 30px;
-
-        .new-recruit_btn{
-          width: 100px;
-          height: 20px;
-          line-height: 20px;
-          padding: 10px;
-          font-weight: bold;
-          color: white;
-          background-color: rgb(0, 174, 218);
-        }
+        width: 120px;
+        height: 20px;
+        line-height: 20px;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(0, 174, 218);
       }
       
       #user-icon{

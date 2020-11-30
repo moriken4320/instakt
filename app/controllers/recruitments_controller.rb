@@ -11,6 +11,7 @@ class RecruitmentsController < ApplicationController
   def index
     recruits_all = Recruit.includes([:user, :later, :now]).order("created_at DESC")
     @recruits_of_friend = []
+    @current_user_recruit = Recruit.recruit?(current_user)
 
     #フレンドと自分の募集のみ抽出
     recruits_all.each do |recruit|
@@ -18,8 +19,6 @@ class RecruitmentsController < ApplicationController
         @recruits_of_friend << recruit
       end
     end
-
-    @recruits_of_friend
   end
 
   def new_later
@@ -42,9 +41,9 @@ class RecruitmentsController < ApplicationController
   end
   
   def create_now
-    @recruit_now = RecruitNow.new(recruit_now_param)
-    if @recruit_now.valid?
-      @recruit_now.save
+    recruit_now = RecruitNow.new(recruit_now_param)
+    if recruit_now.valid?
+      recruit_now.save
       flash[:success] = "「いま」で募集を作成しました"
     else
       flash[:danger] = "保存に失敗しました"
@@ -79,12 +78,12 @@ class RecruitmentsController < ApplicationController
   end
   
   def update_now
-    @recruit_now = RecruitNow.new(recruit_now_param)
+    recruit_now = RecruitNow.new(recruit_now_param)
     current_user_recruit = Recruit.find_by(user_id: current_user.id)
     flash_type = "notice"
     flash_message = ""
-    if @recruit_now.valid?
-      @recruit_now.update(current_user_recruit)
+    if recruit_now.valid?
+      recruit_now.update(current_user_recruit)
       flash_type = "success"
       flash_message = "募集内容を編集しました"
     else
