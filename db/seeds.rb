@@ -15,8 +15,8 @@ end
   Relationship.create(follower_id: (50 - i), following_id: 1)
 end
 
-# 「これから」の募集を10人追加
-10.times do |i|
+# 「これから」の募集を5人追加
+5.times do |i|
   recruit = Recruit.create(user_id: (i + 2), close_flag: 0, close_condition_count: 3)
   Later.create(
     start_at_hour_top: "18",
@@ -33,8 +33,8 @@ end
   )
 end
 
-# 「いま」の募集を10人追加
-10.times do |i|
+# 「いま」の募集を5人追加
+5.times do |i|
   recruit = Recruit.create(user_id: (50 - i), close_flag: 0, close_condition_count: 5)
   Now.create(
     member_count: 10,

@@ -81,6 +81,31 @@ class User < ApplicationRecord
   end
 
 
+  #募集関連のメソッド-----------------------------------------
+  #募集中かどうか
+  def recruit?
+    Recruit.find_by(user_id: self.id)
+  end
+
+  #自分の募集かどうか
+  def my_recruit?(recruit)
+    self.id == recruit.user.id
+  end
+
+
+  #参加関連のメソッド-----------------------------------------
+  #参加中かどうか
+  def entry?
+    Entry.find_by(user_id: self.id)
+  end
+  
+  #特定の募集に参加中かどうか
+  def my_entry?(recruit)
+    recruit.entries.find_by(user_id: self.id)
+  end
+  
+
+
   private
   #ユーザー検索の結果を返す
   def self.search(search)

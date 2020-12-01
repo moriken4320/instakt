@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post "recruitments/now/update", to: "recruitments#update_now"
   delete "recruitments/destroy", to: "recruitments#destroy"
 
+  resources :entries, only: [:create, :destroy]
+
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     registrations: "users/registrations",

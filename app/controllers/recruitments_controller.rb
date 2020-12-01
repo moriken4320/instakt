@@ -5,17 +5,15 @@ class RecruitmentsController < ApplicationController
   before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy]
 
   def top
-    
   end
 
   def index
     recruits_all = Recruit.includes([:user, :later, :now]).order("created_at DESC")
     @recruits_of_friend = []
-    @current_user_recruit = Recruit.recruit?(current_user)
 
     #フレンドと自分の募集のみ抽出
     recruits_all.each do |recruit|
-      if current_user.friend?(recruit.user) || current_user == recruit.user
+      if current_user.friend?(recruit.user) || current_user.my_recruit?(recruit)
         @recruits_of_friend << recruit
       end
     end
@@ -91,9 +89,9 @@ class RecruitmentsController < ApplicationController
 
   def show
     @recruit = Recruit.find(params[:id])
-    if @recruit.user.id == current_user.id #募集作成者であれば
+    if current_user.my_recruit?(@recruit) #募集作成者であれば
       @page_name = "マイ募集ルーム"
-    elsif @recruit.entries.find_by(user_id: current_user.id) #募集の参加者であれば
+    elsif current_user.my_entry?(@recruit) #募集の参加者であれば
       @page_name = "参加中のルーム"
     else
       redirect_to recruitments_path
@@ -136,22 +134,5 @@ class RecruitmentsController < ApplicationController
       :close_condition_count
     ).merge(user: current_user)
   end
-
-  #ログインユーザーが募集状態だったら募集一覧画面に戻る
-  def recruiter_to_recruits_path
-    if Recruit.recruit?(current_user)
-      flash[:danger] = "失敗しました"
-      redirect_to recruitments_path
-    end
-  end
-  
-  #ログインユーザーが募集状態でなければ募集一覧画面に戻る
-  def not_recruiter_to_recruits_path
-    @recruit = Recruit.recruit?(current_user)
-    unless @recruit
-      flash[:danger] = "失敗しました"
-      redirect_to recruitments_path
-    end
-  end  
   
 end
