@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_052707) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recruit_id"], name: "index_entries_on_recruit_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
+    t.index ["user_id"], name: "index_entries_on_user_id", unique: true
   end
 
   create_table "laters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
