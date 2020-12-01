@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_one_attached :image
   has_one :recruit, dependent: :destroy
+  has_one :entry, dependent: :destroy
 
   validates :name, :email, :provider, :uid, :image, presence: true
   validates :name, length: {maximum:10}
