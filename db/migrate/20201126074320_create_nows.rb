@@ -8,7 +8,6 @@ class CreateNows < ActiveRecord::Migration[6.0]
       t.string :end_at_minute_bottom, null: :false
       t.string :place
       t.string :message
-      t.integer :close_condition_count, null: :false
       t.references :recruit, null: :false, foreign_key: true
       t.timestamps
     end

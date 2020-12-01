@@ -75,11 +75,11 @@ ActiveRecord::Schema.define(version: 2020_12_01_052707) do
 
   create_table "recruits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.boolean "close_flag", default: false, null: false
     t.integer "close_condition_count", null: false
-    t.index ["user_id"], name: "index_recruits_on_user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_recruits_on_user_id", unique: true
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
