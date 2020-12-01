@@ -1,8 +1,8 @@
 class RecruitmentsController < ApplicationController
   before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root, except: [:top]
-  before_action :move_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
-  before_action :move_to_recruits_path2, only: [:edit_later, :update_later, :edit_now, :update_now]
+  before_action :recruiter_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
+  before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy]
 
   def top
     
@@ -52,55 +52,55 @@ class RecruitmentsController < ApplicationController
   end
   
   def edit_later
-    recruit = Recruit.find_by(user_id: current_user.id)
-    render json: {info: {recruit: recruit, later: recruit.later}, user: {info: recruit.user, image: url_for(current_user.image)}}
+    render json: {info: {recruit: @recruit, later: @recruit.later}, user: {info: @recruit.user, image: url_for(current_user.image)}}
   end
   
   def edit_now
-    recruit = Recruit.find_by(user_id: current_user.id)
-    render json: {info: {recruit: recruit, now: recruit.now}, user: {info: recruit.user, image: url_for(current_user.image)}}
+    render json: {info: {recruit: @recruit, now: @recruit.now}, user: {info: @recruit.user, image: url_for(current_user.image)}}
   end
 
   def update_later
     recruit_later = RecruitLater.new(recruit_later_param)
-    current_user_recruit = Recruit.find_by(user_id: current_user.id)
     flash_type = "notice"
     flash_message = ""
     if recruit_later.valid?
-      recruit_later.update(current_user_recruit)
+      recruit_later.update(@recruit)
       flash_type = "success"
       flash_message = "募集内容を編集しました"
     else
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    render json: {recruit_later: {recruit: current_user_recruit, later: current_user_recruit.later}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_later: {recruit: @recruit, later: @recruit.later}, flash: {type: flash_type, message: flash_message}}
   end
   
   def update_now
     recruit_now = RecruitNow.new(recruit_now_param)
-    current_user_recruit = Recruit.find_by(user_id: current_user.id)
     flash_type = "notice"
     flash_message = ""
     if recruit_now.valid?
-      recruit_now.update(current_user_recruit)
+      recruit_now.update(@recruit)
       flash_type = "success"
       flash_message = "募集内容を編集しました"
     else
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    render json: {recruit_now: {recruit: current_user_recruit, now: current_user_recruit.now}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_now: {recruit: @recruit, now: @recruit.now}, flash: {type: flash_type, message: flash_message}}
+  end
+
+  def show
+    @recruit = Recruit.find(params[:id])
+    if @recruit.user.id == current_user.id
+      @page_name = "マイ募集ルーム"
+    else
+      @page_name = "参加中のルーム"
+    end
   end
 
   def destroy
-    recruit = Recruit.find(params[:id])
-    if current_user.id == recruit.user.id
-      recruit.destroy
-      flash[:success] = "募集を削除しました"
-    else
-      flash[:danger] = "失敗しました"
-    end
+    @recruit.destroy
+    flash[:success] = "募集を削除しました"
     redirect_to recruitments_path
   end
   
@@ -136,17 +136,28 @@ class RecruitmentsController < ApplicationController
   end
 
   #ログインユーザーが募集状態だったら募集一覧画面に戻る
-  def move_to_recruits_path
+  def recruiter_to_recruits_path
     if Recruit.recruit?(current_user)
+      flash[:danger] = "失敗しました"
       redirect_to recruitments_path
     end
   end
   
-  #ログインユーザーが募集状態でなかったら募集一覧画面に戻る
-  def move_to_recruits_path2
-    unless Recruit.recruit?(current_user)
+  #ログインユーザーが募集状態でなければ募集一覧画面に戻る
+  def not_recruiter_to_recruits_path
+    @recruit = Recruit.recruit?(current_user)
+    unless @recruit
+      flash[:danger] = "失敗しました"
       redirect_to recruitments_path
     end
-  end
+  end  
   
+  #募集作成(管理)者でなかったら募集一覧画面に戻る
+  # def not_recruitment_manager_to_recruits_path
+  #   @recruit = Recruit.find(params[:id])
+  #   unless @recruit.user.id == current_user.id
+  #     flash[:danger] = "失敗しました"
+  #     redirect_to recruitments_path
+  #   end
+  # end  
 end

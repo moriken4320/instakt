@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "recruitments#top"
-  resources :recruitments, only: [:index, :destroy]
+  resources :recruitments, only: [:index, :show]
   post "recruitments/later/new", to: "recruitments#new_later"
   post "recruitments/now/new", to: "recruitments#new_now"
   post "recruitments/later/create", to: "recruitments#create_later"
@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   post "recruitments/now/edit", to: "recruitments#edit_now"
   post "recruitments/later/update", to: "recruitments#update_later"
   post "recruitments/now/update", to: "recruitments#update_now"
-
-  get "rooms/:id", to: "rooms#display"
+  delete "recruitments/destroy", to: "recruitments#destroy"
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
