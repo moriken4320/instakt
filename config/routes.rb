@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "recruitments#top"
   resources :recruitments, only: [:index, :show] do
-    resources :entries, only: [:create, :destroy]
+    resource :entries, only: [:create, :destroy]
   end
   post "recruitments/later/new", to: "recruitments#new_later"
   post "recruitments/now/new", to: "recruitments#new_now"

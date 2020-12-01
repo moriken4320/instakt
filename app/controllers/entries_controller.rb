@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :recruiter_to_recruits_path
   before_action :entrant_to_recruits_path, only: [:create]
+  before_action :not_entrant_to_recruits_path, only: [:destroy]
 
   def create
     recruit_id = params[:recruitment_id]
@@ -16,7 +17,15 @@ class EntriesController < ApplicationController
   end
   
   def destroy
-    
+    entry = Entry.find_by(user_id: current_user.id, recruit_id: params[:recruitment_id])
+    if entry.present?
+      entry.destroy
+      flash[:success] = "参加を取り消しました"
+      redirect_to recruitments_path
+    else
+      flash[:danger] = "参加の取り消しに失敗しました"
+      redirect_to recruitments_path
+    end
   end
   
 end

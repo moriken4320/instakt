@@ -38,4 +38,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  #ログインユーザーが参加状態でなければ募集一覧画面に戻る
+  def not_entrant_to_recruits_path
+    unless current_user.entry?
+      redirect_to recruitments_path
+    end
+  end
 end

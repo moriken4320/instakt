@@ -1,6 +1,7 @@
 <%= render partial: 'shared/header', locals: { page_name: @page_name } %>
 
 <div class="main-room">
+  <%= link_to "参加を取り消し", recruitment_entries_path(@recruit), method: :delete, class: "btn" %>
   <div class="chat-main" id="chat-main">
     <div class="other-chat-area">
       <div class="other-left-wrap">
