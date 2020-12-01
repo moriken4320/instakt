@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   #ログインユーザーが募集状態だったら募集一覧画面に戻る
   def recruiter_to_recruits_path
     if current_user.recruit?
-      flash[:danger] = "失敗しました"
       redirect_to recruitments_path
     end
   end
@@ -28,8 +27,15 @@ class ApplicationController < ActionController::Base
   def not_recruiter_to_recruits_path
     @recruit = current_user.recruit?
     unless @recruit
-      flash[:danger] = "失敗しました"
       redirect_to recruitments_path
     end
-  end  
+  end 
+  
+  #ログインユーザーが参加状態であれば募集一覧画面に戻る
+  def entrant_to_recruits_path
+    if current_user.entry?
+      redirect_to recruitments_path
+    end
+  end
+  
 end
