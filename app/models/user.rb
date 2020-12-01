@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_one :recruit, dependent: :destroy
   has_one :entry, dependent: :destroy
+  has_one :recruit, through: :entry
 
   validates :name, :email, :provider, :uid, :image, presence: true
   validates :name, length: {maximum:10}

@@ -91,10 +91,12 @@ class RecruitmentsController < ApplicationController
 
   def show
     @recruit = Recruit.find(params[:id])
-    if @recruit.user.id == current_user.id
+    if @recruit.user.id == current_user.id #募集作成者であれば
       @page_name = "マイ募集ルーム"
-    else
+    elsif @recruit.entries.find_by(user_id: current_user.id) #募集の参加者であれば
       @page_name = "参加中のルーム"
+    else
+      redirect_to recruitments_path
     end
   end
 
@@ -152,12 +154,4 @@ class RecruitmentsController < ApplicationController
     end
   end  
   
-  #募集作成(管理)者でなかったら募集一覧画面に戻る
-  # def not_recruitment_manager_to_recruits_path
-  #   @recruit = Recruit.find(params[:id])
-  #   unless @recruit.user.id == current_user.id
-  #     flash[:danger] = "失敗しました"
-  #     redirect_to recruitments_path
-  #   end
-  # end  
 end
