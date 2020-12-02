@@ -25,9 +25,7 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/new_display")
   require("../recruitments/edit_display")
   require("../recruitments/update")
-}
-if(location.pathname.includes('rooms')){
-  require("../rooms/flex_textarea")
+  require("../recruitments/flex_textarea")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference
