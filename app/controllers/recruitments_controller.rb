@@ -2,12 +2,13 @@ class RecruitmentsController < ApplicationController
   before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root, except: [:top]
   before_action :recruiter_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
-  before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy]
+  before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy, :finish, :restart]
   before_action :entrant_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
 
   def top
   end
 
+  # 募集一覧表示画面用アクション
   def index
     recruits_all = Recruit.includes([:user, :later, :now]).order("created_at DESC")
     @recruits_of_friend = []
@@ -20,14 +21,17 @@ class RecruitmentsController < ApplicationController
     end
   end
 
+  # 「これから」の募集作成UI表示用アクション
   def new_later
     render json: {info: current_user, image: url_for(current_user.image)}
   end
   
+  # 「いま」の募集作成UI表示用アクション
   def new_now
     render json: {info: current_user, image: url_for(current_user.image)}
   end
 
+  # 「これから」の募集保存用アクション
   def create_later
     recruit_later = RecruitLater.new(recruit_later_param)
     if recruit_later.valid?
@@ -39,6 +43,7 @@ class RecruitmentsController < ApplicationController
     redirect_to recruitments_path
   end
   
+  # 「いま」の募集保存用アクション
   def create_now
     recruit_now = RecruitNow.new(recruit_now_param)
     if recruit_now.valid?
@@ -50,14 +55,17 @@ class RecruitmentsController < ApplicationController
     redirect_to recruitments_path
   end
   
+  # 「これから」の募集編集UI表示用アクション
   def edit_later
     render json: {info: {recruit: @recruit, later: @recruit.later}, user: {info: @recruit.user, image: url_for(current_user.image)}}
   end
   
+  # 「いま」の募集編集UI表示用アクション
   def edit_now
     render json: {info: {recruit: @recruit, now: @recruit.now}, user: {info: @recruit.user, image: url_for(current_user.image)}}
   end
 
+  # 「これから」の募集更新用アクション
   def update_later
     recruit_later = RecruitLater.new(recruit_later_param)
     flash_type = "notice"
@@ -73,6 +81,7 @@ class RecruitmentsController < ApplicationController
     render json: {recruit_later: {recruit: @recruit, later: @recruit.later}, flash: {type: flash_type, message: flash_message}}
   end
   
+  # 「いま」の募集更新用アクション
   def update_now
     recruit_now = RecruitNow.new(recruit_now_param)
     flash_type = "notice"
@@ -88,6 +97,7 @@ class RecruitmentsController < ApplicationController
     render json: {recruit_now: {recruit: @recruit, now: @recruit.now}, flash: {type: flash_type, message: flash_message}}
   end
 
+  # 募集のルーム表示用アクション
   def show
     @recruit = Recruit.find(params[:id])
     if current_user.my_recruit?(@recruit) #募集作成者であれば
@@ -99,9 +109,31 @@ class RecruitmentsController < ApplicationController
     end
   end
 
+  # 募集削除用アクション
   def destroy
     @recruit.destroy
     flash[:success] = "募集を削除しました"
+    redirect_to recruitments_path
+  end
+  
+  # 募集終了用アクション
+  def finish
+    if @recruit.update(close_flag: 1)
+      flash[:success] = "募集を終了しました"
+    else
+      flash[:danger] = "募集の終了に失敗しました"
+    end
+    redirect_to recruitments_path
+  end
+  
+  # 募集再開用アクション
+  def restart
+    unless @recruit.max_entry?
+      @recruit.update(close_flag: 0)
+      flash[:success] = "募集を再開しました"
+    else
+      flash[:danger] = "募集人数がMAXのため再開できません"
+    end
     redirect_to recruitments_path
   end
   

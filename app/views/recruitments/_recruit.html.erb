@@ -3,6 +3,9 @@
 <% else %>
   <div class="recruit-wrap">
 <% end %>
+  <% if recruit.close? %>
+    <div class="finish-label">募集が終了しました</div>
+  <% end %>
   <div class="recruit-detail">
     <%= image_tag recruit.user.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, class: "recruit-user-image" %>
     <% if recruit.later.present? %> <%# 募集タイプが「これから」の場合 %>
@@ -19,14 +22,18 @@
           <% else %>  <%# 募集タイプが「いま」の場合 %>
             <div class="recruit-menu-item" id="edit-now">編集</div>
           <% end %>
-          <a href="#" class="recruit-menu-item">募集終了</a>
+          <% if recruit.close? %>  <%# 募集が終了している場合 %>
+            <%= link_to "募集再開", recruitments_restart_path, method: :post, class: "recruit-menu-item" %>
+          <% else %>  <%# 募集が終了していない場合 %>
+            <%= link_to "募集終了", recruitments_finish_path, method: :post, class: "recruit-menu-item" %>
+          <% end %>
           <%= link_to "募集削除", recruitments_destroy_path, method: :delete, class: "recruit-menu-item" %>
         </div>
       <% end %>
     </div>
   </div>
   <div class="entry-wrap">
-    <i class="fas fa-user-circle entry-count"><span id="entry-num">0/</span><span id="recruit-count"><%= recruit.close_condition_count %></span></i>
+    <i class="fas fa-user-circle entry-count"><span id="entry-num"><%= recruit.entries.length %>/</span><span id="recruit-count"><%= recruit.close_condition_count %></span></i>
     <% if current_user.recruit? %> <%# ログインユーザーが募集をしていれば表示 %>
 
       <% if current_user.my_recruit?(recruit) %> <%# 自身の募集であれば表示 %>
@@ -43,7 +50,7 @@
         <% else %> <%# 自身が参加している募集でなければ表示 %>
           <div class="disable entry-btn">他の募集に参加中</div>
         <% end %>
-      <% else %> <%# ログインユーザーが参加をしていなければ表示 %>
+      <% elsif !recruit.close? %> <%# ログインユーザーが参加をしていない、かつ、募集終了していなければ表示 %>
         <%= link_to "参加", recruitment_entries_path(recruit), method: :post, class: "btn entry-btn" %>
       <% end %>
 

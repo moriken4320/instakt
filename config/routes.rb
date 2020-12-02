@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "recruitments/later/update", to: "recruitments#update_later"
   post "recruitments/now/update", to: "recruitments#update_now"
   delete "recruitments/destroy", to: "recruitments#destroy"
+  post "recruitments/finish", to: "recruitments#finish"
+  post "recruitments/restart", to: "recruitments#restart"
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
