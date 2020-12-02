@@ -38,9 +38,25 @@
     border: 3px solid #{$main_color};
     padding: 25px;
     margin-bottom: 20px;
+    position: relative;
 
     &:last-child{
       margin: 0;
+    }
+
+    // 募集終了時に表示
+    .finish-label{
+      background-color: rgba(128, 128, 128, 0.9);
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      padding: 10px 0;
+      text-align: center;
+      transform: skewY(-5deg);
+      position: absolute;
+      top: 40%;
+      left: 0;
+      width: 100%;
     }
 
     //募集詳細
