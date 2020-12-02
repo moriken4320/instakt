@@ -6,10 +6,11 @@ class EntriesController < ApplicationController
 
   def index
     users = []
+    flash = flash_hash("danger", "参加者がいません")
     @recruit.users.each do |user|
       users << {info: user, image: url_for(user.image)}
     end
-    render json: users
+    render json: {users: users, flash: flash}
   end
   
 

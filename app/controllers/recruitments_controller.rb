@@ -112,11 +112,9 @@ class RecruitmentsController < ApplicationController
   # 募集終了用アクション
   def close
     if @recruit.update(close_flag: 1)
-      # flash[:success] = "募集を終了しました"
       flash = flash_hash("success", "募集を終了しました")
     else
-      flash = flash_hash("success", "募集を終了しました")
-      # flash[:danger] = "募集の終了に失敗しました"
+      flash = flash_hash("danger", "募集の終了に失敗しました")
     end
     render json: {close_flag: @recruit.close?, flash: flash}
   end
@@ -125,11 +123,9 @@ class RecruitmentsController < ApplicationController
   def restart
     @recruit.update(close_flag: 0)
     unless @recruit.max_entry?
-      # flash[:success] = "募集を再開しました"
       flash = flash_hash("success", "募集を再開しました")
     else
       flash = flash_hash("danger", "募集人数がMAXのため再開できません")
-      # flash[:danger] = "募集人数がMAXのため再開できません"
     end
     render json: {close_flag: @recruit.close?, flash: flash}
   end
@@ -163,10 +159,6 @@ class RecruitmentsController < ApplicationController
       :message,
       :close_condition_count
     ).merge(user: current_user)
-  end
-
-  def flash_hash(type, message)
-    {type: type, message: message}
   end
   
   

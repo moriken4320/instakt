@@ -44,4 +44,9 @@ class ApplicationController < ActionController::Base
       redirect_to recruitments_path
     end
   end
+
+  # 非同期でflashメッセージを出す用
+  def flash_hash(type, message)
+    {type: type, message: message}
+  end
 end
