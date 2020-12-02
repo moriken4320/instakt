@@ -68,33 +68,26 @@ class RecruitmentsController < ApplicationController
   # 「これから」の募集更新用アクション
   def update_later
     recruit_later = RecruitLater.new(recruit_later_param)
-    flash_type = "notice"
-    flash_message = ""
+    flash = {}
     if recruit_later.valid?
       recruit_later.update(@recruit)
-      flash_type = "success"
-      flash_message = "募集内容を編集しました"
+      flash = flash_hash("success", "募集内容を編集しました")
     else
-      flash_type = "danger"
-      flash_message = "更新に失敗しました"
+      flash = flash_hash("danger", "更新に失敗しました")
     end
-    render json: {recruit_later: {recruit: @recruit, later: @recruit.later, close: @recruit.close?}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_later: {recruit: @recruit, later: @recruit.later, close: @recruit.close?}, flash: flash}
   end
   
   # 「いま」の募集更新用アクション
   def update_now
     recruit_now = RecruitNow.new(recruit_now_param)
-    flash_type = "notice"
-    flash_message = ""
     if recruit_now.valid?
       recruit_now.update(@recruit)
-      flash_type = "success"
-      flash_message = "募集内容を編集しました"
+      flash = flash_hash("success", "募集内容を編集しました")
     else
-      flash_type = "danger"
-      flash_message = "更新に失敗しました"
+      flash = flash_hash("danger", "更新に失敗しました")
     end
-    render json: {recruit_now: {recruit: @recruit, now: @recruit.now, close: @recruit.close?}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_now: {recruit: @recruit, now: @recruit.now, close: @recruit.close?}, flash: flash}
   end
 
   # 募集のルーム表示用アクション
@@ -167,5 +160,10 @@ class RecruitmentsController < ApplicationController
       :close_condition_count
     ).merge(user: current_user)
   end
+
+  def flash_hash(type, message)
+    {type: type, message: message}
+  end
+  
   
 end
