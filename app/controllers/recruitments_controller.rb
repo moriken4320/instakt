@@ -112,22 +112,22 @@ class RecruitmentsController < ApplicationController
   # 募集終了用アクション
   def finish
     if @recruit.update(close_flag: 1)
-      flash[:success] = "募集を終了しました"
+      # flash[:success] = "募集を終了しました"
     else
-      flash[:danger] = "募集の終了に失敗しました"
+      # flash[:danger] = "募集の終了に失敗しました"
     end
-    redirect_to recruitments_path
+    render json: @recruit.close?
   end
   
   # 募集再開用アクション
   def restart
+    @recruit.update(close_flag: 0)
     unless @recruit.max_entry?
-      @recruit.update(close_flag: 0)
-      flash[:success] = "募集を再開しました"
+      # flash[:success] = "募集を再開しました"
     else
-      flash[:danger] = "募集人数がMAXのため再開できません"
+      # flash[:danger] = "募集人数がMAXのため再開できません"
     end
-    redirect_to recruitments_path
+    render json: @recruit.close?
   end
   
   

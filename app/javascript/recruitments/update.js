@@ -1,5 +1,6 @@
 import {flash_create} from "../flash";
 import {escapeStr} from "../escape";
+import {finish_label} from "./close_restart";
 
 //募集更新用ajax関数
 const update_ajax = (url, form_data, override)=>{
@@ -12,7 +13,6 @@ const update_ajax = (url, form_data, override)=>{
     contentType: false
   })
   .done((data)=>{
-    console.log(data);
     override(data);
     flash_create(data.flash.type, data.flash.message);
     $("#back").html("");
@@ -26,15 +26,6 @@ const update_ajax = (url, form_data, override)=>{
   });
 };
 
-//募集終了ラベル表示非表示関数
-const finish_label = (close_flag)=>{
-  if(close_flag){
-    $("#current_user_recruit").prepend($("<div>").addClass("finish-label").text("募集が終了しました"));
-  }
-  else{
-    $("#current_user_recruit").find(".finish-label").remove();
-  }
-};
 
 //「これから」の募集を上書きする関数
 const later_override = (data)=>{
