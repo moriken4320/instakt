@@ -2,7 +2,7 @@ class RecruitmentsController < ApplicationController
   before_action :signed_in_user_to_recruitments, only: [:top]
   before_action :signed_out_to_root, except: [:top]
   before_action :recruiter_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
-  before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy, :finish, :restart]
+  before_action :not_recruiter_to_recruits_path, only: [:edit_later, :edit_now, :update_later, :update_now, :destroy, :close, :restart]
   before_action :entrant_to_recruits_path, only: [:new_later, :create_later, :new_now, :create_now]
 
   def top
@@ -110,7 +110,7 @@ class RecruitmentsController < ApplicationController
   end
   
   # 募集終了用アクション
-  def finish
+  def close
     if @recruit.update(close_flag: 1)
       # flash[:success] = "募集を終了しました"
     else

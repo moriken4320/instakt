@@ -1,6 +1,6 @@
 import {flash_create} from "../flash";
 import {escapeStr} from "../escape";
-import {finish_label} from "./close_restart";
+import {close_label} from "./close_restart";
 
 //募集更新用ajax関数
 const update_ajax = (url, form_data, override)=>{
@@ -16,7 +16,7 @@ const update_ajax = (url, form_data, override)=>{
     override(data);
     flash_create(data.flash.type, data.flash.message);
     $("#back").html("");
-    $("#back").hide();
+    $("#back").fadeOut(200);
   })
   .fail(()=>{
     alert("エラーが発生しました。");
@@ -29,7 +29,7 @@ const update_ajax = (url, form_data, override)=>{
 
 //「これから」の募集を上書きする関数
 const later_override = (data)=>{
-  finish_label(data.recruit_later.close);
+  close_label(data.recruit_later.close);
   $("#current_user_recruit").find(".recruit-value:first").text(`${data.recruit_later.later.start_at_hour_top}:${data.recruit_later.later.start_at_minute_top} ~ ${data.recruit_later.later.start_at_hour_bottom}:${data.recruit_later.later.start_at_minute_bottom}`);
   $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_later.later.end_at_hour_top}:${data.recruit_later.later.end_at_minute_top} ~ ${data.recruit_later.later.end_at_hour_bottom}:${data.recruit_later.later.end_at_minute_bottom}`);
   $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_later.later.place);
@@ -39,7 +39,7 @@ const later_override = (data)=>{
 
 //「いま」の募集を上書きする関数
 const now_override = (data)=>{
-  finish_label(data.recruit_now.close);
+  close_label(data.recruit_now.close);
   $("#current_user_recruit").find(".recruit-value:first").text(`${data.recruit_now.now.member_count}`);
   $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_now.now.end_at_hour_top}:${data.recruit_now.now.end_at_minute_top} ~ ${data.recruit_now.now.end_at_hour_bottom}:${data.recruit_now.now.end_at_minute_bottom}`);
   $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_now.now.place);

@@ -4,7 +4,7 @@
   <div class="recruit-wrap">
 <% end %>
   <% if recruit.close? %>
-    <div class="finish-label">募集が終了しました</div>
+    <div class="close-label">募集が終了しました</div>
   <% end %>
   <div class="recruit-detail">
     <%= image_tag recruit.user.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, class: "recruit-user-image" %>
@@ -23,11 +23,9 @@
             <div class="recruit-menu-item" id="edit-now">編集</div>
           <% end %>
           <% if recruit.close? %>  <%# 募集が終了している場合 %>
-            <%# link_to "募集再開", recruitments_restart_path, method: :post, class: "recruit-menu-item" %>
             <div class="recruit-menu-item" id="close" data-status="restart">募集再開</div>
           <% else %>  <%# 募集が終了していない場合 %>
-            <%# link_to "募集終了", recruitments_finish_path, method: :post, class: "recruit-menu-item" %>
-            <div class="recruit-menu-item" id="close" data-status="finish">募集終了</div>
+            <div class="recruit-menu-item" id="close" data-status="close">募集終了</div>
           <% end %>
           <%= link_to "募集削除", recruitments_destroy_path, method: :delete, class: "recruit-menu-item" %>
         </div>
