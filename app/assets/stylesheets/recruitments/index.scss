@@ -86,7 +86,7 @@
             font-size: 25px;
 
             span{
-              color: rgb(150, 150, 150);
+              color: $id_color;
               font-size: 15px;
               padding-left: 10px;
             }
@@ -309,7 +309,7 @@
   font-weight: normal !important;
 }
 
-//newのdisplay用
+//ajax用
 .back{
   position: fixed;
   top: 0;
@@ -320,6 +320,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
 
+  //newのdisplay用
   .item-text{
     outline: none;
     width: 90%;
@@ -356,6 +357,51 @@
     vertical-align: bottom;
     display: inline-block;
     margin-bottom: 10px;
+  }
+
+
+  //参加者リスト用
+  .entries-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .entries-list{
+      background-color: white;
+      border: 3px solid #{$main_color};
+      margin: 0 auto 20px;
+      max-height: 530px;
+      overflow: scroll;
+      
+      .entry-wrap{
+        display: flex;
+        border-bottom: 1px dotted #{$btn_color};
+        padding: 15px 30px;
+        
+        &:last-child{
+          border: none;
+        }
+        
+        .entry-user-image{
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          border-radius: 50%;
+          box-shadow: $box_shadow;
+        }
+        
+        .entry-user-name{
+          font-size: 25px;
+          padding-left: 20px;
+          
+          span{
+            font-size: 15px;
+            padding-left: 20px;
+            color: $id_color;
+          }
+        }
+      }
+    }
   }
 }
 

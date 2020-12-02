@@ -18,7 +18,17 @@
       <% else %> <%# 募集が存在する時 %>
         <%= render partial: "recruit", collection: @recruits_of_friend %>
       <% end %>
-      <div class="back" id="back"></div>
+      <div class="back" id="back">
+        <div class="entries-container center">
+          <div class="entries-list">
+            <div class="entry-wrap">
+              <%= image_tag "/images/test_image.png", class: "entry-user-image" %>
+              <p class="entry-user-name">あああああ<span>ID:110</span></p>
+            </div>
+          </div>
+          <div class="btn return-btn">戻る</div>
+        </div>
+      </div>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <% end %>
   </div>
