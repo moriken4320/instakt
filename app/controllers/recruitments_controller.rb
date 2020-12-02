@@ -113,10 +113,12 @@ class RecruitmentsController < ApplicationController
   def close
     if @recruit.update(close_flag: 1)
       # flash[:success] = "募集を終了しました"
+      flash = flash_hash("success", "募集を終了しました")
     else
+      flash = flash_hash("success", "募集を終了しました")
       # flash[:danger] = "募集の終了に失敗しました"
     end
-    render json: @recruit.close?
+    render json: {close_flag: @recruit.close?, flash: flash}
   end
   
   # 募集再開用アクション
@@ -124,10 +126,12 @@ class RecruitmentsController < ApplicationController
     @recruit.update(close_flag: 0)
     unless @recruit.max_entry?
       # flash[:success] = "募集を再開しました"
+      flash = flash_hash("success", "募集を再開しました")
     else
+      flash = flash_hash("danger", "募集人数がMAXのため再開できません")
       # flash[:danger] = "募集人数がMAXのため再開できません"
     end
-    render json: @recruit.close?
+    render json: {close_flag: @recruit.close?, flash: flash}
   end
   
   

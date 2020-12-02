@@ -1,3 +1,5 @@
+import {flash_create} from "../flash";
+
 //募集終了ラベル表示非表示関数
 export const close_label = (close_flag)=>{
   $("#current_user_recruit").find(".close-label").remove();
@@ -17,8 +19,8 @@ const ajax = (url)=>{
     dataType: "json"
   })
   .done((data)=>{
-    console.log(data);
-    close_label(data);
+    close_label(data.close_flag);
+    flash_create(data.flash.type, data.flash.message);
   })
   .fail(()=>{
     alert("エラーが発生しました。");

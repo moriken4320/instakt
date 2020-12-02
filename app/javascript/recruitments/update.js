@@ -1,5 +1,4 @@
 import {flash_create} from "../flash";
-import {escapeStr} from "../escape";
 import {close_label} from "./close_restart";
 
 //募集更新用ajax関数
