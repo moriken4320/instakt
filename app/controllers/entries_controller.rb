@@ -1,8 +1,17 @@
 class EntriesController < ApplicationController
-  before_action :recruiter_to_recruits_path
+  before_action :recruiter_to_recruits_path, except: [:index]
   before_action :entrant_to_recruits_path, only: [:create]
   before_action :not_entrant_to_recruits_path, only: [:destroy]
   before_action :set_recruit
+
+  def index
+    users = []
+    @recruit.users.each do |user|
+      users << {info: user, image: url_for(user.image)}
+    end
+    render json: users
+  end
+  
 
   def create
     entry = Entry.new(user_id: current_user.id, recruit_id: @recruit.id)

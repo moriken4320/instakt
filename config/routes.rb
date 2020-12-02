@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "recruitments#top"
   resources :recruitments, only: [:index, :show] do
     resource :entries, only: [:create, :destroy]
+    get "entries", to: "entries#index"
   end
   post "recruitments/later/new", to: "recruitments#new_later"
   post "recruitments/now/new", to: "recruitments#new_now"
