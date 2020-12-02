@@ -1,12 +1,5 @@
 import {escapeStr} from "../escape";
-
-//戻るボタンで新規募集画面を閉じる関数
-const close = () => {
-  $("#return").on("click",()=>{
-    $("#back").html("");
-    $("#back").hide();
-  });
-};
+import {close, display} from "../back";
 
 //新規募集作成用ajax関数
 const new_display = (url, html)=>{
@@ -16,8 +9,7 @@ const new_display = (url, html)=>{
     dataType: "json",
   })
   .done((data)=>{
-    $("#back").html(html(data));
-    $("#back").fadeIn(200);
+    display(html(data));
     close();
   })
   .fail(()=>{

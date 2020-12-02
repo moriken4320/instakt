@@ -1,13 +1,6 @@
 import {escapeStr} from "../escape";
 import {update} from "./update";
-
-//戻るボタンで新規募集画面を閉じる関数
-const close = () => {
-  $("#return").on("click",()=>{
-    $("#back").html("");
-    $("#back").hide();
-  });
-};
+import {close, display} from "../back";
 
 //募集編集用ajax関数
 const edit_display = (url, html_display)=>{
