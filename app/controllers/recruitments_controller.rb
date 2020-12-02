@@ -78,7 +78,7 @@ class RecruitmentsController < ApplicationController
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    render json: {recruit_later: {recruit: @recruit, later: @recruit.later}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_later: {recruit: @recruit, later: @recruit.later, close: @recruit.close?}, flash: {type: flash_type, message: flash_message}}
   end
   
   # 「いま」の募集更新用アクション
@@ -94,7 +94,7 @@ class RecruitmentsController < ApplicationController
       flash_type = "danger"
       flash_message = "更新に失敗しました"
     end
-    render json: {recruit_now: {recruit: @recruit, now: @recruit.now}, flash: {type: flash_type, message: flash_message}}
+    render json: {recruit_now: {recruit: @recruit, now: @recruit.now, close: @recruit.close?}, flash: {type: flash_type, message: flash_message}}
   end
 
   # 募集のルーム表示用アクション
