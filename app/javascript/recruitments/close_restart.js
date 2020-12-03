@@ -16,9 +16,11 @@ export const close_label = (close_flag)=>{
 const header_close_check_text = (close_flag)=>{
   if(close_flag){
     $("#header-close").attr("data-status", "restart").text("募集再開");
+    $("#page_name").text("マイ募集ルーム(募集終了)")
   }
   else{
     $("#header-close").attr("data-status", "close").text("募集終了");
+    $("#page_name").text("マイ募集ルーム(募集中)")
   }
 };
 
