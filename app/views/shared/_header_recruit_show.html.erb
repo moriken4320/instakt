@@ -9,7 +9,7 @@
       <% else %>  <%# 募集が終了していない場合 %>
         <div class="menu" id="header-close" data-status="close">募集終了</div>
       <% end %>
-      <%= link_to "募集削除", recruitments_destroy_path, method: :delete, class: "menu" %>
+      <div class="menu" id="recruit-delete">募集削除</div>
     </ul>
   </div>
 <% end %>
@@ -18,7 +18,7 @@
     <i class="fas fa-cog header-config" id="modal_btn"></i>
     <ul class="menu-list" id="btn-menu">
       <li class="menu">募集内容</li>
-      <%= link_to "参加取り消し", recruitment_entries_path(current_user_entry.recruit), method: :delete, class: "menu" %>
+      <div class="menu" id="entry-delete" data-recruit-id="<%=current_user_entry.recruit.id%>">参加取り消し</div>
     </ul>
   </div>
 <% end %>

@@ -27,6 +27,7 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/update")
   require("../recruitments/entry_list")
   require("../recruitments/flex_textarea")
+  require("../recruitments/yes_no_popup")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference
