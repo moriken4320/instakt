@@ -1,11 +1,6 @@
 <%= render partial: 'shared/header', locals: { page_name: @page_name } %>
 
 <div class="main-room">
-  <% if current_user.my_recruit?(@recruit) %>
-    <%= link_to "募集削除", recruitments_destroy_path, method: :delete, class: "btn" %>
-  <% else %>
-    <%= link_to "参加を取り消し", recruitment_entries_path(@recruit), method: :delete, class: "btn" %>
-  <% end %>
   <div class="chat-main" id="chat-main">
     <div class="other-chat-area">
       <div class="other-left-wrap">

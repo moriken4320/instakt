@@ -14,7 +14,12 @@ export const close_label = (close_flag)=>{
 
 //ヘッダーに募集終了の有無を表示する関数(ルーム画面)
 const header_close_check_text = (close_flag)=>{
-  console.log(close_flag);
+  if(close_flag){
+    $("#header-close").attr("data-status", "restart").text("募集再開");
+  }
+  else{
+    $("#header-close").attr("data-status", "close").text("募集終了");
+  }
 };
 
 const ajax = (url, action)=>{

@@ -57,7 +57,7 @@ header{
       align-items: center;
 
       .fas{
-        font-size: 30px;
+        font-size: 35px;
         color: $btn_color;
         margin-right: 20px;
         transition: .2s;
@@ -65,16 +65,12 @@ header{
 
         &:hover{
           color: $main_color;
+          transform: rotate(45deg);
         }
 
         &:active{
           position: relative;
           top: 2px;
-        }
-      }
-      .header-config{
-        &:hover{
-          transform: rotate(45deg);
         }
       }
 

@@ -25,23 +25,28 @@
           <% end %>
         <% end %>
         <% if current_user.recruit? && current_page?(recruitment_path(current_user.recruit?)) %> <%# 現在のページがマイ募集ルームであれば %>
-          <i class="fas fa-info-circle header-info"></i>
           <div class="new-recruit-wrap">
             <i class="fas fa-cog header-config" id="modal_btn"></i>
             <ul class="menu-list" id="btn-menu">
-              <li class="menu">編集</li>
-              <%# <li class="menu">募集終了</li> %>
+              <li class="menu">募集内容確認</li>
+              <li class="menu">募集内容編集</li>
               <% if current_user.recruit?.close? %>  <%# 募集が終了している場合 %>
                 <div class="menu" id="header-close" data-status="restart">募集再開</div>
               <% else %>  <%# 募集が終了していない場合 %>
                 <div class="menu" id="header-close" data-status="close">募集終了</div>
               <% end %>
-              <li class="menu">募集削除</li>
+              <%= link_to "募集削除", recruitments_destroy_path, method: :delete, class: "menu" %>
             </ul>
           </div>
         <% end %>
         <% if current_user.entry? && current_page?(recruitment_path(current_user.entry?.recruit)) %> <%# 現在のページが参加中のルームであれば %>
-          <i class="fas fa-info-circle header-info"></i>
+          <div class="new-recruit-wrap">
+            <i class="fas fa-cog header-config" id="modal_btn"></i>
+            <ul class="menu-list" id="btn-menu">
+              <li class="menu">募集内容確認</li>
+              <%= link_to "参加取り消し", recruitment_entries_path(current_user.entry?.recruit), method: :delete, class: "menu" %>
+            </ul>
+          </div>
         <% end %>
         <div class="user-icon-wrap">
           <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon" %>
