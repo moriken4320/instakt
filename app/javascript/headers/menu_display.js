@@ -10,13 +10,13 @@ $(function () {
   });
 
 
-  $(document).on("click", "#new-recruit_btn", function(){
-    $("#recruit-menu").fadeIn(100);
+  $(document).on("click", "#modal_btn", function(e){
+    $("#btn-menu").fadeIn(100);
   });
 
   $(document).on('click',function(e) {
-    if(!$(e.target).closest("#new-recruit_btn").length) {
-      $("#recruit-menu").fadeOut(100);
+    if(!$(e.target).closest("#modal_btn").length) {
+      $("#btn-menu").fadeOut(100);
     }
   });
 });

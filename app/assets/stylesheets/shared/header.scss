@@ -56,10 +56,32 @@ header{
       display: flex;
       align-items: center;
 
+      .fas{
+        font-size: 30px;
+        color: $btn_color;
+        margin-right: 20px;
+        transition: .2s;
+        cursor: pointer;
+
+        &:hover{
+          color: $main_color;
+        }
+
+        &:active{
+          position: relative;
+          top: 2px;
+        }
+      }
+      .header-config{
+        &:hover{
+          transform: rotate(45deg);
+        }
+      }
+
       .new-recruit-wrap{
       }
       
-      .new-recruit_btn{
+      .header-btn{
         margin-right: 30px;
         width: 120px;
         height: 20px;

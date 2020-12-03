@@ -1,6 +1,6 @@
 import {flash_create} from "../flash";
 
-//募集終了ラベル表示非表示関数
+//募集終了ラベル表示非表示関数(募集一覧画面)
 export const close_label = (close_flag)=>{
   $("#current_user_recruit").find(".close-label").remove();
   if(close_flag){
@@ -12,14 +12,19 @@ export const close_label = (close_flag)=>{
   }
 };
 
-const ajax = (url)=>{
+//ヘッダーに募集終了の有無を表示する関数(ルーム画面)
+const header_close_check_text = (close_flag)=>{
+  console.log(close_flag);
+};
+
+const ajax = (url, action)=>{
   $.ajax({
     url: url,
     type: "post",
     dataType: "json"
   })
   .done((data)=>{
-    close_label(data.close_flag);
+    action(data.close_flag);
     flash_create(data.flash.type, data.flash.message);
   })
   .fail(()=>{
@@ -31,8 +36,15 @@ const ajax = (url)=>{
 };
 
 const close_restart = ()=>{
+
+  //募集一覧画面
   $("#close").on("click",()=>{
-    ajax(`recruitments/${$("#close").attr("data-status")}`);
+    ajax(`recruitments/${$("#close").attr("data-status")}`, close_label);
+  });
+
+  //ルーム画面のヘッダー
+  $("#header-close").on("click",()=>{
+    ajax($("#header-close").attr("data-status"), header_close_check_text);
   });
 };
 
