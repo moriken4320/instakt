@@ -1,0 +1,15 @@
+<% if current_user.matchers.length > 0 && current_page?(recruitments_path) %> <%# フレンドが1人以上かつ、現在のページが募集一覧であれば %>
+  <% if current_user_recruit %> <%# 募集中であれば %>
+    <%= link_to "マイ募集ルーム", recruitment_path(current_user_recruit), class: "btn header-btn" %>
+  <% elsif current_user_entry %> <%# 参加していれば %>
+    <%= link_to "参加中のルーム", recruitment_path(current_user_entry.recruit), class: "btn header-btn" %>
+  <% else %> <%# 募集も参加もしていなければ %>
+    <div class="new-recruit-wrap">
+      <div class="btn header-btn" id="modal_btn">募集する</div>
+      <ul class="menu-list" id="btn-menu">
+        <li class="menu" id="recruit-later">これから</li>
+        <li class="menu" id="recruit-now">いま</li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
