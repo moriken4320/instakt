@@ -1,6 +1,3 @@
-<% current_user_recruit = current_user.recruit? %>
-<% current_user_entry = current_user.entry? %>
-
 <header>
   <div class="header-wrap">
     <div class="left">
@@ -12,11 +9,13 @@
 
     <div class="right">
       <% if user_signed_in? %> <%# ログイン状態であれば %>
+        <% current_user_recruit = current_user.recruit? %>
+        <% current_user_entry = current_user.entry? %>
         <%= render partial: "shared/header_recruit_index", locals: {current_user_recruit: current_user_recruit, current_user_entry: current_user_entry} %>
         <%= render partial: "shared/header_recruit_show", locals: {current_user_recruit: current_user_recruit, current_user_entry: current_user_entry} %>
         
         <div class="user-icon-wrap">
-          <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon" %>
+          <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon", class: "user-icon" %>
           <div class="menu-list" id="user-menu">
             <%= link_to "プロフィール", profile_path, class: "menu" %>
             <%= link_to "フレンド", friends_path, class: "menu" %>

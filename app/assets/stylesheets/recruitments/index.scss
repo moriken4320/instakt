@@ -240,74 +240,11 @@
           margin-left: 10px;
         }
       }
-
-      //参加ボタン
-      .entry-btn{
-        width: 100px;
-        height: 20px;
-        line-height: 20px;
-        padding: 10px;
-        font-weight: bold;
-        color: white;
-        background-color: rgb(0, 182, 0);
-      }
-
-      //自分の募集ルームor参加中のルームへ移動するボタン
-      .recruit-room-btn{
-        width: 150px;
-        height: 20px;
-        line-height: 20px;
-        padding: 10px;
-        font-weight: bold;
-        color: white;
-        background-color: rgb(0, 174, 218);
-      }
-
     }
 
   }
 }
 
-//ボタン共通CSS
-.btn{
-  user-select: none !important;
-  display: block !important;
-  text-align: center !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6) !important;
-  transition: .2s !important;
-  border: none !important;
-  box-sizing: unset !important;
-  text-decoration: none !important;
-
-  &:hover{
-    opacity: .8 !important;
-  }
-  
-  &:active{
-    position: relative !important;
-    top: 2px !important;
-  }
-
-  &:focus{
-    outline: 0;
-  }
-}
-
-//ボタンを無効化する時の共通CSS
-.disable{
-  user-select: none !important;
-  display: block !important;
-  width: 300px !important;
-  height: 20px !important;
-  line-height: 20px !important;
-  text-align: end !important;
-  color: gray !important;
-  background-color: rgba(255, 255, 255, 0) !important;
-  padding: 10px !important;
-  font-weight: normal !important;
-}
 
 //ajax用
 .back{
@@ -407,14 +344,4 @@
 
 .center{
   margin-top: 200px !important;
-}
-
-.return-btn{
-  width: 100px;
-  height: 20px;
-  line-height: 20px;
-  padding: 10px;
-  font-weight: bold;
-  color: white;
-  background-color: rgb(255, 103, 103);
 }

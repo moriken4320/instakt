@@ -71,7 +71,7 @@ class RecruitmentsController < ApplicationController
     flash = {}
     if recruit_later.valid?
       recruit_later.update(@recruit)
-      flash = flash_hash("success", "募集内容を編集しました")
+      flash = flash_hash("success", "募集内容を更新しました")
     else
       flash = flash_hash("danger", "更新に失敗しました")
     end
@@ -83,7 +83,7 @@ class RecruitmentsController < ApplicationController
     recruit_now = RecruitNow.new(recruit_now_param)
     if recruit_now.valid?
       recruit_now.update(@recruit)
-      flash = flash_hash("success", "募集内容を編集しました")
+      flash = flash_hash("success", "募集内容を更新しました")
     else
       flash = flash_hash("danger", "更新に失敗しました")
     end

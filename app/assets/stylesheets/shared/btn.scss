@@ -1,0 +1,54 @@
+//ボタン共通CSS
+.btn{
+  user-select: none;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  transition: .2s;
+  border: none;
+  box-sizing: unset;
+  text-decoration: none;
+  min-width: 75px;
+  font-weight: bold;
+  padding: 7px 10px;
+  align-self: center;
+
+  &:hover{
+    opacity: .8;
+  }
+  
+  &:active{
+    position: relative;
+    top: 2px;
+  }
+
+  &:focus{
+    outline: 0;
+  }
+}
+
+//ボタンを無効化する時の共通CSS
+.disable{
+  padding-top: 10px;
+  color: gray;
+}
+
+//赤ボタン(キャンセル系)
+.return-btn{
+  color: white;
+  background-color: rgb(255, 103, 103);
+}
+
+//緑ボタン(その他)
+.other-btn{
+  color: white;
+  background-color: rgb(0, 182, 0);
+}
+
+//水色ボタン(実行系)
+.submit-btn{
+  color: white;
+  background-color: rgb(0, 174, 218);
+}

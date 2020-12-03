@@ -213,7 +213,7 @@ const later_html = (data)=>{
             </div>
             <div class="entry-wrap">
               <div class="btn return-btn" id="return">戻る</div>
-              <input type="submit" name="commit" value="作成" class="btn recruit-room-btn" data-disable-with="作成">
+              <input type="submit" name="commit" value="作成" class="btn submit-btn" data-disable-with="作成">
             </div>
           </div>
         </div>
@@ -369,7 +369,7 @@ const now_html = (data)=>{
             </div>
             <div class="entry-wrap">
               <div class="btn return-btn" id="return">戻る</div>
-              <input type="submit" name="commit" value="作成" class="btn recruit-room-btn" data-disable-with="作成">
+              <input type="submit" name="commit" value="作成" class="btn submit-btn" data-disable-with="作成">
             </div>
           </div>
         </div>
