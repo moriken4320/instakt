@@ -31,7 +31,6 @@ const ajax = (url)=>{
     dataType: "json"
   })
   .done((data)=>{
-    console.log(data.users);
     if(data.users.length <= 0){
       flash_create(data.flash.type, data.flash.message);
       return;
