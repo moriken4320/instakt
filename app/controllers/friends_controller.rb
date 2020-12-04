@@ -54,11 +54,16 @@ class FriendsController < ApplicationController
   # ハートを解除するメソッド
   def heart_delete(target_user)
     if target_user.recruit? && current_user.my_entry?(target_user.recruit?) # target_userの募集に参加しているか
-      flash = flash_hash("danger", "#{target_user.name}   の募集に参加中のためフレンド解除できません")
-    elsif current_user.unfollow(target_user) #ハートを解除する
+      flash = flash_hash("danger", "#{target_user.name}   の募集に参加中のため解除できません")
+    elsif current_user.recruit? && target_user.my_entry?(current_user.recruit?)
+      flash = flash_hash("danger", "マイ募集の参加者は解除できません")
+    elsif current_user.unfollow(target_user) #ハートの解除に成功したか
       flash = flash_hash("success", "#{target_user.name}   への申請を取り消しました")
-      if current_user.following?(target_user)
+      if current_user.following?(target_user) #target_userからハートを付与されているか
         flash = flash_hash("success", "#{target_user.name}   がフレンドから解除されました")
+      end
+      if current_user.recruit? &&current_user.matchers.length <= 0 #フレンドが0人になったか
+        current_user.recruit?.destroy
       end
     else
       flash = flash_hash("danger", "ハートの解除に失敗しました")
