@@ -34,6 +34,7 @@ const later_override = (data)=>{
   $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_later.later.place);
   $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_later.later.message);
   $("#current_user_recruit").find("#recruit-count").text(data.recruit_later.recruit.close_condition_count);
+  $("#header-recruit-count").text(data.recruit_later.recruit.close_condition_count);
 };
 
 //「いま」の募集を上書きする関数
@@ -44,6 +45,7 @@ const now_override = (data)=>{
   $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_now.now.place);
   $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_now.now.message);
   $("#current_user_recruit").find("#recruit-count").text(data.recruit_now.recruit.close_condition_count);
+  $("#header-recruit-count").text(data.recruit_now.recruit.close_condition_count);
 };
 
 export const update = ()=>{

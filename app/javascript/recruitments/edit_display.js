@@ -209,11 +209,11 @@ const now_html = (data)=>{
 $(function () {
   //「これから」の募集の編集をクリックした際の処理
   $("#edit-later").on("click",()=>{
-    edit_display("recruitments/later/edit", later_html);
+    edit_display("/recruitments/later/edit", later_html);
   });
 
   //「いま」の募集の編集をクリックした際の処理
   $("#edit-now").on("click",()=>{
-    edit_display("recruitments/now/edit", now_html);
+    edit_display("/recruitments/now/edit", now_html);
   });
 });

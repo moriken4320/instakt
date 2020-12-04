@@ -1,17 +1,21 @@
 <% current_user_recruit = current_user.recruit? %>
 <% current_user_entry = current_user.entry? %>
 
-<i class="fas fa-user-circle entry-count" data-recruit-id=<%= recruit.id %>><span id="entry-num"><%= recruit.entries.length %>/</span><span id="recruit-count"><%= recruit.close_condition_count %></span></i>
+<i class="fas fa-user-circle entry-count" data-recruit-id=<%= recruit.id %>><span id="entry-num"><%= recruit.entries.length %>/</span><span id="header-recruit-count"><%= recruit.close_condition_count %></span></i>
 <div class="new-recruit-wrap">
   <i class="fas fa-cog header-config" id="modal_btn"></i>
   <ul class="menu-list" id="btn-menu">
-    <li class="menu">募集内容</li>
+    <li class="menu" id="header-recruit-confirmation">募集内容</li>
     <% if current_user_recruit %> <%# 現在のページがマイ募集ルームであれば %>
-    <li class="menu">募集編集</li>
+      <% if recruit.later.present? %> <%# 募集タイプが「これから」の場合 %>
+        <div class="menu" id="edit-later">募集編集</div>
+      <% else %>  <%# 募集タイプが「いま」の場合 %>
+        <div class="menu" id="edit-now">募集編集</div>
+      <% end %>
       <% if current_user_recruit.close? %>  <%# 募集が終了している場合 %>
-      <div class="menu" id="header-close" data-status="restart">募集再開</div>
+      <div class="menu" id="close" data-status="restart">募集再開</div>
       <% else %>  <%# 募集が終了していない場合 %>
-      <div class="menu" id="header-close" data-status="close">募集終了</div>
+      <div class="menu" id="close" data-status="close">募集終了</div>
       <% end %>
     <div class="menu" id="recruit-delete">募集削除</div>
     <% elsif current_user_entry %> <%# 現在のページが参加中のルームであれば %>
