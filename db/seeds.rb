@@ -50,5 +50,5 @@ end
 
 # 参加させる
 12.times do |i|
-  entry = Entry.new(user_id: (50 - i), recruit_id: (i % 10 + 1))
+  entry = Entry.create(user_id: (50 - i), recruit_id: (i % 10 + 1))
 end
