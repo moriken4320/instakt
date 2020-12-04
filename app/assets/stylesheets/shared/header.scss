@@ -56,7 +56,7 @@ header{
       display: flex;
       align-items: center;
 
-      .fas{
+      .header-config{
         font-size: 35px;
         color: $btn_color;
         margin-right: 20px;
@@ -71,6 +71,34 @@ header{
         &:active{
           position: relative;
           top: 2px;
+        }
+      }
+
+      //参加者情報
+      .entry-count{
+        user-select: none;
+        cursor: pointer;
+        font-size: 35px;
+        color: skyblue;
+        margin-right: 20px;
+        transition: .2s;
+
+        &:hover{
+          color: rgb(0, 162, 255);
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        &:active{
+          position: relative;
+          top: 2px;
+        }
+        
+        span{
+          vertical-align: middle;
+          font-size: 25px;
+        }
+        #entry-num{
+          margin-left: 10px;
         }
       }
 

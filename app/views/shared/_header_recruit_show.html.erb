@@ -1,8 +1,8 @@
 <% current_user_recruit = current_user.recruit? %>
 <% current_user_entry = current_user.entry? %>
 
+<i class="fas fa-user-circle entry-count" data-recruit-id=<%= recruit.id %>><span id="entry-num"><%= recruit.entries.length %>/</span><span id="recruit-count"><%= recruit.close_condition_count %></span></i>
 <div class="new-recruit-wrap">
-
   <i class="fas fa-cog header-config" id="modal_btn"></i>
   <ul class="menu-list" id="btn-menu">
     <li class="menu">募集内容</li>
