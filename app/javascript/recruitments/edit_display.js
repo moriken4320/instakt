@@ -43,7 +43,7 @@ const later_html = (data)=>{
         <div class="recruits-container center">
           <div class="recruit-wrap">
             <div class="recruit-detail">
-              <img class="recruit-user-image" src="${data.user.image}" style="width: 75px; height: 75px; object-fit: cover;">
+              <img class="recruit-user-image" src="${data.user.image}">
               <div class="recruit-info">
                 <div class="info-top">
                   <div class="recruit-user-name">${escapeStr(data.user.info.name)}<span>ID: ${data.user.info.id}</span></div>
@@ -137,7 +137,7 @@ const now_html = (data)=>{
         <div class="recruits-container center">
           <div class="recruit-wrap">
             <div class="recruit-detail">
-              <img class="recruit-user-image" src="${data.user.image}" style="width: 75px; height: 75px; object-fit: cover;">
+              <img class="recruit-user-image" src="${data.user.image}">
               <div class="recruit-info">
                 <div class="info-top">
                   <div class="recruit-user-name">${escapeStr(data.user.info.name)}<span>ID: ${data.user.info.id}</span></div>

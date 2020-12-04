@@ -29,22 +29,22 @@ const update_ajax = (url, form_data, override)=>{
 //「これから」の募集を上書きする関数
 const later_override = (data)=>{
   close_label(data.recruit_later.close);
-  $("#current_user_recruit").find(".recruit-value:first").text(`${data.recruit_later.later.start_at_hour_top}:${data.recruit_later.later.start_at_minute_top} ~ ${data.recruit_later.later.start_at_hour_bottom}:${data.recruit_later.later.start_at_minute_bottom}`);
-  $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_later.later.end_at_hour_top}:${data.recruit_later.later.end_at_minute_top} ~ ${data.recruit_later.later.end_at_hour_bottom}:${data.recruit_later.later.end_at_minute_bottom}`);
-  $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_later.later.place);
-  $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_later.later.message);
-  $("#current_user_recruit").find("#recruit-count").text(data.recruit_later.recruit.close_condition_count);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:first").text(`${data.recruit_later.later.start_at_hour_top}:${data.recruit_later.later.start_at_minute_top} ~ ${data.recruit_later.later.start_at_hour_bottom}:${data.recruit_later.later.start_at_minute_bottom}`);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:eq(1)").text(`${data.recruit_later.later.end_at_hour_top}:${data.recruit_later.later.end_at_minute_top} ~ ${data.recruit_later.later.end_at_hour_bottom}:${data.recruit_later.later.end_at_minute_bottom}`);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:eq(2)").text(data.recruit_later.later.place);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:last").text(data.recruit_later.later.message);
+  $("#current_user_recruit, #confirmation").find("#recruit-count").text(data.recruit_later.recruit.close_condition_count);
   $("#header-recruit-count").text(data.recruit_later.recruit.close_condition_count);
 };
 
 //「いま」の募集を上書きする関数
 const now_override = (data)=>{
   close_label(data.recruit_now.close);
-  $("#current_user_recruit").find(".recruit-value:first").text(`${data.recruit_now.now.member_count}`);
-  $("#current_user_recruit").find(".recruit-value:eq(1)").text(`${data.recruit_now.now.end_at_hour_top}:${data.recruit_now.now.end_at_minute_top} ~ ${data.recruit_now.now.end_at_hour_bottom}:${data.recruit_now.now.end_at_minute_bottom}`);
-  $("#current_user_recruit").find(".recruit-value:eq(2)").text(data.recruit_now.now.place);
-  $("#current_user_recruit").find(".recruit-value:last").text(data.recruit_now.now.message);
-  $("#current_user_recruit").find("#recruit-count").text(data.recruit_now.recruit.close_condition_count);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:first").text(`${data.recruit_now.now.member_count}人`);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:eq(1)").text(`${data.recruit_now.now.end_at_hour_top}:${data.recruit_now.now.end_at_minute_top} ~ ${data.recruit_now.now.end_at_hour_bottom}:${data.recruit_now.now.end_at_minute_bottom}`);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:eq(2)").text(data.recruit_now.now.place);
+  $("#current_user_recruit, #confirmation").find(".recruit-value:last").text(data.recruit_now.now.message);
+  $("#current_user_recruit, #confirmation").find("#recruit-count").text(data.recruit_now.recruit.close_condition_count);
   $("#header-recruit-count").text(data.recruit_now.recruit.close_condition_count);
 };
 

@@ -57,12 +57,12 @@ class RecruitmentsController < ApplicationController
   
   # 「これから」の募集編集UI表示用アクション
   def edit_later
-    render json: {info: {recruit: @recruit, later: @recruit.later}, user: {info: @recruit.user, image: url_for(current_user.image)}}
+    render json: {info: {recruit: @recruit, later: @recruit.later}, user: {info: @recruit.user, image: url_for(@recruit.user.image)}}
   end
   
   # 「いま」の募集編集UI表示用アクション
   def edit_now
-    render json: {info: {recruit: @recruit, now: @recruit.now}, user: {info: @recruit.user, image: url_for(current_user.image)}}
+    render json: {info: {recruit: @recruit, now: @recruit.now}, user: {info: @recruit.user, image: url_for(@recruit.user.image)}}
   end
 
   # 「これから」の募集更新用アクション
@@ -136,6 +136,18 @@ class RecruitmentsController < ApplicationController
       flash = flash_hash("danger", "募集人数がMAXのため再開できません")
     end
     render json: {close_flag: @recruit.close?, flash: flash}
+  end
+
+  # ルーム画面での募集確認用「これから」
+  def confirmation_later
+    recruit = Recruit.find(params[:recruitment_id])
+    render json: {info: {recruit: recruit, later: recruit.later}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
+  end
+
+  # ルーム画面での募集確認用「いま」
+  def confirmation_now
+    recruit = Recruit.find(params[:recruitment_id])
+    render json: {info: {recruit: recruit, now: recruit.now}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
   end
   
   

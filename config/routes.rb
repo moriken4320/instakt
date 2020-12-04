@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :recruitments, only: [:index, :show] do
     resource :entries, only: [:create, :destroy]
     get "entries", to: "entries#index"
+    get "confirmation_later", to: "recruitments#confirmation_later"
+    get "confirmation_now", to: "recruitments#confirmation_now"
   end
   post "recruitments/later/new", to: "recruitments#new_later"
   post "recruitments/now/new", to: "recruitments#new_now"

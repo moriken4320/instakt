@@ -5,11 +5,12 @@
 <div class="new-recruit-wrap">
   <i class="fas fa-cog header-config" id="modal_btn"></i>
   <ul class="menu-list" id="btn-menu">
-    <li class="menu" id="header-recruit-confirmation">募集内容</li>
     <% if current_user_recruit %> <%# 現在のページがマイ募集ルームであれば %>
       <% if recruit.later.present? %> <%# 募集タイプが「これから」の場合 %>
+        <li class="menu" id="confirmation-later">募集内容</li>
         <div class="menu" id="edit-later">募集編集</div>
       <% else %>  <%# 募集タイプが「いま」の場合 %>
+        <li class="menu" id="confirmation-now">募集内容</li>
         <div class="menu" id="edit-now">募集編集</div>
       <% end %>
       <% if current_user_recruit.close? %>  <%# 募集が終了している場合 %>

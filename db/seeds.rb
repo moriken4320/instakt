@@ -35,7 +35,7 @@ end
 
 # 「いま」の募集を5人追加
 5.times do |i|
-  recruit = Recruit.create(user_id: (50 - i), close_flag: 0, close_condition_count: 5)
+  recruit = Recruit.create(user_id: (i + 7), close_flag: 0, close_condition_count: 5)
   Now.create(
     member_count: 10,
     end_at_hour_top: "23",
@@ -46,4 +46,9 @@ end
     message: "きてくれ〜",
     recruit_id: recruit.id
   )
+end
+
+# 参加させる
+12.times do |i|
+  entry = Entry.new(user_id: (50 - i), recruit_id: (i % 10 + 1))
 end

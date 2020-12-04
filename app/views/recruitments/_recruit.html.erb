@@ -7,7 +7,7 @@
     <div class="close-label">募集が終了しました</div>
   <% end %>
   <div class="recruit-detail">
-    <%= image_tag recruit.user.image.variant(combine_options:{gravity: :center, resize:"75x75^", crop:"75x75+0+0"}).processed, class: "recruit-user-image" %>
+    <%= image_tag recruit.user.image, class: "recruit-user-image" %>
     <% if recruit.later.present? %> <%# 募集タイプが「これから」の場合 %>
       <%= render partial: "later", locals: {recruit: recruit} %>
     <% else %>  <%# 募集タイプが「いま」の場合 %>

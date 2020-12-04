@@ -1,6 +1,9 @@
 <%= render partial: 'shared/header', locals: { page_name: @page_name } %>
 
+<div class="recruits-confirmation" id="recruits-confirmation" data-recruit-id="<%= @recruit.id %>"></div>
+
 <div class="main-room">
+
   <div class="chat-main" id="chat-main">
     <div class="other-chat-area">
       <div class="other-left-wrap">
@@ -89,13 +92,5 @@
     <div class="send-btn">送信</div>
   </div>
 
-  <div class="back" id="back">
-    <div class="popup center">
-      <p>本当に削除しますか？</p>
-      <div class="btn-wrap">
-        <div class="btn return-btn" id="return">いいえ</div>
-        <a rel="nofollow" data-method="delete" href="/recruitments/destroy" class="btn submit-btn" id="submit">はい</a>
-      </div>
-    </div>
-  </div>
+  <div class="back" id="back"></div>
 </div>

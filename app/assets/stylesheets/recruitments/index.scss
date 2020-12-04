@@ -4,243 +4,246 @@
   width: 750px;
   margin: 0 auto;
   padding: 50px 0;
+}
 
-    
-  //フレンドが存在しない際のメッセージ
-  .no-friends, .no-recruits{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    p{
-      color: $btn_color;
-      font-size: 25px;
-      text-align: center;
-      padding-top: 100px;
-    }
-    
-    a{
-      margin-top: 30px;
-      width: 200px;
-      height: 40px;
-      line-height: 40px;
-      text-decoration: none;
-      background-color: $main_color;
-      color: white;
-      font-size: 17px;
-    }
+//フレンドが存在しない際のメッセージ
+.no-friends, .no-recruits{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  p{
+    color: $btn_color;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 100px;
+  }
+  
+  a{
+    margin-top: 30px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-decoration: none;
+    background-color: $main_color;
+    color: white;
+    font-size: 17px;
+  }
+}
+
+//募集関連
+.recruit-wrap{
+  background-color: white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  border: 3px solid #{$main_color};
+  padding: 25px;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:last-child{
+    margin: 0;
   }
 
-  //募集関連
-  .recruit-wrap{
-    background-color: white;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-    border: 3px solid #{$main_color};
-    padding: 25px;
-    margin-bottom: 20px;
-    position: relative;
+  // 募集終了時に表示
+  .close-label{
+    background-color: rgba(128, 128, 128, 0.9);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 10px 0;
+    text-align: center;
+    transform: skewY(-5deg);
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+  }
 
-    &:last-child{
-      margin: 0;
+  //募集詳細
+  .recruit-detail{
+    display: flex;
+
+    //募集者イメージ
+    .recruit-user-image{
+      border-radius: 50%;
+      box-shadow: $box_shadow;
+      align-self: flex-start;
+      width: 75px; 
+      height: 75px; 
+      object-fit: cover;
     }
 
-    // 募集終了時に表示
-    .close-label{
-      background-color: rgba(128, 128, 128, 0.9);
-      color: white;
-      font-weight: bold;
-      font-size: 30px;
-      padding: 10px 0;
-      text-align: center;
-      transform: skewY(-5deg);
-      position: absolute;
-      top: 40%;
-      left: 0;
-      width: 100%;
-    }
+    //募集情報
+    .recruit-info{
+      padding: 0 20px;
+      flex-grow: 7;
 
-    //募集詳細
-    .recruit-detail{
-      display: flex;
+      //情報上部
+      .info-top{
+        display: flex;
 
-      //募集者イメージ
-      .recruit-user-image{
-        border-radius: 50%;
-        box-shadow: $box_shadow;
-        align-self: flex-start;
+        //募集者名
+        .recruit-user-name{
+          color: black;
+          font-weight: bold;
+          font-size: 25px;
+
+          span{
+            color: $id_color;
+            font-size: 15px;
+            padding-left: 10px;
+          }
+        }
+
+        //募集タイプ
+        .recruit-type{
+          margin-left: 25px;
+          border-radius: 20px;
+          text-align: center;
+          color: white;
+          width: 100px;
+          align-self: center;
+          padding: 3px 0;
+          user-select: none;
+          font-weight: bold;
+        }
+        
+        .later{
+          background-color: rgb(49, 49, 209);
+        }
+        
+        .now{
+          background-color: rgb(209, 49, 49);
+        }
+
+        //募集の投稿時間
+        .post-time{
+          flex-grow: 1;
+          text-align: end;
+          color: rgb(150, 150, 150);
+          font-size: 15px;
+          align-self: flex-end;
+          padding-left: 15px;
+        }
       }
 
-      //募集情報
-      .recruit-info{
-        padding: 0 20px;
-        flex-grow: 7;
+      //募集下部
+      .info-bottom{
+        padding: 20px 40px;
+        border-top: 1px solid #{$btn_color};
+        border-bottom: 1px solid #{$btn_color};
 
-        //情報上部
-        .info-top{
+        //募集内容
+        li{
+          border-bottom: 1px dotted black;
+          padding-top: 10px;
           display: flex;
+          justify-content: space-between;
 
-          //募集者名
-          .recruit-user-name{
-            color: black;
-            font-weight: bold;
-            font-size: 25px;
+          &:first-child{
+            padding-top: 0;
+          }
+          
+          .recruit-item{
+            color: $btn_color;
 
             span{
-              color: $id_color;
-              font-size: 15px;
-              padding-left: 10px;
+              font-size: 13px;
+              color: gray;
             }
           }
-
-          //募集タイプ
-          .recruit-type{
-            margin-left: 25px;
-            border-radius: 20px;
-            text-align: center;
-            color: white;
-            width: 100px;
-            align-self: center;
-            padding: 3px 0;
-            user-select: none;
-            font-weight: bold;
-          }
           
-          .later{
-            background-color: rgb(49, 49, 209);
-          }
-          
-          .now{
-            background-color: rgb(209, 49, 49);
-          }
-
-          //募集の投稿時間
-          .post-time{
+          .recruit-value{
+            color: black;
             flex-grow: 1;
             text-align: end;
-            color: rgb(150, 150, 150);
-            font-size: 15px;
-            align-self: flex-end;
-          }
-        }
-
-        //募集下部
-        .info-bottom{
-          padding: 20px 40px;
-          border-top: 1px solid #{$btn_color};
-          border-bottom: 1px solid #{$btn_color};
-
-          //募集内容
-          li{
-            border-bottom: 1px dotted black;
-            padding-top: 10px;
-            display: flex;
-            justify-content: space-between;
-
-            &:first-child{
-              padding-top: 0;
-            }
-            
-            .recruit-item{
-              color: $btn_color;
-
-              span{
-                font-size: 13px;
-                color: gray;
-              }
-            }
-            
-            .recruit-value{
-              color: black;
-              flex-grow: 1;
-              text-align: end;
-            }
-          }
-        }
-      }
-      
-      //募集メニューボタン
-      .menu-btn-wrap{
-        position: relative;
-        width: 40px;
-
-        .menu-btn{
-          width: 100%;
-          height: 40px;
-          line-height: 40px;
-          text-align: center;
-          font-size: 25px;
-          color: rgb(146, 146, 146);
-          cursor: pointer;
-          
-          &:hover{
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-          }
-          
-          &:active{
-            position: relative;
-            top: 2px;
-          }        
-        }
-      }
-      //募集メニューコンテンツ
-      .recruit-menu-content{
-        position: absolute;
-        background-color: white;
-        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
-        display: none;
-
-        .recruit-menu-item{
-          display: block;
-          width: 80px;
-          height: 20px;
-          line-height: 20px;
-          text-decoration: none;
-          color: $btn_color;
-          user-select: none;
-          padding: 10px 15px;
-          transition: .2s;
-
-          &:hover{
-            background-color: $btn_hover_backColor;
-            color: $main_color;
           }
         }
       }
     }
+    
+    //募集メニューボタン
+    .menu-btn-wrap{
+      position: relative;
+      width: 40px;
 
-    //参加
-    .entry-wrap{
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 75px 0;
-
-      //参加者情報
-      .entry-count{
-        user-select: none;
+      .menu-btn{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 25px;
+        color: rgb(146, 146, 146);
         cursor: pointer;
-        font-size: 40px;
-        color: skyblue;
-        transition: .2s;
-
+        
         &:hover{
-          color: rgb(0, 162, 255);
           text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
-
+        
         &:active{
           position: relative;
           top: 2px;
-        }
-        
-        span{
-          vertical-align: middle;
-          font-size: 25px;
-        }
-        #entry-num{
-          margin-left: 10px;
+        }        
+      }
+    }
+    //募集メニューコンテンツ
+    .recruit-menu-content{
+      position: absolute;
+      background-color: white;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+      display: none;
+
+      .recruit-menu-item{
+        display: block;
+        width: 80px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        color: $btn_color;
+        user-select: none;
+        padding: 10px 15px;
+        transition: .2s;
+
+        &:hover{
+          background-color: $btn_hover_backColor;
+          color: $main_color;
         }
       }
     }
-
   }
+
+  //参加
+  .entry-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 75px 0;
+
+    //参加者情報
+    .entry-count{
+      user-select: none;
+      cursor: pointer;
+      font-size: 40px;
+      color: skyblue;
+      transition: .2s;
+
+      &:hover{
+        color: rgb(0, 162, 255);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      &:active{
+        position: relative;
+        top: 2px;
+      }
+      
+      span{
+        vertical-align: middle;
+        font-size: 25px;
+      }
+      #entry-num{
+        margin-left: 10px;
+      }
+    }
+  }
+
 }

@@ -1,6 +1,7 @@
 @import "./variables.scss";
 
 $chat_bar_height: 90px;
+$recruit_confirmation_height: 100px;
 
 .main-room{
   padding-top: $header_height;
@@ -193,4 +194,17 @@ $chat_bar_height: 90px;
   padding: 5px 10px !important;
   border-radius: 15px !important;
   font-size: 17px !important;
+}
+
+//募集内容確認用
+.recruits-confirmation{
+  width: 100vw;
+  position: fixed;
+  top: calc(#{$header_height} + 10px);
+  display: none;
+
+  .recruit-wrap{
+    width: 500px;
+    margin: 0 auto;
+  }
 }
