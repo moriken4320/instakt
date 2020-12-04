@@ -38,34 +38,47 @@ class FriendsController < ApplicationController
   #ハートをクリックした際のアクション
   def heart
     target_user = User.find(params[:id])
-    flash_type = "notice"
-    flash_message = ""
 
     if current_user.follower?(target_user) #target_userのハートが付与された状態？
-      if current_user.unfollow(target_user) #ハートを解除する
-        flash_type = "success"
-        flash_message = "#{target_user.name}   への申請を取り消しました"
-        if current_user.following?(target_user)
-          flash_message = "#{target_user.name}   がフレンドから解除されました"
-        end
-      else
-        flash_type = "danger"
-        flash_message = "ハートの解除に失敗しました"
-      end
+      flash = heart_delete(target_user)
     else #target_userのハートが解除された状態？
-      if current_user.follow(target_user) #ハートを付与する
-        flash_type = "success"
-        flash_message = "#{target_user.name}   にフレンド申請しました"
-        if current_user.following?(target_user)
-          flash_message = "#{target_user.name}   がフレンドに追加されました"
-        end
-      else
-        flash_type = "danger"
-        flash_message = "ハートの付与に失敗しました"
-      end
+      flash = heart_create(target_user)
     end
 
-    render json: {heart: current_user.follower?(target_user), flash: {type: flash_type, message: flash_message}}
+    render json: {heart: current_user.follower?(target_user), flash: flash}
+  end
+  
+
+  private
+
+  # ハートを解除するメソッド
+  def heart_delete(target_user)
+    if target_user.recruit? && current_user.my_entry?(target_user.recruit?) # target_userの募集に参加しているか
+      flash = flash_hash("danger", "#{target_user.name}   の募集に参加中のためフレンド解除できません")
+    elsif current_user.unfollow(target_user) #ハートを解除する
+      flash = flash_hash("success", "#{target_user.name}   への申請を取り消しました")
+      if current_user.following?(target_user)
+        flash = flash_hash("success", "#{target_user.name}   がフレンドから解除されました")
+      end
+    else
+      flash = flash_hash("danger", "ハートの解除に失敗しました")
+    end
+
+    flash
+  end
+
+  # ハートを付与するメソッド
+  def heart_create(target_user)
+    if current_user.follow(target_user) #ハートを付与する
+      flash = flash_hash("success", "#{target_user.name}   にフレンド申請しました")
+      if current_user.following?(target_user)
+        flash = flash_hash("success", "#{target_user.name}   がフレンドに追加されました")
+      end
+    else
+      flash = flash_hash("danger", "ハートの付与に失敗しました")
+    end
+
+    flash
   end
   
   
