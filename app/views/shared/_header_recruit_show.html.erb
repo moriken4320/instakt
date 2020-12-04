@@ -1,24 +1,21 @@
-<% if current_user_recruit && current_page?(recruitment_path(current_user_recruit)) %> <%# 現在のページがマイ募集ルームであれば %>
-  <div class="new-recruit-wrap">
-    <i class="fas fa-cog header-config" id="modal_btn"></i>
-    <ul class="menu-list" id="btn-menu">
-      <li class="menu">募集内容</li>
-      <li class="menu">募集編集</li>
+<% current_user_recruit = current_user.recruit? %>
+<% current_user_entry = current_user.entry? %>
+
+<div class="new-recruit-wrap">
+
+  <i class="fas fa-cog header-config" id="modal_btn"></i>
+  <ul class="menu-list" id="btn-menu">
+    <li class="menu">募集内容</li>
+    <% if current_user_recruit %> <%# 現在のページがマイ募集ルームであれば %>
+    <li class="menu">募集編集</li>
       <% if current_user_recruit.close? %>  <%# 募集が終了している場合 %>
-        <div class="menu" id="header-close" data-status="restart">募集再開</div>
+      <div class="menu" id="header-close" data-status="restart">募集再開</div>
       <% else %>  <%# 募集が終了していない場合 %>
-        <div class="menu" id="header-close" data-status="close">募集終了</div>
+      <div class="menu" id="header-close" data-status="close">募集終了</div>
       <% end %>
-      <div class="menu" id="recruit-delete">募集削除</div>
-    </ul>
-  </div>
-<% end %>
-<% if current_user_entry && current_page?(recruitment_path(current_user_entry.recruit)) %> <%# 現在のページが参加中のルームであれば %>
-  <div class="new-recruit-wrap">
-    <i class="fas fa-cog header-config" id="modal_btn"></i>
-    <ul class="menu-list" id="btn-menu">
-      <li class="menu">募集内容</li>
-      <div class="menu" id="entry-delete" data-recruit-id="<%=current_user_entry.recruit.id%>">参加取り消し</div>
-    </ul>
-  </div>
-<% end %>
+    <div class="menu" id="recruit-delete">募集削除</div>
+    <% elsif current_user_entry %> <%# 現在のページが参加中のルームであれば %>
+    <div class="menu" id="entry-delete" data-recruit-id="<%=current_user_entry.recruit.id%>">参加取り消し</div>
+    <% end %>
+  </ul>
+</div>

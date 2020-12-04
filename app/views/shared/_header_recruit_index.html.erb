@@ -1,4 +1,7 @@
-<% if current_user.matchers.length > 0 && current_page?(recruitments_path) %> <%# フレンドが1人以上かつ、現在のページが募集一覧であれば %>
+<% current_user_recruit = current_user.recruit? %>
+<% current_user_entry = current_user.entry? %>
+
+<% if current_user.matchers.length > 0 %> <%# フレンドが1人以上かつ、現在のページが募集一覧であれば %>
   <% if current_user_recruit %> <%# 募集中であれば %>
     <%= link_to "マイ募集ルーム", recruitment_path(current_user_recruit), class: "btn submit-btn" %>
   <% elsif current_user_entry %> <%# 参加していれば %>

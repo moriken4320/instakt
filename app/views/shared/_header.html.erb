@@ -9,10 +9,11 @@
 
     <div class="right">
       <% if user_signed_in? %> <%# ログイン状態であれば %>
-        <% current_user_recruit = current_user.recruit? %>
-        <% current_user_entry = current_user.entry? %>
-        <%= render partial: "shared/header_recruit_index", locals: {current_user_recruit: current_user_recruit, current_user_entry: current_user_entry} %>
-        <%= render partial: "shared/header_recruit_show", locals: {current_user_recruit: current_user_recruit, current_user_entry: current_user_entry} %>
+        <% if current_page?(controller: :recruitments, action: :index) %> <%# 現在のページが募集一覧画面であれば %>
+          <%= render partial: "shared/header_recruit_index" %>
+        <% elsif @recruit.present? && current_page?(controller: :recruitments, action: :show, id: @recruit.id) %> <%# 現在のページがルーム画面であれば %>
+          <%= render partial: "shared/header_recruit_show", locals: {recruit: @recruit} %>
+        <% end %>
         
         <div class="user-icon-wrap">
           <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, id: "user-icon", class: "user-icon" %>
