@@ -4,6 +4,8 @@ class Recruit < ApplicationRecord
   has_one :now, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :users, through: :entries
+  has_many :messages, foreign_key: "room_id", dependent: :destroy
+  has_many :senders, through: :messages
 
   # 募集が終了している判定
   def close?

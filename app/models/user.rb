@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_one :recruit, dependent: :destroy
   has_one :entry, dependent: :destroy
   has_one :recruit, through: :entry
+  has_many :messages, foreign_key: "sender_id", dependent: :destroy
 
   validates :name, :email, :provider, :uid, :image, presence: true
   validates :name, length: {maximum:10}
