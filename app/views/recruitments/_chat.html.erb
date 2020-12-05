@@ -1,0 +1,23 @@
+<% if current_user.id == message.sender.id %>
+  <div class="my-chat-area">
+    <div class="my-left-wrap">
+      <div class="my-chat-time"><%= l message.created_at, format: :hour_minute %></div>
+    </div>
+    <div class="my-right-wrap">
+      <div class="my-chat chat"><%= message.text %></div>
+    </div>
+  </div>
+<% else %>
+  <div class="other-chat-area">
+    <div class="other-left-wrap">
+      <%= image_tag message.sender.image, class: "other-user-image" %>
+    </div>
+    <div class="other-center-wrap">
+      <div class="other-user-name"><%= message.sender.name %><span>ID:<%= message.sender.id %></span></div>
+      <div class="other-chat chat"><%= message.text %></div>
+    </div>
+    <div class="other-raight-wrap">
+      <div class="other-chat-time"><%= l message.created_at, format: :hour_minute %></div>
+    </div>
+  </div>
+<% end %>

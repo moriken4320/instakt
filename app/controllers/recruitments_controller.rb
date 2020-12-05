@@ -93,6 +93,8 @@ class RecruitmentsController < ApplicationController
   # 募集のルーム表示用アクション
   def show
     @recruit = Recruit.find(params[:id])
+    @messages = Message.where(room_id: @recruit.id).includes(:sender).order("created_at ASC")
+    
     if current_user.my_recruit?(@recruit) #募集作成者であれば
       if @recruit.close?
         @page_name = "マイ募集ルーム(募集終了)"
