@@ -9,6 +9,7 @@ const ajax = (url, html_display)=>{
   .done((data)=>{
     html_display(data);
     $("#recruits-confirmation").slideDown(200);
+    $("#chat-main").css("padding-top", $("#recruits-confirmation").height());
     close_confirmation();
   })
   .fail(()=>{
@@ -23,6 +24,7 @@ const close_confirmation = () => {
   $("#confirmation").on("click",()=>{
     $("#recruits-confirmation").hide();
     $("#recruits-confirmation").html("");
+    $("#chat-main").css("padding-top", 0);
   });
 };
 
@@ -96,6 +98,7 @@ const now_html = (data)=>{
   `;
   $("#recruits-confirmation").html(html);
 };
+
 
 $(function(){
   //募集が「これから」の場合
