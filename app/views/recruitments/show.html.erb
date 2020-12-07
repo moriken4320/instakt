@@ -8,7 +8,7 @@
     <%= render partial: 'chat', collection: @messages, as: :message %>
   </div>
 
-  <%= form_with model: @message, url: recruitment_messages_path(@recruit), class: "chat-bar", local: true do |f| %>
+  <%= form_with model: @message, url: recruitment_messages_path(@recruit), class: "chat-bar", id: "chat-bar", local: true do |f| %>
     <div id="image-list"></div>
     <div class="chat-wrap">
       <div class="flex-area">
@@ -19,7 +19,7 @@
         <i class="fas fa-file-image file-attach-btn"></i>
         <%= f.file_field :image, class: "hidden" %>
       </label>
-      <%= f.submit "送信" , class: "send-btn"%>
+      <%= f.submit "送信" , class: "send-btn", id: "send-btn"%>
     </div>
   <% end %>
 

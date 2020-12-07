@@ -6,9 +6,15 @@ class MessagesController < ApplicationController
     message = Message.new(message_param)
     if message.valid? && (current_user.my_recruit?(@recruit) || current_user.my_entry?(@recruit).present?)
       message.save
-      # render json: {message: message}
+      
+      if message.was_attached?
+        render json: {message: {info: message, image: url_for(message.image)}}
+      else
+        render json: {message: {info: message, image: nil}}
+      end
+    else
+      render json: {message: nil}
     end
-    redirect_to recruitment_path(@recruit)
   end
 
   private

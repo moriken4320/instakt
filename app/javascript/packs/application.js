@@ -31,6 +31,7 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/confirmation")
   require("../messages/image_attached_preview")
   require("../messages/scroll")
+  require("../messages/message_display")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference
