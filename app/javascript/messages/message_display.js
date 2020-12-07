@@ -17,7 +17,7 @@ const update_ajax = (url, form_data, html_create)=>{
     reset_form();
   })
   .fail(()=>{
-    alert("エラーが発生しました。");
+    location.reload();
   })
   .always(()=>{
     $("#send-btn").prop("disabled", false);

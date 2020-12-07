@@ -13,7 +13,7 @@ const ajax = (url, html_display)=>{
     close_confirmation();
   })
   .fail(()=>{
-    alert("エラーが発生しました。");
+    location.reload();
   })
   .always(()=>{
     

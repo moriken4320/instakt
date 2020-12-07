@@ -39,7 +39,7 @@ const ajax = (url)=>{
     close();
   })
   .fail(()=>{
-    alert("エラーが発生しました。");
+    location.reload();
   })
   .always(()=>{
     
