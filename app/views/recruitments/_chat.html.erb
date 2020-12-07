@@ -17,7 +17,10 @@
     </div>
     <div class="other-center-wrap">
       <div class="other-user-name"><%= message.sender.name %><span>ID:<%= message.sender.id %></span></div>
-      <div class="other-chat chat"><%=safe_join(message.text.split("\n"),tag(:br))%></div>
+      <div class="other-chat chat">
+        <%= image_tag message.image, class: "attached-image" if message.image.attached? %>
+        <%=safe_join(message.text.split("\n"),tag(:br))%>
+      </div>
     </div>
     <div class="other-raight-wrap">
       <div class="other-chat-time"><%= l message.created_at, format: :hour_minute %></div>
