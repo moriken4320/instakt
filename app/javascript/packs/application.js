@@ -26,7 +26,7 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/edit_display")
   require("../recruitments/update")
   require("../recruitments/entry_list")
-  require("../recruitments/flex_textarea")
+  require("../messages/flex_textarea")
   require("../recruitments/yes_no_popup")
   require("../recruitments/confirmation")
   require("../messages/image_attached_preview")
