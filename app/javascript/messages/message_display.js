@@ -30,8 +30,8 @@ const reset_form = ()=>{
   $("#image-wrap").remove();
   $(".chat-area").val("");
   $(".flex-area-dummy").text("");
-  $("#chat-main").removeAttr("style");
-  $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+  $("#chat-main").css("padding-bottom", 0);
+  $("html, body").animate({ scrollTop: $(document).height() }, "fast");
 };
 
 //メッセージ要素作成関数
