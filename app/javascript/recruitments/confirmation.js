@@ -8,7 +8,7 @@ const ajax = (url, html_display)=>{
   })
   .done((data)=>{
     html_display(data);
-    $("#recruits-confirmation").slideDown(200);
+    $("#recruits-confirmation").show();
     $("#chat-main").css("padding-top", $("#recruits-confirmation").height());
     close_confirmation();
   })
