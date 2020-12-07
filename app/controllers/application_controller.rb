@@ -49,4 +49,13 @@ class ApplicationController < ActionController::Base
   def flash_hash(type, message)
     {type: type, message: message}
   end
+
+  # 対象の募集が存在しなければ募集一覧画面へ
+  def nil_recruit_to_recruits_path
+    if Recruit.where(id: params[:id]).length <= 0 && Recruit.where(id: params[:recruitment_id]).length <= 0
+      flash[:danger] = "【エラー】対象の募集が見つかりませんでした"
+      redirect_to recruitments_path
+    end
+  end
+  
 end

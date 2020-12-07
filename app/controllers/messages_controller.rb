@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :signed_out_to_root
+  before_action :nil_recruit_to_recruits_path
 
   def create
     @recruit = Recruit.find(params[:recruitment_id])
