@@ -217,7 +217,36 @@ $recruit_confirmation_height: 100px;
   max-width: 500px;
   box-shadow: $box_shadow;
   border-radius: 5px;
-  margin-top: 10px;
+  margin: 10px 0;
+  display: block;
+}
+
+.image-wrap{
+  position: relative;
+
+  .close-btn{
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 21px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+    transition: .2s;
+    color: $main_color;
+    border: 1px solid #{$main_color};
+    
+    &:hover{
+      color: white;
+      background-color: $main_color;
+    }
+  }
 }
 
 //募集内容確認用
