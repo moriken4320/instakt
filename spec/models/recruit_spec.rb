@@ -6,12 +6,12 @@ RSpec.describe Recruit, type: :model do
   end
 
   context "募集情報が保存可能" do
-    it "userが正常に存在すると保存できる" do
+    it "値が正常に存在すると保存できる" do
       expect(@recruit).to be_valid 
     end
   end
 
-  context "募集情報が保存不可" do
+  context "募集情報が保存不可" do    
     it "userが正常に存在しないと保存できない" do
       @recruit.user = nil
       @recruit.valid?
