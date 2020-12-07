@@ -8,14 +8,20 @@
     <%= render partial: 'chat', collection: @messages, as: :message %>
   </div>
 
-  <div class="chat-bar">
-    <div class="flex-area">
-      <div class="flex-area-dummy" aria-hidden="true"></div>
-      <textarea placeholder="メッセージを入力" class="chat-area" rows="1"></textarea>
+  <%= form_with model: @message, url: recruitment_messages_path(@recruit), class: "chat-bar", local: true do |f| %>
+    <div id="image-list"></div>
+    <div class="chat-wrap">
+      <div class="flex-area">
+        <div class="flex-area-dummy" aria-hidden="true"></div>
+        <%= f.text_area :text, placeholder: "メッセージを入力", class: "chat-area", rows: "1" %>
+      </div>
+      <label>
+        <i class="fas fa-file-image file-attach-btn"></i>
+        <%= f.file_field :image, class: "hidden" %>
+      </label>
+      <%= f.submit "送信" , class: "send-btn"%>
     </div>
-    <i class="fas fa-file-image file-attach-btn"></i>
-    <div class="send-btn">送信</div>
-  </div>
+  <% end %>
 
   <div class="back" id="back"></div>
 </div>

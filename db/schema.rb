@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_065549) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
-    t.index ["sender_id", "room_id"], name: "index_messages_on_sender_id_and_room_id", unique: true
-    t.index ["sender_id"], name: "index_messages_on_sender_id", unique: true
+    t.index ["sender_id", "room_id"], name: "index_messages_on_sender_id_and_room_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "nows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

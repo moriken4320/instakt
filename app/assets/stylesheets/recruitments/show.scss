@@ -98,93 +98,108 @@ $recruit_confirmation_height: 100px;
     left: 0;
     right: 0;
     background-color: rgb(100, 100, 100);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
-    .flex-area{
-      position: relative;
-
-      .flex-area-dummy{
-        padding: 5px 10px;
-        font-size: 17px;
-        border-radius: 5px;
-        width: 750px;
-        border: 2px solid;
-        overflow: hidden;
-        visibility: hidden;
-        box-sizing: border-box;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        min-height: 40px;
-      }
-      .chat-area{
-        resize: none;
-        padding: 5px 10px;
-        font-size: 17px;
-        border-radius: 5px;
-        width: 750px;
-        height: 100%;
-        border-width: 2px;
-        transition: .2s;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        overflow: hidden;
-        box-sizing: border-box;
+    .chat-wrap{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      .flex-area{
+        position: relative;
         
-        &:focus{
-          outline: none;
-          border-color: $main_color;
+        .flex-area-dummy{
+          padding: 5px 10px;
+          font-size: 17px;
+          border-radius: 5px;
+          width: 750px;
+          border: 2px solid;
+          overflow: hidden;
+          visibility: hidden;
+          box-sizing: border-box;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          min-height: 40px;
+        }
+        .chat-area{
+          resize: none;
+          padding: 5px 10px;
+          font-size: 17px;
+          border-radius: 5px;
+          width: 750px;
+          height: 100%;
+          border-width: 2px;
+          transition: .2s;
+          
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          overflow: hidden;
+          box-sizing: border-box;
+          
+          &:focus{
+            outline: none;
+            border-color: $main_color;
+          }
         }
       }
-    }
-
-    .file-attach-btn{
-      font-size: 25px;
-      margin-left: 10px;
-      cursor: pointer;
-      user-select: none;
-      transition: .2s;
-      color: white;
       
-      &:hover{
-        color: $main_color;
-      }
-
-      &:active{
-        position: relative;
-        top: 1px;
-      }
-    }
-
-    .send-btn{
-      margin-left: 20px;
-      width: 50px;
-      height: 38px;
-      line-height: 38px;
-      border-radius: 5px;
-      border: 1px solid #{$main_color};
-      color: $main_color;
-      user-select: none;
-      cursor: pointer;
-      text-align: center;
-      font-weight: bold;
-      transition: .1s;
-
-      &:hover{
-        background-color: $main_color;
+      .file-attach-btn{
+        font-size: 25px;
+        margin-left: 10px;
+        cursor: pointer;
+        user-select: none;
+        transition: .2s;
         color: white;
+        
+        &:hover{
+          color: $main_color;
+        }
+        
+        &:active{
+          position: relative;
+          top: 1px;
+        }
       }
+      
+      .hidden{
+        display: none;
+      }
+      
+      .send-btn{
+        margin-left: 20px;
+        width: 50px;
+        height: 38px;
+        line-height: 38px;
+        border-radius: 5px;
+        border: 1px solid #{$main_color};
+        color: $main_color;
+        user-select: none;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+        background-color: transparent;
+        transition: .1s;
+        
+        &:hover{
+          background-color: $main_color;
+          color: white;
+        }
+        
+        &:active{
+          position: relative;
+          top: 1px;
+        }
 
-      &:active{
-        position: relative;
-        top: 1px;
+        &:focus{
+          outline: none;
+        }
       }
     }
   }
@@ -194,6 +209,15 @@ $recruit_confirmation_height: 100px;
   padding: 5px 10px !important;
   border-radius: 15px !important;
   font-size: 17px !important;
+}
+
+//添付された画像ファイルのスタイル
+.attached-image{
+  height: 150px;
+  max-width: 500px;
+  box-shadow: $box_shadow;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 //募集内容確認用
