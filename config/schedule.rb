@@ -8,3 +8,15 @@ job_type :rake, "export MYSQL_PASSWORD=\"#{ENV['MYSQL_PASSWORD']}\"; export PATH
 every 1.minutes do
     rake "recruit_task:delete_all"
 end
+
+# 設定の確認
+# bundle exec whenever 
+
+# cronにデータを反映
+# bundle exec whenever --update-crontab 
+
+# cronからデータを削除
+# bundle exec whenever --clear-crontab
+
+# 反映したか確認
+# crontab -l 
