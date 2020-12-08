@@ -18,5 +18,10 @@ module Instakt
 
     # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
+
+    # config.eager_load_paths += Dir["#{config.root}/lib/"]
+    # config.paths.add 'lib', eager_load: true
+    config.autoload_paths += Dir["#{config.root}/lib"]
+    config.eager_load_paths += Dir["#{config.root}/lib/**/"]
   end
 end
