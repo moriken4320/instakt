@@ -69,3 +69,4 @@ gem "aws-sdk-s3", require: false
 gem 'rails-i18n' #エラー日本語対応
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+gem 'whenever', :require => false
