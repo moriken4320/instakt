@@ -78,6 +78,7 @@ class FriendsController < ApplicationController
       flash = flash_hash("success", "#{target_user.name}   にフレンド申請しました")
       if current_user.following?(target_user)
         flash = flash_hash("success", "#{target_user.name}   がフレンドに追加されました")
+        InquiryMailer.send_mail(target_user).deliver_later
       end
     else
       flash = flash_hash("danger", "ハートの付与に失敗しました")
