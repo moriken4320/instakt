@@ -76,10 +76,14 @@ class FriendsController < ApplicationController
   def heart_create(target_user)
     if current_user.follow(target_user) #ハートを付与する
       flash = flash_hash("success", "#{target_user.name}   にフレンド申請しました")
+      mail_subject = "フレンド依頼通知"
+      mail_message = "があなたにフレンド依頼をしました。"
       if current_user.following?(target_user)
         flash = flash_hash("success", "#{target_user.name}   がフレンドに追加されました")
-        InquiryMailer.send_mail(target_user).deliver_later
+        mail_subject = "フレンド追加通知"
+        mail_message = "があなたとフレンドになりました。"
       end
+      InquiryMailer.send_mail(current_user, target_user, mail_subject, mail_message).deliver_later
     else
       flash = flash_hash("danger", "ハートの付与に失敗しました")
     end

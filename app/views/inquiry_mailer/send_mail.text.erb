@@ -1,2 +1,4 @@
-<%= @user.name %> 様
-お問い合わせ内容
+<% unless @action_user.nil? %>
+  ID <%= @action_user.id %> : <%= @action_user.name %>
+<% end %>
+<%= @message %>

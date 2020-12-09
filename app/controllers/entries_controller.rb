@@ -21,6 +21,7 @@ class EntriesController < ApplicationController
     if entry.valid? && !@recruit.close?
       entry.save
       flash[:success] = "参加しました"
+      InquiryMailer.send_mail(current_user, @recruit.user, "参加通知", "があなたの募集に参加しました。").deliver_later
       redirect_to recruitment_path(@recruit)
     else
       flash[:danger] = "参加に失敗しました"
@@ -33,6 +34,7 @@ class EntriesController < ApplicationController
     if entry.present?
       entry.destroy
       flash[:success] = "参加を取り消しました"
+      InquiryMailer.send_mail(current_user, @recruit.user, "参加取り消し通知", "があなたの募集への参加を取り消しました。").deliver_later
       redirect_to recruitments_path
     else
       flash[:danger] = "参加の取り消しに失敗しました"

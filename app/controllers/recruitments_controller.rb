@@ -116,6 +116,9 @@ class RecruitmentsController < ApplicationController
 
   # 募集削除用アクション
   def destroy
+    @recruit.users.each do |entrant|
+      InquiryMailer.send_mail(nil, entrant, "募集削除通知", "あなたが参加していた募集が削除されました。").deliver_later
+    end
     @recruit.destroy
     flash[:success] = "募集を削除しました"
     redirect_to recruitments_path
