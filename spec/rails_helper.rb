@@ -61,4 +61,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  
+  #support directoryをrequire
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  #type: :requestのときにRequestHelperをinclude
+  config.include RequestSpecHelper, type: :request
 end
