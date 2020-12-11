@@ -54,6 +54,9 @@
 
       .list-user-image{
         border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
       }
       .list-user-name{
         color: black;
