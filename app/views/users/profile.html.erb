@@ -4,7 +4,7 @@
 
   <%= form_with model: @user, url: profile_update_path, method: :post, local: true, id: "user-form", class: "user-form" do |f| %>
     <div id="form-image" class="form-image">
-      <%= image_tag current_user.image.variant(combine_options:{gravity: :center, resize:"150x150^", crop:"150x150+0+0"}).processed, id: "user-image", class: "user-image" %>
+      <%= image_tag current_user.image, id: "user-image", class: "user-image" %>
       <%= f.label :image, "画像を変更", for: "image-field", class: "user-image-btn" %>
       <%= f.file_field :image, id: "image-field", class: "user-image-field" %>
     </div>
