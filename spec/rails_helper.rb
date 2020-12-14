@@ -64,7 +64,4 @@ RSpec.configure do |config|
   
   #support directoryをrequire
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-  #type: :requestのときにRequestHelperをinclude
-  config.include RequestSpecHelper, type: :request
-  config.include RequestSpecHelper, type: :system
 end

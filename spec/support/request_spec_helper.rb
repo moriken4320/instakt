@@ -22,3 +22,9 @@ module RequestSpecHelper
   end
 
 end
+
+RSpec.configure do |config|
+  config.include RequestSpecHelper, type: :request
+  config.include RequestSpecHelper, type: :system
+  config.include RequestSpecHelper, type: :feature
+end
