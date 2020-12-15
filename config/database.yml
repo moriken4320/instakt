@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: instakt_production
-  username: instakt
-  password: <%= ENV['INSTAKT_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
