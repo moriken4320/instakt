@@ -12,7 +12,6 @@ const update_ajax = (url, form_data, html_create)=>{
     contentType: false
   })
   .done((data)=>{
-    console.log(data);
     html_create(data);
     reset_form();
   })
