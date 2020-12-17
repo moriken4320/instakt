@@ -14,8 +14,10 @@ http://instakt.jp
 
 - 募集がフレンドにのみ表示されるので、知らない人が急に参加してくる心配はありません！
 
-<img src="./public/images/募集一覧.png" alt="募集一覧画面" style="width: 350px; height: 200px; object-fit: cover;">
-<img src="./public/images/ルーム画面.png" alt="ルーム画面" style="width: 350px; height: 200px; object-fit: cover;">
+<!-- <img src="./public/images/募集一覧.png" alt="募集一覧画面" style="width: 350px; height: 200px; object-fit: cover;">
+<img src="./public/images/ルーム画面.png" alt="ルーム画面" style="width: 350px; height: 200px; object-fit: cover;"> -->
+![募集一覧画面](./public/images/募集一覧.png)
+![ルーム画面](./public/images/ルーム画面.png)
 
 ## コンセプト
 - 今日は飲みたい気分だなぁ。
@@ -65,6 +67,7 @@ http://instakt.jp
 ### 募集関連
 | 機能名 | 詳細 | なぜ実装したか |
 | ------ | ---- | -------------- |
+| 募集一覧表示 |  |  |
 | 「これから」募集作成 |  |  |
 | 「いま」募集作成 |  |  |
 | 募集内容編集 |  |  |
