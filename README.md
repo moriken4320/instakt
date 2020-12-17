@@ -50,8 +50,9 @@ http://instakt.jp
 | ------ | ---- |
 | プロフィール編集 | アイコン、名前、emailを変更できる。(Ajax) |
 
-#### プロフィール編集
-![プロフィール更新](./public/gifs/profile_update.gif)
+| プロフィール編集 |
+| ----- |
+| ![プロフィール更新](./public/gifs/profile_update.gif) |
 
 ### フレンド関連
 | 機能名 | 詳細 |
@@ -63,10 +64,9 @@ http://instakt.jp
 | ハート付与 | ユーザーにハートを付与し、フレンド申請・追加をする。(Ajax) |
 | ハート解除 | ユーザーに付与していたハートを解除し、フレンド申請取消・解除をする。(Ajax)  自分が参加している募集の作成者や自分が作成した募集の参加者のハートを解除することはできない。 |
 
-#### フレンド追加
-![フレンド追加](./public/gifs/friend_add.gif)
-#### ユーザー検索
-![ユーザー検索](./public/gifs/user_search.gif)
+| フレンド追加 | ユーザー検索 |
+| ----- | ----- |
+| ![フレンド追加](./public/gifs/friend_add.gif) | ![ユーザー検索](./public/gifs/user_search.gif) |
 
 ### 募集関連
 | 機能名 | 詳細 |
@@ -80,14 +80,13 @@ http://instakt.jp
 | (手動)募集削除 | 募集を削除し、募集一覧ページに遷移する。 |
 | 募集内容表示 | (メッセージルームページにて)そのルームの募集内容を表示する。(Ajax) |
 
-#### 募集作成
-![募集作成](./public/gifs/recruit_create.gif)
-#### 募集編集
-![募集編集](./public/gifs/recruit_update.gif)
-#### 募集終了
-![募集終了](./public/gifs/recruit_close.gif)
-#### 募集削除
-![募集削除](./public/gifs/recruit_delete.gif)
+| 募集作成 | 募集編集 |
+| ----- | ----- |
+| ![募集作成](./public/gifs/recruit_create.gif) | ![募集編集](./public/gifs/recruit_update.gif) |
+
+| 募集終了 | 募集削除 |
+| ----- | ----- |
+| ![募集終了](./public/gifs/recruit_close.gif) | ![募集削除](./public/gifs/recruit_delete.gif) |
 
 ### 参加関連
 | 機能名 | 詳細 |
@@ -96,12 +95,9 @@ http://instakt.jp
 | 参加取り消し | 参加を取り消し、募集一覧ページに遷移する。 |
 | 参加者リスト表示 | 対象の募集に参加しているユーザー一覧を表示する。(Ajax) |
 
-#### 参加
-![参加](./public/gifs/entry.gif)
-#### 参加取消
-![参加取消](./public/gifs/entry_delete.gif)
-#### 参加者リスト
-![参加者リスト](./public/gifs/entry_list.gif)
+| 参加 | 参加取消 | 参加者リスト |
+| ------ | ---- | ---- |
+| ![参加](./public/gifs/entry.gif) | ![参加取消](./public/gifs/entry_delete.gif) | ![参加者リスト](./public/gifs/entry_list.gif) |
 
 ### メッセージ関連
 | 機能名 | 詳細 |
@@ -109,8 +105,9 @@ http://instakt.jp
 | メッセージ作成(画像添付可) | テキストのみor画像のみorテキスト＋画像のメッセージを作成する。(Ajax) |
 | 非同期通信 | 相手が作成したメッセージもページ更新なしで自動で表示する。 |
 
-#### メッセージ
-![メッセージ](./public/gifs/message.gif)
+| メッセージ |
+| ---- |
+| ![メッセージ](./public/gifs/message.gif) |
 
 ### その他
 | 機能名 | 詳細 |
