@@ -14,8 +14,8 @@ http://instakt.jp
 
 - 募集がフレンドにのみ表示されるので、知らない人が急に参加してくる心配はありません！
 
-<!-- アプリのイメージがわかる画像添付(募集一覧とルーム？) -->
-
+<img src="./public/images/募集一覧.png" alt="募集一覧画面" style="width: 350px; height: 200px; object-fit: cover;">
+<img src="./public/images/ルーム画面.png" alt="ルーム画面" style="width: 350px; height: 200px; object-fit: cover;">
 
 ## コンセプト
 - 今日は飲みたい気分だなぁ。
