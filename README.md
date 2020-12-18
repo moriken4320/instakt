@@ -1,5 +1,5 @@
 # instakt (インスタクト)
-http://instakt.jp
+https://instakt.jp
 
 ---
 
@@ -160,12 +160,14 @@ http://instakt.jp
 ### API
 - Google+ API
 
-### ドメイン・DNS
+### ドメイン・DNS・SSL
 - お名前ドットコム
 - AWS Route53
+- Let’s Encrypt
 
 ### インフラ
-- AWS EC2
+- AWS EC2 / OS: Amazon Linux AMI 2
+- AWS S3 (画像のみ保存)
 - Nginx
 - Unicorn
 - Capistrano(自動デプロイ)
@@ -214,4 +216,4 @@ http://instakt.jp
 ---
 
 ## URL
-http://instakt.jp
+https://instakt.jp
