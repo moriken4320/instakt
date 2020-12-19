@@ -26,12 +26,16 @@ if(location.pathname.includes('recruitments')){
   require("../recruitments/edit_display")
   require("../recruitments/update")
   require("../recruitments/entry_list")
-  require("../messages/flex_textarea")
   require("../recruitments/yes_no_popup")
+}
+
+if(location.href.match(/\/recruitments\/\d+/)){
   require("../recruitments/confirmation")
+  require("../messages/flex_textarea")
   require("../messages/image_attached_preview")
   require("../messages/scroll")
   require("../messages/message_display")
+  require("../messages/message_reload")
 }
 
 // Uncomment to copy all static images under ../images to the output folder and reference

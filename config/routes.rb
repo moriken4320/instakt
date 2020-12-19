@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     get "entries", to: "entries#index"
     get "confirmation_later", to: "recruitments#confirmation_later"
     get "confirmation_now", to: "recruitments#confirmation_now"
-    resources :messages, only: [:create]
+    resources :messages, only: [:create] do
+      collection do
+        get "reload"
+      end
+    end
   end
   post "recruitments/later/new", to: "recruitments#new_later"
   post "recruitments/now/new", to: "recruitments#new_now"

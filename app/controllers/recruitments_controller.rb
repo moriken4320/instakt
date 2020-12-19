@@ -94,7 +94,7 @@ class RecruitmentsController < ApplicationController
   # 募集のルーム表示用アクション
   def show
     @recruit = Recruit.find(params[:id])
-    @messages = Message.where(room_id: @recruit.id).includes(:sender).order("created_at ASC")
+    @messages = @recruit.messages.includes(:sender).order("created_at ASC")
     @message = Message.new
     
     if current_user.my_recruit?(@recruit) #募集作成者であれば
@@ -148,13 +148,17 @@ class RecruitmentsController < ApplicationController
   # ルーム画面での募集確認用「これから」
   def confirmation_later
     recruit = Recruit.find(params[:recruitment_id])
-    render json: {info: {recruit: recruit, later: recruit.later}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
+    if current_user.friend?(recruit.user)
+      render json: {info: {recruit: recruit, later: recruit.later}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
+    end
   end
 
   # ルーム画面での募集確認用「いま」
   def confirmation_now
     recruit = Recruit.find(params[:recruitment_id])
-    render json: {info: {recruit: recruit, now: recruit.now}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
+    if current_user.friend?(recruit.user)
+      render json: {info: {recruit: recruit, now: recruit.now}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
+    end
   end
   
   
@@ -187,6 +191,5 @@ class RecruitmentsController < ApplicationController
       :close_condition_count
     ).merge(user: current_user)
   end
-  
   
 end
