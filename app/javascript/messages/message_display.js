@@ -38,7 +38,7 @@ const message_element = (data)=>{
   if(data.message == null){
     return;
   }
-  const my_chat_area = $("<div>").addClass("my-chat-area");
+  const my_chat_area = $("<div>").addClass("my-chat-area chat-content").attr("data-message-id", data.message.info.id);
 
   const my_left_wrap = $("<div>").addClass("my-left-wrap");
   const my_chat_time = $("<div>").addClass("my-chat-time").text(data.message.info.created_at.substr(11, 5));

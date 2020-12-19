@@ -1,5 +1,5 @@
 <% if current_user.id == message.sender.id %>
-  <div class="my-chat-area">
+  <div class="my-chat-area chat-content" data-message-id="<%= message.id %>">
     <div class="my-left-wrap">
       <div class="my-chat-time"><%= l message.created_at, format: :hour_minute %></div>
     </div>
@@ -11,7 +11,7 @@
     </div>
   </div>
 <% else %>
-  <div class="other-chat-area">
+  <div class="other-chat-area chat-content" data-message-id="<%= message.id %>">
     <div class="other-left-wrap">
       <%= image_tag message.sender.image, class: "other-user-image" %>
     </div>
