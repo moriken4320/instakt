@@ -1,5 +1,6 @@
 
 import {escapeStr} from "../escape";
+import {reload} from "./message_reload";
 
 //メッセージ表示用ajax関数
 const update_ajax = (url, form_data, html_create)=>{
@@ -12,6 +13,7 @@ const update_ajax = (url, form_data, html_create)=>{
     contentType: false
   })
   .done((data)=>{
+    reload();
     html_create(data);
     reset_form();
   })

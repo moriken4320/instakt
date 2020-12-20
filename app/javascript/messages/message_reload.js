@@ -53,8 +53,12 @@ const html_create = (data) =>{
   $("#chat-main").append(other_chat_area);
 };
 
+export const reload = ()=>{
+  ajax(`/recruitments/${$("#recruits-confirmation").attr("data-recruit-id")}/messages/reload`, html_create);
+};
+
 $(function(){
   setInterval(function(){
-    ajax(`/recruitments/${$("#recruits-confirmation").attr("data-recruit-id")}/messages/reload`, html_create);
+    reload();
   }, 5000);
 });
