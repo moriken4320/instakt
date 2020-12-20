@@ -31,3 +31,7 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+# cronの値を反映
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"

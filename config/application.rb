@@ -23,5 +23,6 @@ module Instakt
     # config.paths.add 'lib', eager_load: true
     config.autoload_paths += Dir["#{config.root}/lib"]
     config.eager_load_paths += Dir["#{config.root}/lib/**/"]
+    config.enable_dependency_loading = true 
   end
 end
