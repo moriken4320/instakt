@@ -6,7 +6,7 @@ job_type :rake, "export AWS_SECRET_ACCESS_KEY=\"#{ENV['AWS_SECRET_ACCESS_KEY']}\
 
 
 # AM5:00に全募集を削除する
-every 1.minutes do
+every 1.day, at: '5:00 am' do
     rake "recruit_task:delete_all"
 end
 
