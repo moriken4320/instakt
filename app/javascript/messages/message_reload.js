@@ -1,7 +1,7 @@
 import {escapeStr} from "../escape";
 
 //メッセージ表示用ajax関数
-const ajax = (url, html_create)=>{
+const ajax = (url, html_create, create_message)=>{
   const last_message_id = $(".chat-content:last").data("message-id");
   $.ajax({
     url: url,
@@ -13,6 +13,7 @@ const ajax = (url, html_create)=>{
     all_data.forEach((data)=>{
       html_create(data);
     });
+    create_message();
   })
   .fail(()=>{
     location.reload();
@@ -53,12 +54,12 @@ const html_create = (data) =>{
   $("#chat-main").append(other_chat_area);
 };
 
-export const message_reload = ()=>{
-  ajax(`/recruitments/${$("#recruits-confirmation").attr("data-recruit-id")}/messages/reload`, html_create);
+export const message_reload = (create_message)=>{
+  ajax(`/recruitments/${$("#recruits-confirmation").attr("data-recruit-id")}/messages/reload`, html_create, create_message);
 };
 
 $(function(){
   setInterval(function(){
-    message_reload();
+    message_reload(function(){});
   }, 5000);
 });

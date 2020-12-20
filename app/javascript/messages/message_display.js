@@ -13,7 +13,6 @@ const update_ajax = (url, form_data, html_create)=>{
     contentType: false
   })
   .done((data)=>{
-    message_reload();
     html_create(data);
     reset_form();
   })
@@ -66,6 +65,7 @@ $(function(){
     e.preventDefault();
     const form_data = new FormData(e.target);
     const url = $(e.target).attr("action");
-    update_ajax(url, form_data, message_element);
+    const ajax = ()=>{update_ajax(url, form_data, message_element)};
+    message_reload(ajax);
   });
 });
