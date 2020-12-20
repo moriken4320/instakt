@@ -23,10 +23,12 @@ class MessagesController < ApplicationController
     messages_with_users = []
     @messages = @recruit.messages.includes(:sender).where("id > ?", last_message_id).order("created_at ASC")
     @messages.each do |message|
-      if message.was_attached?
-        messages_with_users << {message: {info: message, image: url_for(message.image)}, user: {info: message.sender, image: url_for(message.sender.image)}}
-      else
-        messages_with_users << {message: {info: message, image: nil}, user: {info: message.sender, image: url_for(message.sender.image)}}
+      if current_user.id != message.sender.id
+        if message.was_attached?
+          messages_with_users << {message: {info: message, image: url_for(message.image)}, user: {info: message.sender, image: url_for(message.sender.image)}}
+        else
+          messages_with_users << {message: {info: message, image: nil}, user: {info: message.sender, image: url_for(message.sender.image)}}
+        end
       end
     end
     render json: messages_with_users
