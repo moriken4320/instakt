@@ -33,4 +33,4 @@ namespace :deploy do
 end
 
 # cronの値を反映
-set :whenever_command, "bundle exec whenever"
+set :whenever_command,      ->{ [:bundle, :exec, :whenever] }
