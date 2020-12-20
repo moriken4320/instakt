@@ -13,7 +13,7 @@ const update_ajax = (url, form_data, html_create)=>{
     contentType: false
   })
   .done((data)=>{
-    // message_reload();
+    message_reload();
     html_create(data);
     reset_form();
   })
