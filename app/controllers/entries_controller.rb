@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
   def index
     users = []
     flash = flash_hash("danger", "参加者がいません")
-    if current_user.friend?(@recruit.user)
+    if current_user.friend?(@recruit.user) || @recruit.user.id == current_user.id
       @recruit.users.each do |user|
         users << {info: user, image: url_for(user.image)}
       end
