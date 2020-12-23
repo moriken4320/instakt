@@ -5,8 +5,9 @@ set :output, "#{Rails.root}/log/cron.log"
 job_type :rake, "export AWS_SECRET_ACCESS_KEY=\"#{ENV['AWS_SECRET_ACCESS_KEY']}\"; export AWS_ACCESS_KEY_ID=\"#{ENV['AWS_ACCESS_KEY_ID']}\"; export MYSQL_PASSWORD=\"#{ENV['MYSQL_PASSWORD']}\"; export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
 
 
-# AM5:00に全募集を削除する
-every 1.day, at: '5:00 am' do
+# AM5:00に全募集を削除する（JSTは+9:00なので-9:00の時間を記述）
+# every 1.day, at: '08:00 pm' do
+every 1.day, at: '10:17 am' do
     rake "recruit_task:delete_all"
 end
 
