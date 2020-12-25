@@ -7,7 +7,7 @@
   background-position: top center;
   display: flex;
   justify-content: center;
-  padding: 10vh 0;
+  padding: 7vh 0;
   position: relative;
   text-shadow: $text_shadow;
 
@@ -81,4 +81,83 @@
     }
   }
 
+}
+
+// about関連
+.about-container{
+  padding: 80px 200px;
+
+  .about-title{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .about-tab-wrap{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    margin-top: 10px;
+
+    .about-tab{
+      border-bottom: 4px solid rgb(194, 194, 194);
+      color: rgb(194, 194, 194);
+      cursor: pointer;
+      flex-grow: 1;
+      text-align: center;
+      padding: 20px 0;
+      user-select: none;
+      transition: .2s;
+
+      &:hover{
+        background-color: $btn_hover_backColor;
+      }
+    }
+    .select-tab{
+      border-bottom: 4px solid #{$main_color};
+      color: $main_color;
+    }
+  }
+
+  .about-content{
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+
+    .change{
+      align-self: center;
+      padding: 5px;
+      cursor: pointer;
+      color: $btn_color;
+      transition: .2s;
+
+      .fas{
+        font-size: 50px;
+      }
+
+      &:hover{
+        color: $main_color;
+      }
+
+      &:active{
+        position: relative;
+        top: 3px;
+      }
+    }
+
+    .about-item{
+      display: flex;
+      justify-content: center;
+      padding: 0 50px;
+
+      img{
+        width: 55%;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+      }
+      p{
+        width: 45%;
+        padding-left: 20px;
+      }
+    }
+  }
 }

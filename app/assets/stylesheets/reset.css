@@ -12,6 +12,9 @@ html{
   color:#000;
   background:#FFF;
 }
+*{
+  font-family: noto sans CJK JP, ヒラギノ角ゴシック ProN ,ヒラギノ角ゴシック, Meiryo, MS Pゴシック, sans-serif;
+}
 /*
   TODO remove settings on BODY since we can't namespace it.
 */

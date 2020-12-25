@@ -18,7 +18,40 @@
   </div>
 
   <div class="about-container">
-    about
+    <div class="about-title">
+      募集して同士をみつけよう
+    </div>
+    <ul class="about-tab-wrap">
+      <li class="about-tab select-tab" id="friend-add-tab">フレンドを追加</li>
+      <li class="about-tab" id="recruit-create-tab">募集を作成</li>
+      <li class="about-tab" id="entry-tab">募集に参加</li>
+      <li class="about-tab" id="message-tab">メッセージでやり取り</li>
+    </ul>
+    <div class="about-content">
+      <div class="change" id="previous">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="about-item" id="about-item">
+        <%# <img src="gifs/friend_add.gif" alt="フレンド追加" class=""> %>
+        <%= image_tag "/gifs/friend_add.gif", alt: "フレンド追加" %>
+        <p>フレンド追加に関して説明するよ</p>
+      </div>
+      <%# <div class="about-item">
+        <img src="gifs/recruit_create.gif" alt="募集作成">
+        <p>募集作成に関して説明するよ</p>
+      </div>
+      <div class="about-item">
+        <img src="gifs/entry.gif" alt="募集参加">
+        <p>募集参加に関して説明するよ</p>
+      </div>
+      <div class="about-item">
+        <img src="gifs/message.gif" alt="メッセージ">
+        <p>メッセージに関して説明するよ</p>
+      </div> %>
+      <div class="change" id="next">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
   </div>
 </div>
 
