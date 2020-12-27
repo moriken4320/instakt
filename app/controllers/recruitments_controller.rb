@@ -148,7 +148,7 @@ class RecruitmentsController < ApplicationController
   # ルーム画面での募集確認用「これから」
   def confirmation_later
     recruit = Recruit.find(params[:recruitment_id])
-    if current_user.friend?(recruit.user)
+    if current_user.friend?(recruit.user) || recruit.user.id == current_user.id
       render json: {info: {recruit: recruit, later: recruit.later}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
     end
   end
@@ -156,7 +156,7 @@ class RecruitmentsController < ApplicationController
   # ルーム画面での募集確認用「いま」
   def confirmation_now
     recruit = Recruit.find(params[:recruitment_id])
-    if current_user.friend?(recruit.user)
+    if current_user.friend?(recruit.user) || recruit.user.id == current_user.id
       render json: {info: {recruit: recruit, now: recruit.now}, user: {info: recruit.user, image: url_for(recruit.user.image)}}
     end
   end
