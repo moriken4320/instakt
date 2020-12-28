@@ -12,6 +12,10 @@ require('jquery')
 require("../headers/menu_display")
 require("../flash")
 
+if(location.pathname == "/"){
+  require("../about")
+}
+
 if(location.pathname.includes('profile')){
   require("../profiles/user_update")
 }
