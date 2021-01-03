@@ -155,18 +155,33 @@ header{
 
 @media (max-width: 1100px) {
   header{
+    height: $tab_header_height;
 
     .header-wrap{
       padding: 0 75px;
+
+      .left{
+        a{
+          line-height: $tab_header_height;
+        }
+      }
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   header{
+    height: $phone_header_height;
 
     .header-wrap{
-      padding: 0 50px;
+      padding: 0 15px;
+
+      .left{
+        a{
+          font-size: 17px;
+          line-height: $phone_header_height;
+        }
+      }
     }
   }
 }

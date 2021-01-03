@@ -25,3 +25,23 @@ $flash_message_height: 50px;
 .danger{
   background-color: red;
 }
+
+@media (max-width: 1100px){
+  $tab_flash_message_height: 50px;
+
+  .common{
+    height: $tab_flash_message_height;
+    font-size: 20px;
+    line-height: $tab_flash_message_height;
+  }
+}
+
+@media (max-width: 500px){
+  $phone_flash_message_height: 30px;
+
+  .common{
+    height: $phone_flash_message_height;
+    font-size: 15px;
+    line-height: $phone_flash_message_height;
+  }
+}
