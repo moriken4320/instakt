@@ -20,7 +20,7 @@ $(function () {
   //画像変更時、プロフィールの画像も即時に変更
   $("#image-field").on("change",(e)=>{
     const blob = window.URL.createObjectURL(e.target.files[0]);
-    $("#user-image").attr("src", blob).css({"width": "150px", "height": "150px", "object-fit": "cover"});
+    $("#user-image").attr("src", blob);
     image_chage = true;
     form_active();
   });
@@ -71,7 +71,7 @@ $(function () {
       contentType: false
     })
     .done((data)=>{
-      $("#user-icon").attr("src", $("#user-image").attr("src")).css({"width": "50px", "height": "50px", "object-fit": "cover"});
+      $("#user-icon").attr("src", $("#user-image").attr("src"));
       current_name = data.user.name;
       current_email = data.user.email;
       image_chage = false;

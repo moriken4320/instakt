@@ -158,11 +158,43 @@ header{
     height: $tab_header_height;
 
     .header-wrap{
-      padding: 0 75px;
+      padding: 0 50px;
 
       .left{
         a{
           line-height: $tab_header_height;
+        }
+      }
+
+      .right{
+  
+        //歯車ボタン
+        .header-config{
+          margin-right: 5px;
+        }
+  
+        //参加者情報
+        .entry-count{
+          margin-right: 10px;
+          
+          #entry-num{
+            margin-left: 5px;
+          }
+        }
+  
+        //ユーザーアイコン
+        .user-icon-wrap{
+          margin-left: 10px;
+        }
+  
+        //メニューポップアップ
+        .menu-list{
+          right: -23%;
+          
+          .menu{
+            width: 100px;
+            padding: 0 10px;
+          }
         }
       }
     }
@@ -179,9 +211,50 @@ header{
       .left{
         a{
           font-size: 17px;
+          padding: 0 7px;
           line-height: $phone_header_height;
         }
+        span{
+          margin-top: 13px;
+          font-size: 15px;
+          
+          &::before{
+            margin-right: 7px;
+          }
+        }
       }
+
+      .right{
+  
+        //歯車ボタン
+        .header-config{
+          font-size: 25px;
+        }
+  
+        //参加者情報
+        .entry-count{
+          font-size: 25px;
+          
+          span{
+            font-size: 15px;
+          }
+        }
+  
+        //ユーザーアイコン
+        .user-icon-wrap{
+        
+          .user-icon{
+            border: 2px solid $main_color;
+            width: 30px;
+            height: 30px;
+          }
+        }
+  
+        .menu-list{
+          right: -13px;
+        }
+      }
+      
     }
   }
 }

@@ -52,3 +52,9 @@
   color: white;
   background-color: rgb(0, 174, 218);
 }
+
+@media (max-width: 600px) {
+  .btn{
+    padding: 5px 7px;
+  }
+}
