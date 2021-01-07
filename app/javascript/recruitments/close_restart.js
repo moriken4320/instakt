@@ -8,16 +8,16 @@ export const close_label = (close_flag)=>{
     $("#close").attr("data-status", "restart").text("募集再開");
 
     //ルーム画面のヘッダー
-    if($("#page_name").text() == "マイ募集ルーム(募集中)"){
-      $("#page_name").text("マイ募集ルーム(募集終了)");
+    if($("#page_name").text() == "マイ募集(募集中)"){
+      $("#page_name").text("マイ募集(募集終了)");
     }
   }
   else{
     $("#close").attr("data-status", "close").text("募集終了");
 
     //ルーム画面のヘッダー
-    if($("#page_name").text() == "マイ募集ルーム(募集終了)"){
-      $("#page_name").text("マイ募集ルーム(募集中)");
+    if($("#page_name").text() == "マイ募集(募集終了)"){
+      $("#page_name").text("マイ募集(募集中)");
     }
   }
 };

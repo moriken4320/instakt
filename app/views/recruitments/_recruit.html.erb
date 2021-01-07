@@ -36,7 +36,7 @@
     <% if current_user.recruit? %> <%# ログインユーザーが募集をしていれば表示 %>
 
       <% if current_user.my_recruit?(recruit) %> <%# 自身の募集であれば表示 %>
-        <%= link_to "マイ募集ルームへ", recruitment_path(recruit), class: "btn submit-btn" %>
+        <%= link_to "マイ募集ルーム", recruitment_path(recruit), class: "btn submit-btn recruit-room-btn" %>
       <% else %> <%# 自身の募集でなければ表示 %>
         <div class="disable">マイ募集が存在する間は参加できません</div>
       <% end %>
@@ -45,7 +45,7 @@
 
       <% if current_user.entry? %> <%# ログインユーザーが参加をしていれば表示 %>
         <% if current_user.my_entry?(recruit) %> <%# 自身が参加している募集であれば表示 %>
-          <%= link_to "参加中のルームへ", recruitment_path(recruit), class: "btn submit-btn" %>
+          <%= link_to "参加中のルーム", recruitment_path(recruit), class: "btn submit-btn recruit-room-btn" %>
         <% else %> <%# 自身が参加している募集でなければ表示 %>
           <div class="disable">他の募集に参加中</div>
         <% end %>

@@ -11,6 +11,7 @@ require('jquery')
 
 require("../headers/menu_display")
 require("../flash")
+require("../responsive/header")
 
 if(location.pathname == "/"){
   require("../about")

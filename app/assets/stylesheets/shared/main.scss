@@ -13,7 +13,7 @@
   }
 }
 
-@media (max-width: 500px){
+@media (max-width: 600px){
   .main{
     padding-top: $phone_header_height;
     min-height: calc(100vh - #{$phone_header_height + $phone_footer_height});

@@ -236,7 +236,7 @@ header{
           font-size: 25px;
           
           span{
-            font-size: 15px;
+            display: none;
           }
         }
   
@@ -255,6 +255,20 @@ header{
         }
       }
       
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  header{
+
+    .header-wrap{
+
+      .left{
+        span{
+          display: none;
+        }
+      }      
     }
   }
 }

@@ -99,15 +99,15 @@ class RecruitmentsController < ApplicationController
     
     if current_user.my_recruit?(@recruit) #募集作成者であれば
       if @recruit.close?
-        @page_name = "マイ募集ルーム(募集終了)"
+        @page_name = "マイ募集(募集終了)"
       else
-        @page_name = "マイ募集ルーム(募集中)"
+        @page_name = "マイ募集(募集中)"
       end
     elsif current_user.my_entry?(@recruit) #募集の参加者であれば
       if @recruit.close?
-        @page_name = "参加中のルーム(募集終了)"
+        @page_name = "参加中(募集終了)"
       else
-        @page_name = "参加中のルーム(募集中)"
+        @page_name = "参加中(募集中)"
       end
     else
       redirect_to recruitments_path
