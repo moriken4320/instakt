@@ -254,5 +254,11 @@
 }
 
 @media (max-width: 600px) {
-  
+  //フレンドが存在しない際のメッセージ
+  .no-friends, .no-recruits{
+    p{
+      font-size: 15px;
+      padding-top: 100px;
+    }
+  }
 }
