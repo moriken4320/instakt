@@ -250,7 +250,69 @@
 
 
 @media (max-width: 1100px) {
-  
+  .recruits-container{
+    max-width: 600px;
+  }
+
+  //募集関連
+  .recruit-wrap{
+    border: 2px solid #{$main_color};
+    padding: 15px;
+
+    //募集詳細
+    .recruit-detail{
+
+      //募集者イメージ
+      .recruit-user-image{
+        width: 60px; 
+        height: 60px; 
+      }
+
+      //募集情報
+      .recruit-info{
+        padding: 0 10px;
+
+        //情報上部
+        .info-top{
+
+          //募集者名
+          .recruit-user-name{
+            font-size: 20px;
+          }
+
+          //募集タイプ
+          .recruit-type{
+            margin-left: 20px;
+            width: 80px;
+            padding: 1px 0;
+          }
+        }
+
+        //募集下部
+        .info-bottom{
+          padding: 20px 15px;
+        }
+      }
+      
+      //募集メニューコンテンツ
+      .recruit-menu-content{
+        right: 0;
+      }
+    }
+
+    //参加
+    .entry-wrap{
+
+      //参加者情報
+      .entry-count{
+        font-size: 35px;
+        
+        span{
+          font-size: 23px;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 600px) {
