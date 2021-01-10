@@ -58,4 +58,10 @@
     padding: 2px 4px;
     min-width: 20px;
   }
+  //ボタンを無効化する時の共通CSS
+  .disable{
+    padding-top: 0px;
+    font-size: 10px;
+    text-align: end;
+  }
 }

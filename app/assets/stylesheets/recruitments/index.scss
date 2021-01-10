@@ -278,13 +278,24 @@
           //募集者名
           .recruit-user-name{
             font-size: 20px;
+
+            span{
+              font-size: 13px;
+              padding-left: 5px;
+            }
           }
 
           //募集タイプ
           .recruit-type{
-            margin-left: 20px;
+            margin-left: 10px;
             width: 80px;
             padding: 1px 0;
+          }
+
+          //募集の投稿時間
+          .post-time{
+            font-size: 13px;
+            padding-left: 10px;
           }
         }
 
@@ -321,6 +332,111 @@
     p{
       font-size: 15px;
       padding-top: 100px;
+    }
+  }
+
+  .recruits-container{
+    max-width: 350px;
+  }
+
+  //募集関連
+  .recruit-wrap{
+    padding: 7px;
+
+    // 募集終了時に表示
+    .close-label{
+      font-size: 20px;
+    }
+
+    //募集詳細
+    .recruit-detail{
+
+      //募集者イメージ
+      .recruit-user-image{
+        width: 30px; 
+        height: 30px; 
+      }
+
+      //募集情報
+      .recruit-info{
+        padding: 0 0 0 10px;
+
+        //情報上部
+        .info-top{
+          flex-direction: column;
+          align-items: flex-start;
+
+          //募集者名
+          .recruit-user-name{
+            font-size: 15px;
+
+            span{
+              font-size: 10px;
+              padding-left: 5px;
+            }
+          }
+
+          //募集タイプ
+          .recruit-type{
+            margin-left: 0px;
+            width: 55px;
+            font-size: 10px;
+            margin-bottom: 3px;
+            align-self: flex-start;
+          }
+          //募集の投稿時間
+          .post-time{
+            font-size: 10px;
+            padding-left: 0px;
+            margin-bottom: 3px;
+            align-self: flex-start;
+          }
+        }
+
+        //募集下部
+        .info-bottom{
+          padding: 20px 5px;
+
+          //募集内容
+          li{
+            padding-top: 7px;
+            .recruit-item{
+              font-size: 10px;
+              span{
+                font-size: 5px;
+              }
+            }
+            .recruit-value{
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      //募集メニューボタン
+      .menu-btn-wrap{
+        width: 30px;
+
+        .menu-btn{
+          height: 30px;
+          line-height: 30px;
+          font-size: 20px;      
+        }
+      }
+    }
+
+    //参加
+    .entry-wrap{
+      padding: 10px 45px 0;
+
+      //参加者情報
+      .entry-count{
+        font-size: 25px;
+        
+        span{
+          font-size: 18px;
+        }
+      }
     }
   }
 }
