@@ -1,5 +1,5 @@
 # instakt (インスタクト)
-https://instakt.jp
+https://instakt.jp (現在は利用できません。)
 
 ---
 
